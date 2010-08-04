@@ -1,6 +1,0 @@
-These example programs demonstrate flaws that may (or may not) be detected by security scanners for C/C++ software. 
-The examples are small, simple C/C++ programs, each of which is meant to evaluate some specific aspect of a security scanner's performance. 
-Overall, the evaluation programs can be categorized as programs used to evaluate the detection of potential i
-vulnerabilities and those used to evaluate resilience against false alarms.
-
-Retrived from https://buildsecurityin.us-cert.gov/bsi/articles/tools/code/498-BSI.html#dsy498-BSI_exp5
