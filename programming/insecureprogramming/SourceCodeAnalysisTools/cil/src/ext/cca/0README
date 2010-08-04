@@ -1,0 +1,40 @@
+C Code Checker 0.8
+------------------
+
+The C Code Checker (CCA) is a static analyzer for 
+detecting potential security problems in C source code.
+
+
+This analyzer was built with the following principles in mind:
+- CCA tries to spot only the errors that can actually cause security problems. 
+Not every strcpy is a problem.
+
+- No code annotations or tweaking is required - it's fully automatic. It's not 
+realistic that an auditor has to crawl through thousands of LOC telling the analyzer 
+"watch this, watch that". It's possible to extend the set of dangerous functions, 
+malloc wrappers etc, though.
+
+- Seamless integration in existing development platforms. The Eclipse platform has 
+been chosen as completion to the command line tool.
+
+
+It should parse all GCC and MSVC code with no substantial problem. It has been run on
+thousands of lines of code, including the linux kernel, tightvnc, ethereal, mplayer etc.
+
+
+Current features are: 
+        - fully automatic user input tracer <see USERINPUT>
+        - memory leak detection
+        - multiple/dangling free detection
+        - array out of bound accesses
+        - potential bufferoverflow detection 
+        - format strings vulnerability detection
+        - ... <ongoing development>
+        - eclipse frontend plugin
+
+See additional documents in src/cca/.
+
+---
+Jonathan Heusser
+jonny@drugphish.ch
+

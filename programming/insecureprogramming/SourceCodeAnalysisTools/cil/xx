@@ -1,0 +1,1152 @@
+echo "Compiling           ocamlutil/pretty.ml to bytecode"
+if test obj/x86_LINUX != ocamlutil -a -f obj/x86_LINUX/pretty.cmi ;then \
+           true mv -f obj/x86_LINUX/pretty.cmi ocamlutil; \
+           mv -f obj/x86_LINUX/pretty.cmi ocamlutil; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c ocamlutil/pretty.ml
+ocamlc -g   -I obj/x86_LINUX -c ocamlutil/pretty.ml ; res=$?; \
+	   if test obj/x86_LINUX != ocamlutil ;then \
+              for ext in cmi cmo; do \
+                if test -f ocamlutil/pretty.$ext ;then \
+                  true mv -f ocamlutil/pretty.$ext obj/x86_LINUX; \
+                  mv -f ocamlutil/pretty.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           ocamlutil/inthash.ml to bytecode"
+if test obj/x86_LINUX != ocamlutil -a -f obj/x86_LINUX/inthash.cmi ;then \
+           true mv -f obj/x86_LINUX/inthash.cmi ocamlutil; \
+           mv -f obj/x86_LINUX/inthash.cmi ocamlutil; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c ocamlutil/inthash.ml
+ocamlc -g   -I obj/x86_LINUX -c ocamlutil/inthash.ml ; res=$?; \
+	   if test obj/x86_LINUX != ocamlutil ;then \
+              for ext in cmi cmo; do \
+                if test -f ocamlutil/inthash.$ext ;then \
+                  true mv -f ocamlutil/inthash.$ext obj/x86_LINUX; \
+                  mv -f ocamlutil/inthash.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface ocamlutil/errormsg.mli
+ocamlc -g   -I obj/x86_LINUX -c ocamlutil/errormsg.mli
+if test obj/x86_LINUX != ocamlutil ;then \
+                   true mv -f ocamlutil/errormsg.cmi obj/x86_LINUX; \
+                   mv -f ocamlutil/errormsg.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           ocamlutil/errormsg.ml to bytecode"
+if test obj/x86_LINUX != ocamlutil -a -f obj/x86_LINUX/errormsg.cmi ;then \
+           true mv -f obj/x86_LINUX/errormsg.cmi ocamlutil; \
+           mv -f obj/x86_LINUX/errormsg.cmi ocamlutil; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c ocamlutil/errormsg.ml
+ocamlc -g   -I obj/x86_LINUX -c ocamlutil/errormsg.ml ; res=$?; \
+	   if test obj/x86_LINUX != ocamlutil ;then \
+              for ext in cmi cmo; do \
+                if test -f ocamlutil/errormsg.$ext ;then \
+                  true mv -f ocamlutil/errormsg.$ext obj/x86_LINUX; \
+                  mv -f ocamlutil/errormsg.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface ocamlutil/trace.mli
+ocamlc -g   -I obj/x86_LINUX -c ocamlutil/trace.mli
+if test obj/x86_LINUX != ocamlutil ;then \
+                   true mv -f ocamlutil/trace.cmi obj/x86_LINUX; \
+                   mv -f ocamlutil/trace.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           ocamlutil/trace.ml to bytecode"
+if test obj/x86_LINUX != ocamlutil -a -f obj/x86_LINUX/trace.cmi ;then \
+           true mv -f obj/x86_LINUX/trace.cmi ocamlutil; \
+           mv -f obj/x86_LINUX/trace.cmi ocamlutil; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c ocamlutil/trace.ml
+ocamlc -g   -I obj/x86_LINUX -c ocamlutil/trace.ml ; res=$?; \
+	   if test obj/x86_LINUX != ocamlutil ;then \
+              for ext in cmi cmo; do \
+                if test -f ocamlutil/trace.$ext ;then \
+                  true mv -f ocamlutil/trace.$ext obj/x86_LINUX; \
+                  mv -f ocamlutil/trace.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface ocamlutil/stats.mli
+ocamlc -g   -I obj/x86_LINUX -c ocamlutil/stats.mli
+if test obj/x86_LINUX != ocamlutil ;then \
+                   true mv -f ocamlutil/stats.cmi obj/x86_LINUX; \
+                   mv -f ocamlutil/stats.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           ocamlutil/stats.ml to bytecode"
+if test obj/x86_LINUX != ocamlutil -a -f obj/x86_LINUX/stats.cmi ;then \
+           true mv -f obj/x86_LINUX/stats.cmi ocamlutil; \
+           mv -f obj/x86_LINUX/stats.cmi ocamlutil; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c ocamlutil/stats.ml
+ocamlc -g   -I obj/x86_LINUX -c ocamlutil/stats.ml ; res=$?; \
+	   if test obj/x86_LINUX != ocamlutil ;then \
+              for ext in cmi cmo; do \
+                if test -f ocamlutil/stats.$ext ;then \
+                  true mv -f ocamlutil/stats.$ext obj/x86_LINUX; \
+                  mv -f ocamlutil/stats.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface ocamlutil/util.mli
+ocamlc -g   -I obj/x86_LINUX -c ocamlutil/util.mli
+if test obj/x86_LINUX != ocamlutil ;then \
+                   true mv -f ocamlutil/util.cmi obj/x86_LINUX; \
+                   mv -f ocamlutil/util.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           ocamlutil/util.ml to bytecode"
+if test obj/x86_LINUX != ocamlutil -a -f obj/x86_LINUX/util.cmi ;then \
+           true mv -f obj/x86_LINUX/util.cmi ocamlutil; \
+           mv -f obj/x86_LINUX/util.cmi ocamlutil; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c ocamlutil/util.ml
+ocamlc -g   -I obj/x86_LINUX -c ocamlutil/util.ml ; res=$?; \
+	   if test obj/x86_LINUX != ocamlutil ;then \
+              for ext in cmi cmo; do \
+                if test -f ocamlutil/util.$ext ;then \
+                  true mv -f ocamlutil/util.$ext obj/x86_LINUX; \
+                  mv -f ocamlutil/util.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface ocamlutil/clist.mli
+ocamlc -g   -I obj/x86_LINUX -c ocamlutil/clist.mli
+if test obj/x86_LINUX != ocamlutil ;then \
+                   true mv -f ocamlutil/clist.cmi obj/x86_LINUX; \
+                   mv -f ocamlutil/clist.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           ocamlutil/clist.ml to bytecode"
+if test obj/x86_LINUX != ocamlutil -a -f obj/x86_LINUX/clist.cmi ;then \
+           true mv -f obj/x86_LINUX/clist.cmi ocamlutil; \
+           mv -f obj/x86_LINUX/clist.cmi ocamlutil; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c ocamlutil/clist.ml
+ocamlc -g   -I obj/x86_LINUX -c ocamlutil/clist.ml ; res=$?; \
+	   if test obj/x86_LINUX != ocamlutil ;then \
+              for ext in cmi cmo; do \
+                if test -f ocamlutil/clist.$ext ;then \
+                  true mv -f ocamlutil/clist.$ext obj/x86_LINUX; \
+                  mv -f ocamlutil/clist.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/cilutil.ml to bytecode"
+if test obj/x86_LINUX != src -a -f obj/x86_LINUX/cilutil.cmi ;then \
+           true mv -f obj/x86_LINUX/cilutil.cmi src; \
+           mv -f obj/x86_LINUX/cilutil.cmi src; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/cilutil.ml
+ocamlc -g   -I obj/x86_LINUX -c src/cilutil.ml ; res=$?; \
+	   if test obj/x86_LINUX != src ;then \
+              for ext in cmi cmo; do \
+                if test -f src/cilutil.$ext ;then \
+                  true mv -f src/cilutil.$ext obj/x86_LINUX; \
+                  mv -f src/cilutil.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/escape.mli
+ocamlc -g   -I obj/x86_LINUX -c src/escape.mli
+if test obj/x86_LINUX != src ;then \
+                   true mv -f src/escape.cmi obj/x86_LINUX; \
+                   mv -f src/escape.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/escape.ml to bytecode"
+if test obj/x86_LINUX != src -a -f obj/x86_LINUX/escape.cmi ;then \
+           true mv -f obj/x86_LINUX/escape.cmi src; \
+           mv -f obj/x86_LINUX/escape.cmi src; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/escape.ml
+ocamlc -g   -I obj/x86_LINUX -c src/escape.ml ; res=$?; \
+	   if test obj/x86_LINUX != src ;then \
+              for ext in cmi cmo; do \
+                if test -f src/escape.$ext ;then \
+                  true mv -f src/escape.$ext obj/x86_LINUX; \
+                  mv -f src/escape.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/frontc/cabs.ml to bytecode"
+if test obj/x86_LINUX != src/frontc -a -f obj/x86_LINUX/cabs.cmi ;then \
+           true mv -f obj/x86_LINUX/cabs.cmi src/frontc; \
+           mv -f obj/x86_LINUX/cabs.cmi src/frontc; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/frontc/cabs.ml
+ocamlc -g   -I obj/x86_LINUX -c src/frontc/cabs.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/frontc ;then \
+              for ext in cmi cmo; do \
+                if test -f src/frontc/cabs.$ext ;then \
+                  true mv -f src/frontc/cabs.$ext obj/x86_LINUX; \
+                  mv -f src/frontc/cabs.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/frontc/cabsvisit.mli
+ocamlc -g   -I obj/x86_LINUX -c src/frontc/cabsvisit.mli
+if test obj/x86_LINUX != src/frontc ;then \
+                   true mv -f src/frontc/cabsvisit.cmi obj/x86_LINUX; \
+                   mv -f src/frontc/cabsvisit.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/frontc/cabsvisit.ml to bytecode"
+if test obj/x86_LINUX != src/frontc -a -f obj/x86_LINUX/cabsvisit.cmi ;then \
+           true mv -f obj/x86_LINUX/cabsvisit.cmi src/frontc; \
+           mv -f obj/x86_LINUX/cabsvisit.cmi src/frontc; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/frontc/cabsvisit.ml
+ocamlc -g   -I obj/x86_LINUX -c src/frontc/cabsvisit.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/frontc ;then \
+              for ext in cmi cmo; do \
+                if test -f src/frontc/cabsvisit.$ext ;then \
+                  true mv -f src/frontc/cabsvisit.$ext obj/x86_LINUX; \
+                  mv -f src/frontc/cabsvisit.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/frontc/cprint.ml to bytecode"
+if test obj/x86_LINUX != src/frontc -a -f obj/x86_LINUX/cprint.cmi ;then \
+           true mv -f obj/x86_LINUX/cprint.cmi src/frontc; \
+           mv -f obj/x86_LINUX/cprint.cmi src/frontc; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/frontc/cprint.ml
+ocamlc -g   -I obj/x86_LINUX -c src/frontc/cprint.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/frontc ;then \
+              for ext in cmi cmo; do \
+                if test -f src/frontc/cprint.$ext ;then \
+                  true mv -f src/frontc/cprint.$ext obj/x86_LINUX; \
+                  mv -f src/frontc/cprint.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/frontc/lexerhack.ml to bytecode"
+if test obj/x86_LINUX != src/frontc -a -f obj/x86_LINUX/lexerhack.cmi ;then \
+           true mv -f obj/x86_LINUX/lexerhack.cmi src/frontc; \
+           mv -f obj/x86_LINUX/lexerhack.cmi src/frontc; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/frontc/lexerhack.ml
+ocamlc -g   -I obj/x86_LINUX -c src/frontc/lexerhack.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/frontc ;then \
+              for ext in cmi cmo; do \
+                if test -f src/frontc/lexerhack.$ext ;then \
+                  true mv -f src/frontc/lexerhack.$ext obj/x86_LINUX; \
+                  mv -f src/frontc/lexerhack.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           obj/x86_LINUX/machdep.ml to bytecode"
+if test obj/x86_LINUX != obj/x86_LINUX -a -f obj/x86_LINUX/machdep.cmi ;then \
+           true mv -f obj/x86_LINUX/machdep.cmi obj/x86_LINUX; \
+           mv -f obj/x86_LINUX/machdep.cmi obj/x86_LINUX; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/machdep.ml
+ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/machdep.ml ; res=$?; \
+	   if test obj/x86_LINUX != obj/x86_LINUX ;then \
+              for ext in cmi cmo; do \
+                if test -f obj/x86_LINUX/machdep.$ext ;then \
+                  true mv -f obj/x86_LINUX/machdep.$ext obj/x86_LINUX; \
+                  mv -f obj/x86_LINUX/machdep.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface obj/x86_LINUX/cparser.mli
+ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/cparser.mli
+if test obj/x86_LINUX != obj/x86_LINUX ;then \
+                   true mv -f obj/x86_LINUX/cparser.cmi obj/x86_LINUX; \
+                   mv -f obj/x86_LINUX/cparser.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           obj/x86_LINUX/cparser.ml to bytecode"
+if test obj/x86_LINUX != obj/x86_LINUX -a -f obj/x86_LINUX/cparser.cmi ;then \
+           true mv -f obj/x86_LINUX/cparser.cmi obj/x86_LINUX; \
+           mv -f obj/x86_LINUX/cparser.cmi obj/x86_LINUX; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/cparser.ml
+ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/cparser.ml ; res=$?; \
+	   if test obj/x86_LINUX != obj/x86_LINUX ;then \
+              for ext in cmi cmo; do \
+                if test -f obj/x86_LINUX/cparser.$ext ;then \
+                  true mv -f obj/x86_LINUX/cparser.$ext obj/x86_LINUX; \
+                  mv -f obj/x86_LINUX/cparser.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/frontc/clexer.mli
+ocamlc -g   -I obj/x86_LINUX -c src/frontc/clexer.mli
+if test obj/x86_LINUX != src/frontc ;then \
+                   true mv -f src/frontc/clexer.cmi obj/x86_LINUX; \
+                   mv -f src/frontc/clexer.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           obj/x86_LINUX/clexer.ml to bytecode"
+if test obj/x86_LINUX != obj/x86_LINUX -a -f obj/x86_LINUX/clexer.cmi ;then \
+           true mv -f obj/x86_LINUX/clexer.cmi obj/x86_LINUX; \
+           mv -f obj/x86_LINUX/clexer.cmi obj/x86_LINUX; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/clexer.ml
+ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/clexer.ml ; res=$?; \
+	   if test obj/x86_LINUX != obj/x86_LINUX ;then \
+              for ext in cmi cmo; do \
+                if test -f obj/x86_LINUX/clexer.$ext ;then \
+                  true mv -f obj/x86_LINUX/clexer.$ext obj/x86_LINUX; \
+                  mv -f obj/x86_LINUX/clexer.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           obj/x86_LINUX/cilversion.ml to bytecode"
+if test obj/x86_LINUX != obj/x86_LINUX -a -f obj/x86_LINUX/cilversion.cmi ;then \
+           true mv -f obj/x86_LINUX/cilversion.cmi obj/x86_LINUX; \
+           mv -f obj/x86_LINUX/cilversion.cmi obj/x86_LINUX; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/cilversion.ml
+ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/cilversion.ml ; res=$?; \
+	   if test obj/x86_LINUX != obj/x86_LINUX ;then \
+              for ext in cmi cmo; do \
+                if test -f obj/x86_LINUX/cilversion.$ext ;then \
+                  true mv -f obj/x86_LINUX/cilversion.$ext obj/x86_LINUX; \
+                  mv -f obj/x86_LINUX/cilversion.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/cil.mli
+ocamlc -g   -I obj/x86_LINUX -c src/cil.mli
+if test obj/x86_LINUX != src ;then \
+                   true mv -f src/cil.cmi obj/x86_LINUX; \
+                   mv -f src/cil.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/cil.ml to bytecode"
+if test obj/x86_LINUX != src -a -f obj/x86_LINUX/cil.cmi ;then \
+           true mv -f obj/x86_LINUX/cil.cmi src; \
+           mv -f obj/x86_LINUX/cil.cmi src; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/cil.ml
+ocamlc -g   -I obj/x86_LINUX -c src/cil.ml ; res=$?; \
+	   if test obj/x86_LINUX != src ;then \
+              for ext in cmi cmo; do \
+                if test -f src/cil.$ext ;then \
+                  true mv -f src/cil.$ext obj/x86_LINUX; \
+                  mv -f src/cil.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface obj/x86_LINUX/formatparse.mli
+ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/formatparse.mli
+if test obj/x86_LINUX != obj/x86_LINUX ;then \
+                   true mv -f obj/x86_LINUX/formatparse.cmi obj/x86_LINUX; \
+                   mv -f obj/x86_LINUX/formatparse.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           obj/x86_LINUX/formatparse.ml to bytecode"
+if test obj/x86_LINUX != obj/x86_LINUX -a -f obj/x86_LINUX/formatparse.cmi ;then \
+           true mv -f obj/x86_LINUX/formatparse.cmi obj/x86_LINUX; \
+           mv -f obj/x86_LINUX/formatparse.cmi obj/x86_LINUX; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/formatparse.ml
+ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/formatparse.ml ; res=$?; \
+	   if test obj/x86_LINUX != obj/x86_LINUX ;then \
+              for ext in cmi cmo; do \
+                if test -f obj/x86_LINUX/formatparse.$ext ;then \
+                  true mv -f obj/x86_LINUX/formatparse.$ext obj/x86_LINUX; \
+                  mv -f obj/x86_LINUX/formatparse.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           obj/x86_LINUX/formatlex.ml to bytecode"
+if test obj/x86_LINUX != obj/x86_LINUX -a -f obj/x86_LINUX/formatlex.cmi ;then \
+           true mv -f obj/x86_LINUX/formatlex.cmi obj/x86_LINUX; \
+           mv -f obj/x86_LINUX/formatlex.cmi obj/x86_LINUX; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/formatlex.ml
+ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/formatlex.ml ; res=$?; \
+	   if test obj/x86_LINUX != obj/x86_LINUX ;then \
+              for ext in cmi cmo; do \
+                if test -f obj/x86_LINUX/formatlex.$ext ;then \
+                  true mv -f obj/x86_LINUX/formatlex.$ext obj/x86_LINUX; \
+                  mv -f obj/x86_LINUX/formatlex.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/formatcil.mli
+ocamlc -g   -I obj/x86_LINUX -c src/formatcil.mli
+if test obj/x86_LINUX != src ;then \
+                   true mv -f src/formatcil.cmi obj/x86_LINUX; \
+                   mv -f src/formatcil.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/formatcil.ml to bytecode"
+if test obj/x86_LINUX != src -a -f obj/x86_LINUX/formatcil.cmi ;then \
+           true mv -f obj/x86_LINUX/formatcil.cmi src; \
+           mv -f obj/x86_LINUX/formatcil.cmi src; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/formatcil.ml
+ocamlc -g   -I obj/x86_LINUX -c src/formatcil.ml ; res=$?; \
+	   if test obj/x86_LINUX != src ;then \
+              for ext in cmi cmo; do \
+                if test -f src/formatcil.$ext ;then \
+                  true mv -f src/formatcil.$ext obj/x86_LINUX; \
+                  mv -f src/formatcil.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/frontc/cabs2cil.mli
+ocamlc -g   -I obj/x86_LINUX -c src/frontc/cabs2cil.mli
+if test obj/x86_LINUX != src/frontc ;then \
+                   true mv -f src/frontc/cabs2cil.cmi obj/x86_LINUX; \
+                   mv -f src/frontc/cabs2cil.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/frontc/cabs2cil.ml to bytecode"
+if test obj/x86_LINUX != src/frontc -a -f obj/x86_LINUX/cabs2cil.cmi ;then \
+           true mv -f obj/x86_LINUX/cabs2cil.cmi src/frontc; \
+           mv -f obj/x86_LINUX/cabs2cil.cmi src/frontc; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/frontc/cabs2cil.ml
+ocamlc -g   -I obj/x86_LINUX -c src/frontc/cabs2cil.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/frontc ;then \
+              for ext in cmi cmo; do \
+                if test -f src/frontc/cabs2cil.$ext ;then \
+                  true mv -f src/frontc/cabs2cil.$ext obj/x86_LINUX; \
+                  mv -f src/frontc/cabs2cil.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/frontc/patch.mli
+ocamlc -g   -I obj/x86_LINUX -c src/frontc/patch.mli
+if test obj/x86_LINUX != src/frontc ;then \
+                   true mv -f src/frontc/patch.cmi obj/x86_LINUX; \
+                   mv -f src/frontc/patch.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/frontc/patch.ml to bytecode"
+if test obj/x86_LINUX != src/frontc -a -f obj/x86_LINUX/patch.cmi ;then \
+           true mv -f obj/x86_LINUX/patch.cmi src/frontc; \
+           mv -f obj/x86_LINUX/patch.cmi src/frontc; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/frontc/patch.ml
+ocamlc -g   -I obj/x86_LINUX -c src/frontc/patch.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/frontc ;then \
+              for ext in cmi cmo; do \
+                if test -f src/frontc/patch.$ext ;then \
+                  true mv -f src/frontc/patch.$ext obj/x86_LINUX; \
+                  mv -f src/frontc/patch.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/frontc/frontc.mli
+ocamlc -g   -I obj/x86_LINUX -c src/frontc/frontc.mli
+if test obj/x86_LINUX != src/frontc ;then \
+                   true mv -f src/frontc/frontc.cmi obj/x86_LINUX; \
+                   mv -f src/frontc/frontc.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/frontc/frontc.ml to bytecode"
+if test obj/x86_LINUX != src/frontc -a -f obj/x86_LINUX/frontc.cmi ;then \
+           true mv -f obj/x86_LINUX/frontc.cmi src/frontc; \
+           mv -f obj/x86_LINUX/frontc.cmi src/frontc; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/frontc/frontc.ml
+ocamlc -g   -I obj/x86_LINUX -c src/frontc/frontc.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/frontc ;then \
+              for ext in cmi cmo; do \
+                if test -f src/frontc/frontc.$ext ;then \
+                  true mv -f src/frontc/frontc.$ext obj/x86_LINUX; \
+                  mv -f src/frontc/frontc.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/check.mli
+ocamlc -g   -I obj/x86_LINUX -c src/check.mli
+if test obj/x86_LINUX != src ;then \
+                   true mv -f src/check.cmi obj/x86_LINUX; \
+                   mv -f src/check.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/check.ml to bytecode"
+if test obj/x86_LINUX != src -a -f obj/x86_LINUX/check.cmi ;then \
+           true mv -f obj/x86_LINUX/check.cmi src; \
+           mv -f obj/x86_LINUX/check.cmi src; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/check.ml
+ocamlc -g   -I obj/x86_LINUX -c src/check.ml ; res=$?; \
+	   if test obj/x86_LINUX != src ;then \
+              for ext in cmi cmo; do \
+                if test -f src/check.$ext ;then \
+                  true mv -f src/check.$ext obj/x86_LINUX; \
+                  mv -f src/check.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/mergecil.mli
+ocamlc -g   -I obj/x86_LINUX -c src/mergecil.mli
+if test obj/x86_LINUX != src ;then \
+                   true mv -f src/mergecil.cmi obj/x86_LINUX; \
+                   mv -f src/mergecil.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/mergecil.ml to bytecode"
+if test obj/x86_LINUX != src -a -f obj/x86_LINUX/mergecil.cmi ;then \
+           true mv -f obj/x86_LINUX/mergecil.cmi src; \
+           mv -f obj/x86_LINUX/mergecil.cmi src; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/mergecil.ml
+ocamlc -g   -I obj/x86_LINUX -c src/mergecil.ml ; res=$?; \
+	   if test obj/x86_LINUX != src ;then \
+              for ext in cmi cmo; do \
+                if test -f src/mergecil.$ext ;then \
+                  true mv -f src/mergecil.$ext obj/x86_LINUX; \
+                  mv -f src/mergecil.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/ext/dataflow.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/dataflow.cmi ;then \
+           true mv -f obj/x86_LINUX/dataflow.cmi src/ext; \
+           mv -f obj/x86_LINUX/dataflow.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/dataflow.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/dataflow.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/dataflow.$ext ;then \
+                  true mv -f src/ext/dataflow.$ext obj/x86_LINUX; \
+                  mv -f src/ext/dataflow.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/ext/dominators.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/dominators.cmi ;then \
+           true mv -f obj/x86_LINUX/dominators.cmi src/ext; \
+           mv -f obj/x86_LINUX/dominators.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/dominators.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/dominators.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/dominators.$ext ;then \
+                  true mv -f src/ext/dominators.$ext obj/x86_LINUX; \
+                  mv -f src/ext/dominators.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/ext/bitmap.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/bitmap.cmi ;then \
+           true mv -f obj/x86_LINUX/bitmap.cmi src/ext; \
+           mv -f obj/x86_LINUX/bitmap.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/bitmap.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/bitmap.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/bitmap.$ext ;then \
+                  true mv -f src/ext/bitmap.$ext obj/x86_LINUX; \
+                  mv -f src/ext/bitmap.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/ext/ssa.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/ssa.cmi ;then \
+           true mv -f obj/x86_LINUX/ssa.cmi src/ext; \
+           mv -f obj/x86_LINUX/ssa.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/ssa.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/ssa.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/ssa.$ext ;then \
+                  true mv -f src/ext/ssa.$ext obj/x86_LINUX; \
+                  mv -f src/ext/ssa.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/ext/usedef.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/usedef.cmi ;then \
+           true mv -f obj/x86_LINUX/usedef.cmi src/ext; \
+           mv -f obj/x86_LINUX/usedef.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/usedef.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/usedef.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/usedef.$ext ;then \
+                  true mv -f src/ext/usedef.$ext obj/x86_LINUX; \
+                  mv -f src/ext/usedef.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/logcalls.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/logcalls.mli
+if test obj/x86_LINUX != src/ext ;then \
+                   true mv -f src/ext/logcalls.cmi obj/x86_LINUX; \
+                   mv -f src/ext/logcalls.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/logcalls.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/logcalls.cmi ;then \
+           true mv -f obj/x86_LINUX/logcalls.cmi src/ext; \
+           mv -f obj/x86_LINUX/logcalls.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/logcalls.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/logcalls.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/logcalls.$ext ;then \
+                  true mv -f src/ext/logcalls.$ext obj/x86_LINUX; \
+                  mv -f src/ext/logcalls.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/ext/logwrites.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/logwrites.cmi ;then \
+           true mv -f obj/x86_LINUX/logwrites.cmi src/ext; \
+           mv -f obj/x86_LINUX/logwrites.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/logwrites.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/logwrites.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/logwrites.$ext ;then \
+                  true mv -f src/ext/logwrites.$ext obj/x86_LINUX; \
+                  mv -f src/ext/logwrites.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/rmtmps.mli
+ocamlc -g   -I obj/x86_LINUX -c src/rmtmps.mli
+if test obj/x86_LINUX != src ;then \
+                   true mv -f src/rmtmps.cmi obj/x86_LINUX; \
+                   mv -f src/rmtmps.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/rmtmps.ml to bytecode"
+if test obj/x86_LINUX != src -a -f obj/x86_LINUX/rmtmps.cmi ;then \
+           true mv -f obj/x86_LINUX/rmtmps.cmi src; \
+           mv -f obj/x86_LINUX/rmtmps.cmi src; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/rmtmps.ml
+ocamlc -g   -I obj/x86_LINUX -c src/rmtmps.ml ; res=$?; \
+	   if test obj/x86_LINUX != src ;then \
+              for ext in cmi cmo; do \
+                if test -f src/rmtmps.$ext ;then \
+                  true mv -f src/rmtmps.$ext obj/x86_LINUX; \
+                  mv -f src/rmtmps.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/callgraph.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/callgraph.mli
+if test obj/x86_LINUX != src/ext ;then \
+                   true mv -f src/ext/callgraph.cmi obj/x86_LINUX; \
+                   mv -f src/ext/callgraph.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/callgraph.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/callgraph.cmi ;then \
+           true mv -f obj/x86_LINUX/callgraph.cmi src/ext; \
+           mv -f obj/x86_LINUX/callgraph.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/callgraph.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/callgraph.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/callgraph.$ext ;then \
+                  true mv -f src/ext/callgraph.$ext obj/x86_LINUX; \
+                  mv -f src/ext/callgraph.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/cca/logger.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/logger.mli
+if test obj/x86_LINUX != src/ext/cca ;then \
+                   true mv -f src/ext/cca/logger.cmi obj/x86_LINUX; \
+                   mv -f src/ext/cca/logger.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/cca/logger.ml to bytecode"
+if test obj/x86_LINUX != src/ext/cca -a -f obj/x86_LINUX/logger.cmi ;then \
+           true mv -f obj/x86_LINUX/logger.cmi src/ext/cca; \
+           mv -f obj/x86_LINUX/logger.cmi src/ext/cca; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/logger.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/logger.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext/cca ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/cca/logger.$ext ;then \
+                  true mv -f src/ext/cca/logger.$ext obj/x86_LINUX; \
+                  mv -f src/ext/cca/logger.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/cca/data.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/data.mli
+if test obj/x86_LINUX != src/ext/cca ;then \
+                   true mv -f src/ext/cca/data.cmi obj/x86_LINUX; \
+                   mv -f src/ext/cca/data.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/cca/data.ml to bytecode"
+if test obj/x86_LINUX != src/ext/cca -a -f obj/x86_LINUX/data.cmi ;then \
+           true mv -f obj/x86_LINUX/data.cmi src/ext/cca; \
+           mv -f obj/x86_LINUX/data.cmi src/ext/cca; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/data.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/data.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext/cca ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/cca/data.$ext ;then \
+                  true mv -f src/ext/cca/data.$ext obj/x86_LINUX; \
+                  mv -f src/ext/cca/data.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/cca/utilvisitors.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/utilvisitors.mli
+if test obj/x86_LINUX != src/ext/cca ;then \
+                   true mv -f src/ext/cca/utilvisitors.cmi obj/x86_LINUX; \
+                   mv -f src/ext/cca/utilvisitors.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/cca/utilvisitors.ml to bytecode"
+if test obj/x86_LINUX != src/ext/cca -a -f obj/x86_LINUX/utilvisitors.cmi ;then \
+           true mv -f obj/x86_LINUX/utilvisitors.cmi src/ext/cca; \
+           mv -f obj/x86_LINUX/utilvisitors.cmi src/ext/cca; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/utilvisitors.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/utilvisitors.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext/cca ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/cca/utilvisitors.$ext ;then \
+                  true mv -f src/ext/cca/utilvisitors.$ext obj/x86_LINUX; \
+                  mv -f src/ext/cca/utilvisitors.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/cca/bufferoverflow.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/bufferoverflow.mli
+if test obj/x86_LINUX != src/ext/cca ;then \
+                   true mv -f src/ext/cca/bufferoverflow.cmi obj/x86_LINUX; \
+                   mv -f src/ext/cca/bufferoverflow.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/cca/bufferoverflow.ml to bytecode"
+if test obj/x86_LINUX != src/ext/cca -a -f obj/x86_LINUX/bufferoverflow.cmi ;then \
+           true mv -f obj/x86_LINUX/bufferoverflow.cmi src/ext/cca; \
+           mv -f obj/x86_LINUX/bufferoverflow.cmi src/ext/cca; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/bufferoverflow.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/bufferoverflow.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext/cca ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/cca/bufferoverflow.$ext ;then \
+                  true mv -f src/ext/cca/bufferoverflow.$ext obj/x86_LINUX; \
+                  mv -f src/ext/cca/bufferoverflow.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/cca/userinput.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/userinput.mli
+if test obj/x86_LINUX != src/ext/cca ;then \
+                   true mv -f src/ext/cca/userinput.cmi obj/x86_LINUX; \
+                   mv -f src/ext/cca/userinput.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/cca/userinput.ml to bytecode"
+if test obj/x86_LINUX != src/ext/cca -a -f obj/x86_LINUX/userinput.cmi ;then \
+           true mv -f obj/x86_LINUX/userinput.cmi src/ext/cca; \
+           mv -f obj/x86_LINUX/userinput.cmi src/ext/cca; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/userinput.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/userinput.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext/cca ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/cca/userinput.$ext ;then \
+                  true mv -f src/ext/cca/userinput.$ext obj/x86_LINUX; \
+                  mv -f src/ext/cca/userinput.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/cca/outofbounds.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/outofbounds.mli
+if test obj/x86_LINUX != src/ext/cca ;then \
+                   true mv -f src/ext/cca/outofbounds.cmi obj/x86_LINUX; \
+                   mv -f src/ext/cca/outofbounds.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/cca/outofbounds.ml to bytecode"
+if test obj/x86_LINUX != src/ext/cca -a -f obj/x86_LINUX/outofbounds.cmi ;then \
+           true mv -f obj/x86_LINUX/outofbounds.cmi src/ext/cca; \
+           mv -f obj/x86_LINUX/outofbounds.cmi src/ext/cca; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/outofbounds.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/outofbounds.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext/cca ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/cca/outofbounds.$ext ;then \
+                  true mv -f src/ext/cca/outofbounds.$ext obj/x86_LINUX; \
+                  mv -f src/ext/cca/outofbounds.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/cca/mallocfree.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/mallocfree.mli
+if test obj/x86_LINUX != src/ext/cca ;then \
+                   true mv -f src/ext/cca/mallocfree.cmi obj/x86_LINUX; \
+                   mv -f src/ext/cca/mallocfree.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/cca/mallocfree.ml to bytecode"
+if test obj/x86_LINUX != src/ext/cca -a -f obj/x86_LINUX/mallocfree.cmi ;then \
+           true mv -f obj/x86_LINUX/mallocfree.cmi src/ext/cca; \
+           mv -f obj/x86_LINUX/mallocfree.cmi src/ext/cca; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/mallocfree.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/mallocfree.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext/cca ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/cca/mallocfree.$ext ;then \
+                  true mv -f src/ext/cca/mallocfree.$ext obj/x86_LINUX; \
+                  mv -f src/ext/cca/mallocfree.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/cca/nullptr.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/nullptr.mli
+if test obj/x86_LINUX != src/ext/cca ;then \
+                   true mv -f src/ext/cca/nullptr.cmi obj/x86_LINUX; \
+                   mv -f src/ext/cca/nullptr.cmi obj/x86_LINUX \
+        ;fi
+echo Compiling interface src/ext/dumper.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/dumper.mli
+if test obj/x86_LINUX != src/ext ;then \
+                   true mv -f src/ext/dumper.cmi obj/x86_LINUX; \
+                   mv -f src/ext/dumper.cmi obj/x86_LINUX \
+        ;fi
+echo Compiling interface src/ext/cca/codechecker.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/codechecker.mli
+if test obj/x86_LINUX != src/ext/cca ;then \
+                   true mv -f src/ext/cca/codechecker.cmi obj/x86_LINUX; \
+                   mv -f src/ext/cca/codechecker.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/cca/codechecker.ml to bytecode"
+if test obj/x86_LINUX != src/ext/cca -a -f obj/x86_LINUX/codechecker.cmi ;then \
+           true mv -f obj/x86_LINUX/codechecker.cmi src/ext/cca; \
+           mv -f obj/x86_LINUX/codechecker.cmi src/ext/cca; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/codechecker.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/cca/codechecker.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext/cca ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/cca/codechecker.$ext ;then \
+                  true mv -f src/ext/cca/codechecker.$ext obj/x86_LINUX; \
+                  mv -f src/ext/cca/codechecker.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/ext/epicenter.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/epicenter.cmi ;then \
+           true mv -f obj/x86_LINUX/epicenter.cmi src/ext; \
+           mv -f obj/x86_LINUX/epicenter.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/epicenter.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/epicenter.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/epicenter.$ext ;then \
+                  true mv -f src/ext/epicenter.$ext obj/x86_LINUX; \
+                  mv -f src/ext/epicenter.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/ext/heapify.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/heapify.cmi ;then \
+           true mv -f obj/x86_LINUX/heapify.cmi src/ext; \
+           mv -f obj/x86_LINUX/heapify.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/heapify.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/heapify.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/heapify.$ext ;then \
+                  true mv -f src/ext/heapify.$ext obj/x86_LINUX; \
+                  mv -f src/ext/heapify.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/pta/setp.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/setp.mli
+if test obj/x86_LINUX != src/ext/pta ;then \
+                   true mv -f src/ext/pta/setp.cmi obj/x86_LINUX; \
+                   mv -f src/ext/pta/setp.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/pta/setp.ml to bytecode"
+if test obj/x86_LINUX != src/ext/pta -a -f obj/x86_LINUX/setp.cmi ;then \
+           true mv -f obj/x86_LINUX/setp.cmi src/ext/pta; \
+           mv -f obj/x86_LINUX/setp.cmi src/ext/pta; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/setp.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/setp.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext/pta ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/pta/setp.$ext ;then \
+                  true mv -f src/ext/pta/setp.$ext obj/x86_LINUX; \
+                  mv -f src/ext/pta/setp.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/pta/uref.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/uref.mli
+if test obj/x86_LINUX != src/ext/pta ;then \
+                   true mv -f src/ext/pta/uref.cmi obj/x86_LINUX; \
+                   mv -f src/ext/pta/uref.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/pta/uref.ml to bytecode"
+if test obj/x86_LINUX != src/ext/pta -a -f obj/x86_LINUX/uref.cmi ;then \
+           true mv -f obj/x86_LINUX/uref.cmi src/ext/pta; \
+           mv -f obj/x86_LINUX/uref.cmi src/ext/pta; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/uref.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/uref.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext/pta ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/pta/uref.$ext ;then \
+                  true mv -f src/ext/pta/uref.$ext obj/x86_LINUX; \
+                  mv -f src/ext/pta/uref.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/pta/steensgaard.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/steensgaard.mli
+if test obj/x86_LINUX != src/ext/pta ;then \
+                   true mv -f src/ext/pta/steensgaard.cmi obj/x86_LINUX; \
+                   mv -f src/ext/pta/steensgaard.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/pta/steensgaard.ml to bytecode"
+if test obj/x86_LINUX != src/ext/pta -a -f obj/x86_LINUX/steensgaard.cmi ;then \
+           true mv -f obj/x86_LINUX/steensgaard.cmi src/ext/pta; \
+           mv -f obj/x86_LINUX/steensgaard.cmi src/ext/pta; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/steensgaard.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/steensgaard.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext/pta ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/pta/steensgaard.$ext ;then \
+                  true mv -f src/ext/pta/steensgaard.$ext obj/x86_LINUX; \
+                  mv -f src/ext/pta/steensgaard.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/pta/olf.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/olf.mli
+if test obj/x86_LINUX != src/ext/pta ;then \
+                   true mv -f src/ext/pta/olf.cmi obj/x86_LINUX; \
+                   mv -f src/ext/pta/olf.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/pta/olf.ml to bytecode"
+if test obj/x86_LINUX != src/ext/pta -a -f obj/x86_LINUX/olf.cmi ;then \
+           true mv -f obj/x86_LINUX/olf.cmi src/ext/pta; \
+           mv -f obj/x86_LINUX/olf.cmi src/ext/pta; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/olf.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/olf.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext/pta ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/pta/olf.$ext ;then \
+                  true mv -f src/ext/pta/olf.$ext obj/x86_LINUX; \
+                  mv -f src/ext/pta/olf.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/ext/pta/dummy.ml to bytecode"
+if test obj/x86_LINUX != src/ext/pta -a -f obj/x86_LINUX/dummy.cmi ;then \
+           true mv -f obj/x86_LINUX/dummy.cmi src/ext/pta; \
+           mv -f obj/x86_LINUX/dummy.cmi src/ext/pta; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/dummy.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/dummy.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext/pta ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/pta/dummy.$ext ;then \
+                  true mv -f src/ext/pta/dummy.$ext obj/x86_LINUX; \
+                  mv -f src/ext/pta/dummy.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/pta/ptranal.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/ptranal.mli
+if test obj/x86_LINUX != src/ext/pta ;then \
+                   true mv -f src/ext/pta/ptranal.cmi obj/x86_LINUX; \
+                   mv -f src/ext/pta/ptranal.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/pta/ptranal.ml to bytecode"
+if test obj/x86_LINUX != src/ext/pta -a -f obj/x86_LINUX/ptranal.cmi ;then \
+           true mv -f obj/x86_LINUX/ptranal.cmi src/ext/pta; \
+           mv -f obj/x86_LINUX/ptranal.cmi src/ext/pta; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/ptranal.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/pta/ptranal.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext/pta ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/pta/ptranal.$ext ;then \
+                  true mv -f src/ext/pta/ptranal.$ext obj/x86_LINUX; \
+                  mv -f src/ext/pta/ptranal.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/canonicalize.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/canonicalize.mli
+if test obj/x86_LINUX != src/ext ;then \
+                   true mv -f src/ext/canonicalize.cmi obj/x86_LINUX; \
+                   mv -f src/ext/canonicalize.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/canonicalize.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/canonicalize.cmi ;then \
+           true mv -f obj/x86_LINUX/canonicalize.cmi src/ext; \
+           mv -f obj/x86_LINUX/canonicalize.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/canonicalize.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/canonicalize.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/canonicalize.$ext ;then \
+                  true mv -f src/ext/canonicalize.$ext obj/x86_LINUX; \
+                  mv -f src/ext/canonicalize.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/ext/heap.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/heap.cmi ;then \
+           true mv -f obj/x86_LINUX/heap.cmi src/ext; \
+           mv -f obj/x86_LINUX/heap.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/heap.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/heap.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/heap.$ext ;then \
+                  true mv -f src/ext/heap.$ext obj/x86_LINUX; \
+                  mv -f src/ext/heap.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/oneret.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/oneret.mli
+if test obj/x86_LINUX != src/ext ;then \
+                   true mv -f src/ext/oneret.cmi obj/x86_LINUX; \
+                   mv -f src/ext/oneret.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/oneret.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/oneret.cmi ;then \
+           true mv -f obj/x86_LINUX/oneret.cmi src/ext; \
+           mv -f obj/x86_LINUX/oneret.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/oneret.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/oneret.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/oneret.$ext ;then \
+                  true mv -f src/ext/oneret.$ext obj/x86_LINUX; \
+                  mv -f src/ext/oneret.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/ext/partial.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/partial.cmi ;then \
+           true mv -f obj/x86_LINUX/partial.cmi src/ext; \
+           mv -f obj/x86_LINUX/partial.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/partial.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/partial.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/partial.$ext ;then \
+                  true mv -f src/ext/partial.$ext obj/x86_LINUX; \
+                  mv -f src/ext/partial.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/ext/simplemem.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/simplemem.cmi ;then \
+           true mv -f obj/x86_LINUX/simplemem.cmi src/ext; \
+           mv -f obj/x86_LINUX/simplemem.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/simplemem.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/simplemem.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/simplemem.$ext ;then \
+                  true mv -f src/ext/simplemem.$ext obj/x86_LINUX; \
+                  mv -f src/ext/simplemem.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/ext/simplify.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/simplify.cmi ;then \
+           true mv -f obj/x86_LINUX/simplify.cmi src/ext; \
+           mv -f obj/x86_LINUX/simplify.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/simplify.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/simplify.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/simplify.$ext ;then \
+                  true mv -f src/ext/simplify.$ext obj/x86_LINUX; \
+                  mv -f src/ext/simplify.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling interface src/ext/dataslicing.mli
+ocamlc -g   -I obj/x86_LINUX -c src/ext/dataslicing.mli
+if test obj/x86_LINUX != src/ext ;then \
+                   true mv -f src/ext/dataslicing.cmi obj/x86_LINUX; \
+                   mv -f src/ext/dataslicing.cmi obj/x86_LINUX \
+        ;fi
+echo "Compiling           src/ext/dataslicing.ml to bytecode"
+if test obj/x86_LINUX != src/ext -a -f obj/x86_LINUX/dataslicing.cmi ;then \
+           true mv -f obj/x86_LINUX/dataslicing.cmi src/ext; \
+           mv -f obj/x86_LINUX/dataslicing.cmi src/ext; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/ext/dataslicing.ml
+ocamlc -g   -I obj/x86_LINUX -c src/ext/dataslicing.ml ; res=$?; \
+	   if test obj/x86_LINUX != src/ext ;then \
+              for ext in cmi cmo; do \
+                if test -f src/ext/dataslicing.$ext ;then \
+                  true mv -f src/ext/dataslicing.$ext obj/x86_LINUX; \
+                  mv -f src/ext/dataslicing.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/testcil.ml to bytecode"
+if test obj/x86_LINUX != src -a -f obj/x86_LINUX/testcil.cmi ;then \
+           true mv -f obj/x86_LINUX/testcil.cmi src; \
+           mv -f obj/x86_LINUX/testcil.cmi src; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/testcil.ml
+ocamlc -g   -I obj/x86_LINUX -c src/testcil.ml ; res=$?; \
+	   if test obj/x86_LINUX != src ;then \
+              for ext in cmi cmo; do \
+                if test -f src/testcil.$ext ;then \
+                  true mv -f src/testcil.$ext obj/x86_LINUX; \
+                  mv -f src/testcil.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           obj/x86_LINUX/feature_config.ml to bytecode"
+if test obj/x86_LINUX != obj/x86_LINUX -a -f obj/x86_LINUX/feature_config.cmi ;then \
+           true mv -f obj/x86_LINUX/feature_config.cmi obj/x86_LINUX; \
+           mv -f obj/x86_LINUX/feature_config.cmi obj/x86_LINUX; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/feature_config.ml
+ocamlc -g   -I obj/x86_LINUX -c obj/x86_LINUX/feature_config.ml ; res=$?; \
+	   if test obj/x86_LINUX != obj/x86_LINUX ;then \
+              for ext in cmi cmo; do \
+                if test -f obj/x86_LINUX/feature_config.$ext ;then \
+                  true mv -f obj/x86_LINUX/feature_config.$ext obj/x86_LINUX; \
+                  mv -f obj/x86_LINUX/feature_config.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo "Compiling           src/maincil.ml to bytecode"
+if test obj/x86_LINUX != src -a -f obj/x86_LINUX/maincil.cmi ;then \
+           true mv -f obj/x86_LINUX/maincil.cmi src; \
+           mv -f obj/x86_LINUX/maincil.cmi src; \
+        fi
+true ocamlc -g   -I obj/x86_LINUX -c src/maincil.ml
+ocamlc -g   -I obj/x86_LINUX -c src/maincil.ml ; res=$?; \
+	   if test obj/x86_LINUX != src ;then \
+              for ext in cmi cmo; do \
+                if test -f src/maincil.$ext ;then \
+                  true mv -f src/maincil.$ext obj/x86_LINUX; \
+                  mv -f src/maincil.$ext obj/x86_LINUX; \
+                fi; \
+              done; \
+           fi; exit $res
+echo Compiling C file ocamlutil/perfcount.c
+ocamlc -g   -I obj/x86_LINUX -c ocamlutil/perfcount.c -o obj/x86_LINUX/perfcount.o
+mv -f perfcount.o obj/x86_LINUX/perfcount.o
+echo Linking bytecode obj/x86_LINUX/cilly.byte.exe
+ocamlc -custom -g  -verbose -o obj/x86_LINUX/cilly.byte.exe \
+	             \
+                    unix.cma str.cma \
+                    -cclib -lunix -cclib -lstr \
+                    obj/x86_LINUX/pretty.cmo obj/x86_LINUX/inthash.cmo obj/x86_LINUX/errormsg.cmo obj/x86_LINUX/trace.cmo obj/x86_LINUX/stats.cmo obj/x86_LINUX/util.cmo obj/x86_LINUX/clist.cmo obj/x86_LINUX/cilutil.cmo obj/x86_LINUX/escape.cmo obj/x86_LINUX/cabs.cmo obj/x86_LINUX/cabsvisit.cmo obj/x86_LINUX/cprint.cmo obj/x86_LINUX/lexerhack.cmo obj/x86_LINUX/machdep.cmo obj/x86_LINUX/cparser.cmo obj/x86_LINUX/clexer.cmo obj/x86_LINUX/cilversion.cmo obj/x86_LINUX/cil.cmo obj/x86_LINUX/formatparse.cmo obj/x86_LINUX/formatlex.cmo obj/x86_LINUX/formatcil.cmo obj/x86_LINUX/cabs2cil.cmo obj/x86_LINUX/patch.cmo obj/x86_LINUX/frontc.cmo obj/x86_LINUX/check.cmo obj/x86_LINUX/mergecil.cmo obj/x86_LINUX/dataflow.cmo obj/x86_LINUX/dominators.cmo obj/x86_LINUX/bitmap.cmo obj/x86_LINUX/ssa.cmo obj/x86_LINUX/usedef.cmo obj/x86_LINUX/logcalls.cmo obj/x86_LINUX/logwrites.cmo obj/x86_LINUX/rmtmps.cmo obj/x86_LINUX/callgraph.cmo obj/x86_LINUX/logger.cmo obj/x86_LINUX/data.cmo obj/x86_LINUX/utilvisitors.cmo obj/x86_LINUX/bufferoverflow.cmo obj/x86_LINUX/userinput.cmo obj/x86_LINUX/outofbounds.cmo obj/x86_LINUX/mallocfree.cmo obj/x86_LINUX/codechecker.cmo obj/x86_LINUX/epicenter.cmo obj/x86_LINUX/heapify.cmo obj/x86_LINUX/setp.cmo obj/x86_LINUX/uref.cmo obj/x86_LINUX/steensgaard.cmo obj/x86_LINUX/olf.cmo obj/x86_LINUX/dummy.cmo obj/x86_LINUX/ptranal.cmo obj/x86_LINUX/canonicalize.cmo obj/x86_LINUX/heap.cmo obj/x86_LINUX/oneret.cmo obj/x86_LINUX/partial.cmo obj/x86_LINUX/simplemem.cmo obj/x86_LINUX/simplify.cmo obj/x86_LINUX/dataslicing.cmo obj/x86_LINUX/testcil.cmo obj/x86_LINUX/feature_config.cmo obj/x86_LINUX/maincil.cmo obj/x86_LINUX/perfcount.o
