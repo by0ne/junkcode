@@ -1,0 +1,14 @@
+--- lib/transaction.c.orig	2006-04-17 15:32:19.000000000 -0500
++++ lib/transaction.c	2006-04-17 15:32:42.000000000 -0500
+@@ -60,9 +60,9 @@
+ 
+ struct diskspaceInfo {
+     dev_t dev;
+-    signed long needed;		/* in blocks */
++    signed long long needed;		/* in blocks */
+     int block;
+-    signed long avail;
++    signed long long avail;
+ };
+ 
+ /* Adjust for root only reserved space. On linux e2fs, this is 5%. */

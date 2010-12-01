@@ -1,0 +1,830 @@
+--- ./python/rpmmodule.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./python/rpmmodule.c	2008-04-15 10:50:43.000000000 -0500
+@@ -1150,7 +1150,7 @@
+     int verifyResult;
+     PyObject * list, * tuple, * attrName;
+     int type, count;
+-    struct stat sb;
++    struct stat64 sb;
+     char buf[2048];
+     int i;
+     time_t timeInt;
+@@ -1177,7 +1177,7 @@
+ 		 &count);
+     }
+ 
+-    lstat(s->fileList[fileNumber], &sb);
++    lstat64(s->fileList[fileNumber], &sb);
+ 
+     if (verifyResult & RPMVERIFY_MD5) {
+ 	if (!s->md5list) {
+--- ./intl/loadmsgcat.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./intl/loadmsgcat.c	2008-04-15 10:50:43.000000000 -0500
+@@ -66,7 +66,7 @@
+ {
+   int fd;
+   size_t size;
+-  struct stat st;
++  struct stat64 st;
+   struct mo_file_header *data = (struct mo_file_header *) -1;
+ #if (defined HAVE_MMAP && defined HAVE_MUNMAP && !defined DISALLOW_MMAP) \
+     || defined _LIBC
+@@ -90,7 +90,7 @@
+     return;
+ 
+   /* We must know about the size of the file.  */
+-  if (fstat (fd, &st) != 0
++  if (fstat64(fd, &st) != 0
+       || (size = (size_t) st.st_size) != st.st_size
+       || size < sizeof (struct mo_file_header))
+     {
+--- ./popt/intl/loadmsgcat.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./popt/intl/loadmsgcat.c	2008-04-15 10:50:43.000000000 -0500
+@@ -66,7 +66,7 @@
+ {
+   int fd;
+   size_t size;
+-  struct stat st;
++  struct stat64 st;
+   struct mo_file_header *data = (struct mo_file_header *) -1;
+ #if (defined HAVE_MMAP && defined HAVE_MUNMAP && !defined DISALLOW_MMAP) \
+     || defined _LIBC
+@@ -90,7 +90,7 @@
+     return;
+ 
+   /* We must know about the size of the file.  */
+-  if (fstat (fd, &st) != 0
++  if (fstat64(fd, &st) != 0
+       || (size = (size_t) st.st_size) != st.st_size
+       || size < sizeof (struct mo_file_header))
+     {
+--- ./build/pack.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./build/pack.c	2008-04-15 10:50:43.000000000 -0500
+@@ -557,7 +557,7 @@
+ 	    }
+ 	    fn = rpmGetPath("%{_rpmdir}/", binRpm, NULL);
+ 	    if ((binDir = strchr(binRpm, '/')) != NULL) {
+-		struct stat st;
++		struct stat64 st;
+ 		const char *dn;
+ 		*binDir = '\0';
+ 		dn = rpmGetPath("%{_rpmdir}/", binRpm, NULL);
+--- ./build/files.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./build/files.c	2008-04-15 10:50:43.000000000 -0500
+@@ -25,7 +25,7 @@
+ #define MAXDOCDIR 1024
+ 
+ typedef struct {
+-    struct stat fl_st;
++    struct stat64 fl_st;
+ #define	fl_dev	fl_st.st_dev
+ #define	fl_ino	fl_st.st_ino
+ #define	fl_mode	fl_st.st_mode
+@@ -906,10 +906,10 @@
+     FREE(fileList);
+ }
+ 
+-static int addFile(struct FileList *fl, const char * diskURL, struct stat *statp)
++static int addFile(struct FileList *fl, const char * diskURL, struct stat64 *statp)
+ {
+     const char *fileURL = diskURL;
+-    struct stat statbuf;
++    struct stat64 statbuf;
+     mode_t fileMode;
+     uid_t fileUid;
+     gid_t fileGid;
+--- ./build/myftw.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./build/myftw.c	2008-04-15 10:50:43.000000000 -0500
+@@ -59,7 +59,7 @@
+ 
+   while ((entry = Readdir (dirs[level])) != NULL)
+     {
+-      struct stat s;
++      struct stat64 s;
+       int flag, retval, newlev = 0;
+ 
+       ++got;
+@@ -172,7 +172,7 @@
+   DIR **dirs;
+   size_t len;
+   char buf[PATH_MAX + 1];
+-  struct stat s;
++  struct stat64 s;
+   int flag, retval;
+   int i;
+ 
+--- ./build/parsePrep.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./build/parsePrep.c	2008-04-15 10:50:43.000000000 -0500
+@@ -24,7 +24,7 @@
+ 
+ static int checkOwners(const char *urlfn)
+ {
+-    struct stat sb;
++    struct stat64 sb;
+ 
+     if (Lstat(urlfn, &sb)) {
+ 	rpmError(RPMERR_BADSPEC, _("Bad source: %s: %s"), urlfn, strerror(errno));
+@@ -150,7 +150,7 @@
+      * XXX TODO: add a "--fetch" enabler.
+      */
+     if (sp->flags & RPMTAG_NOSOURCE && autofetchnosource) {
+-	struct stat st;
++	struct stat64 st;
+ 	int rc;
+ 	if (Lstat(urlfn, &st) != 0 && errno == ENOENT &&
+ 	    urlIsUrl(sp->fullSource) != URL_IS_UNKNOWN) {
+--- ./build/myftw.h.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./build/myftw.h	2008-04-15 10:50:43.000000000 -0500
+@@ -17,7 +17,7 @@
+ extern "C" {
+ #endif
+ 
+-typedef int (*myftwFunc) (void *fl, const char *name, struct stat *statp);
++typedef int (*myftwFunc) (void *fl, const char *name, struct stat64 *statp);
+ 
+ int myftw (const char *dir, int descriptors, myftwFunc func, void *fl);
+ 
+--- ./lib/cpio.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./lib/cpio.c	2008-04-15 10:50:43.000000000 -0500
+@@ -21,7 +21,7 @@
+     int nlink;			
+     int linksLeft;
+     int createdPath;
+-    struct stat sb;
++    struct stat64 sb;
+ };
+ 
+ /** */
+@@ -223,14 +223,14 @@
+ /** */
+ static int createDirectory(char * path, mode_t perms)
+ {
+-    struct stat sb;
++    struct stat64 sb;
+ 
+-    if (!lstat(path, &sb)) {
++    if (!lstat64(path, &sb)) {
+ 	int dounlink = 0;	/* XXX eliminate, dounlink==1 on all paths */
+ 	if (S_ISDIR(sb.st_mode)) {
+ 	    return 0;
+ 	} else if (S_ISLNK(sb.st_mode)) {
+-	    if (stat(path, &sb)) {
++	    if (stat64(path, &sb)) {
+ 		if (errno != ENOENT) 
+ 		    return CPIOERR_STAT_FAILED;
+ 		dounlink = 1;
+@@ -339,10 +339,10 @@
+     int left = hdr->size;
+     int rc = 0;
+     struct cpioCallbackInfo cbInfo = { NULL, 0, 0, 0 };
+-    struct stat sb;
++    struct stat64 sb;
+ 
+     /* Rename the old file before attempting unlink to avoid EBUSY errors */
+-    if (!lstat(hdr->path, &sb)) {
++    if (!lstat64(hdr->path, &sb)) {
+ 	strcpy(buf, hdr->path);
+ 	strcat(buf, "-RPMDELETE");
+ 	if (rename(hdr->path, buf)) {
+@@ -398,7 +398,7 @@
+ static int expandSymlink(FD_t cfd, const struct cpioHeader * hdr)
+ {
+     char buf[2048], buf2[2048];
+-    struct stat sb;
++    struct stat64 sb;
+     int len;
+ 
+     if ((hdr->size + 1)> sizeof(buf))
+@@ -409,7 +409,7 @@
+ 
+     buf[hdr->size] = '\0';
+ 
+-    if (!lstat(hdr->path, &sb)) {
++    if (!lstat64(hdr->path, &sb)) {
+ 	if (S_ISLNK(sb.st_mode)) {
+ 	    len = readlink(hdr->path, buf2, sizeof(buf2) - 1);
+ 	    if (len > 0) {
+@@ -431,9 +431,9 @@
+ /** */
+ static int expandFifo( /*@unused@*/ FD_t cfd, const struct cpioHeader * hdr)
+ {
+-    struct stat sb;
++    struct stat64 sb;
+ 
+-    if (!lstat(hdr->path, &sb)) {
++    if (!lstat64(hdr->path, &sb)) {
+ 	if (S_ISFIFO(sb.st_mode)) return 0;
+ 
+ 	if (unlink(hdr->path))
+@@ -449,9 +449,9 @@
+ /** */
+ static int expandDevice( /*@unused@*/ FD_t cfd, const struct cpioHeader * hdr)
+ {
+-    struct stat sb;
++    struct stat64 sb;
+ 
+-    if (!lstat(hdr->path, &sb)) {
++    if (!lstat64(hdr->path, &sb)) {
+ 	if ((S_ISCHR(sb.st_mode) || S_ISBLK(sb.st_mode)) && 
+ 		(sb.st_rdev == hdr->rdev))
+ 	    return 0;
+@@ -482,13 +482,13 @@
+ static int createLinks(struct hardLink * li, /*@out@*/const char ** failedFile)
+ {
+     int i;
+-    struct stat sb;
++    struct stat64 sb;
+ 
+     for (i = 0; i < li->nlink; i++) {
+ 	if (i == li->createdPath) continue;
+ 	if (!li->files[i]) continue;
+ 
+-	if (!lstat(li->files[i], &sb)) {
++	if (!lstat64(li->files[i], &sb)) {
+ 	    if (unlink(li->files[i])) {
+ 		if (failedFile)
+ 		    *failedFile = xstrdup(li->files[i]);
+@@ -708,7 +708,7 @@
+ }
+ 
+ /** */
+-static int writeFile(FD_t cfd, struct stat sb, struct cpioFileMapping * map, 
++static int writeFile(FD_t cfd, struct stat64 sb, struct cpioFileMapping * map, 
+ 		     /*@out@*/size_t * sizep, int writeData)
+ {
+     struct cpioCrcPhysicalHeader hdr;
+@@ -904,7 +904,7 @@
+     int i;
+     struct cpioCallbackInfo cbInfo = { NULL, 0, 0, 0 };
+     struct cpioCrcPhysicalHeader hdr;
+-    struct stat sb;
++    struct stat64 sb;
+ /*@-fullinitblock@*/
+     struct hardLink hlinkList = { NULL };
+ /*@=fullinitblock@*/
+--- ./lib/fprint.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./lib/fprint.c	2008-04-15 10:50:43.000000000 -0500
+@@ -54,7 +54,7 @@
+     size_t cdnl;
+     char * end;		    /* points to the '\0' at the end of "buf" */
+     fingerPrint fp;
+-    struct stat sb;
++    struct stat64 sb;
+     char * buf;
+     const struct fprintCacheEntry_s * cacheHit;
+ 
+@@ -110,7 +110,7 @@
+ 
+ 	if ((cacheHit = cacheContainsDirectory(cache, *buf ? buf : "/"))) {
+ 	    fp.entry = cacheHit;
+-	} else if (!stat(*buf ? buf : "/", &sb)) {
++	} else if (!stat64(*buf ? buf : "/", &sb)) {
+ 	    size_t nb = sizeof(*fp.entry) + (*buf ? (end-buf) : 1) + 1;
+ 	    char * dn = xmalloc(nb);
+ 	    struct fprintCacheEntry_s * newEntry = (void *)dn;
+--- ./lib/fs.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./lib/fs.c	2008-04-15 10:50:43.000000000 -0500
+@@ -46,7 +46,7 @@
+     int size;
+     void * buf;
+     struct vmount * vm;
+-    struct stat sb;
++    struct stat64 sb;
+     int num;
+     int fsnameLength;
+     int i;
+@@ -87,7 +87,7 @@
+ 
+ 	filesystems[i].mntPoint = fsnames[i] = fsn;
+ 	
+-	if (stat(filesystems[i].mntPoint, &sb)) {
++	if (stat64(filesystems[i].mntPoint, &sb)) {
+ 	    rpmError(RPMERR_STAT, _("failed to stat %s: %s"), fsnames[i],
+ 			strerror(errno));
+ 
+@@ -112,7 +112,7 @@
+ static int getFilesystemList(void)
+ {
+     int numAlloced = 10;
+-    struct stat sb;
++    struct stat64 sb;
+     int i;
+     char * mntdir;
+ #   if GETMNTENT_ONE || GETMNTENT_TWO
+@@ -156,7 +156,7 @@
+ 	    mntdir = mounts[nextMount++].f_mntonname;
+ #	endif
+ 
+-	if (stat(mntdir, &sb)) {
++	if (stat64(mntdir, &sb)) {
+ 	    rpmError(RPMERR_STAT, "failed to stat %s: %s", mntdir,
+ 			strerror(errno));
+ 
+@@ -217,7 +217,7 @@
+     const char * sourceDir;
+     int lastfs = 0;
+     int lastDev = -1;		/* I hope nobody uses -1 for a st_dev */
+-    struct stat sb;
++    struct stat64 sb;
+ 
+     if (!fsnames) 
+ 	if (getFilesystemList())
+@@ -256,7 +256,7 @@
+ 	if (strcmp(lastDir, buf)) {
+ 	    strcpy(dirName, buf);
+ 	    chptr = dirName + strlen(dirName) - 1;
+-	    while (stat(dirName, &sb)) {
++	    while (stat64(dirName, &sb)) {
+ 		if (errno != ENOENT) {
+ 		    rpmError(RPMERR_STAT, _("failed to stat %s: %s"), buf,
+ 				strerror(errno));
+--- ./lib/misc.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./lib/misc.c	2008-04-15 10:50:43.000000000 -0500
+@@ -56,7 +56,7 @@
+ {
+     const char *fn;
+     int urltype = urlPath(urlfn, &fn);
+-    struct stat buf;
++    struct stat64 buf;
+ 
+     if (*fn == '\0') fn = "/";
+     switch (urltype) {
+@@ -416,10 +416,10 @@
+ 	goto errxit;
+ 
+     switch(temput) {
+-	struct stat sb, sb2;
++	struct stat64 sb, sb2;
+     case URL_IS_PATH:
+     case URL_IS_UNKNOWN:
+-	if (!stat(tfn, &sb) && S_ISLNK(sb.st_mode)) {
++	if (!stat64(tfn, &sb) && S_ISLNK(sb.st_mode)) {
+ 	    rpmError(RPMERR_SCRIPT, _("error creating temporary file %s"), tfn);
+ 	    goto errxit;
+ 	}
+@@ -429,7 +429,7 @@
+ 	    goto errxit;
+ 	}
+ 
+-	if (fstat(Fileno(fd), &sb2) == 0) {
++	if (fstat64(Fileno(fd), &sb2) == 0) {
+ 	    if (sb2.st_ino != sb.st_ino || sb2.st_dev != sb.st_dev) {
+ 		rpmError(RPMERR_SCRIPT, _("error creating temporary file %s"), tfn);
+ 		goto errxit;
+--- ./lib/package.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./lib/package.c	2008-04-15 10:50:43.000000000 -0500
+@@ -26,13 +26,13 @@
+     Header * hdr = NULL;
+     struct rpmlead * lead;
+     char * defaultPrefix;
+-    struct stat sb;
++    struct stat64 sb;
+     int_32 true = 1;
+ 
+     hdr = hdrPtr ? hdrPtr : &hdrBlock;
+     lead = leadPtr ? leadPtr : &leadBlock;
+ 
+-    fstat(Fileno(fd), &sb);
++    fstat64(Fileno(fd), &sb);
+     /* if fd points to a socket, pipe, etc, sb.st_size is *always* zero */
+     if (S_ISREG(sb.st_mode) && sb.st_size < sizeof(*lead)) return 1;
+ 
+--- ./lib/signature.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./lib/signature.c	2008-04-15 10:50:43.000000000 -0500
+@@ -72,7 +72,7 @@
+ 
+     if (saved_pgp_version == PGP_UNKNOWN) {
+ 	char *pgpvbin;
+-	struct stat statbuf;
++	struct stat64 statbuf;
+ 	
+ 	if (!(pgpbin && pgpbin[0] != '%') || ! (pgpvbin = (char *)alloca(strlen(pgpbin) + 2))) {
+ 	  if (pgpbin) xfree(pgpbin);
+@@ -81,9 +81,9 @@
+ 	}
+ 	sprintf(pgpvbin, "%sv", pgpbin);
+ 
+-	if (stat(pgpvbin, &statbuf) == 0)
++	if (stat64(pgpvbin, &statbuf) == 0)
+ 	  saved_pgp_version = PGP_5;
+-	else if (stat(pgpbin, &statbuf) == 0)
++	else if (stat64(pgpbin, &statbuf) == 0)
+ 	  saved_pgp_version = PGP_2;
+ 	else
+ 	  saved_pgp_version = PGP_NOTDETECTED;
+@@ -97,9 +97,9 @@
+ static int checkSize(FD_t fd, int size, int sigsize)
+ {
+     int headerArchiveSize;
+-    struct stat statbuf;
++    struct stat64 statbuf;
+ 
+-    fstat(Fileno(fd), &statbuf);
++    fstat64(Fileno(fd), &statbuf);
+ 
+     if (S_ISREG(statbuf.st_mode)) {
+ 	headerArchiveSize = statbuf.st_size - sizeof(struct rpmlead) - sigsize;
+@@ -226,7 +226,7 @@
+     char sigfile[1024];
+     int pid, status;
+     int inpipe[2];
+-    struct stat statbuf;
++    struct stat64 statbuf;
+ 
+     sprintf(sigfile, "%s.sig", file);
+ 
+@@ -279,7 +279,7 @@
+ 	return 1;
+     }
+ 
+-    if (stat(sigfile, &statbuf)) {
++    if (stat64(sigfile, &statbuf)) {
+ 	/* PGP failed to write signature */
+ 	unlink(sigfile);  /* Just in case */
+ 	rpmError(RPMERR_SIGGEN, _("pgp failed to write signature"));
+@@ -320,7 +320,7 @@
+     int pid, status;
+     int inpipe[2];
+     FILE *fpipe;
+-    struct stat statbuf;
++    struct stat64 statbuf;
+ 
+     sprintf(sigfile, "%s.sig", file);
+ 
+@@ -356,7 +356,7 @@
+ 	return 1;
+     }
+ 
+-    if (stat(sigfile, &statbuf)) {
++    if (stat64(sigfile, &statbuf)) {
+ 	/* GPG failed to write signature */
+ 	unlink(sigfile);  /* Just in case */
+ 	rpmError(RPMERR_SIGGEN, _("gpg failed to write signature"));
+@@ -387,7 +387,7 @@
+ 
+ int rpmAddSignature(Header header, const char *file, int_32 sigTag, const char *passPhrase)
+ {
+-    struct stat statbuf;
++    struct stat64 statbuf;
+     int_32 size;
+     unsigned char buf[16];
+     void *sig;
+@@ -395,7 +395,7 @@
+     
+     switch (sigTag) {
+     case RPMSIGTAG_SIZE:
+-	stat(file, &statbuf);
++	stat64(file, &statbuf);
+ 	size = statbuf.st_size;
+ 	ret = 0;
+ 	headerAddEntry(header, RPMSIGTAG_SIZE, RPM_INT32_TYPE, &size, 1);
+@@ -425,9 +425,9 @@
+ 
+ static int verifySizeSignature(const char *datafile, int_32 size, char *result)
+ {
+-    struct stat statbuf;
++    struct stat64 statbuf;
+ 
+-    stat(datafile, &statbuf);
++    stat64(datafile, &statbuf);
+     if (size != statbuf.st_size) {
+ 	sprintf(result, "Header+Archive size mismatch.\n"
+ 		"Expected %d, saw %d.\n",
+--- ./lib/transaction.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./lib/transaction.c	2008-04-15 10:50:43.000000000 -0500
+@@ -639,14 +639,14 @@
+     char buffer[1024];
+     const char * dbAttr, * newAttr;
+     enum fileTypes dbWhat, newWhat, diskWhat;
+-    struct stat sb;
++    struct stat64 sb;
+     int i, rc;
+     int save = (newFlags & RPMFILE_NOREPLACE) ? FA_ALTNAME : FA_SAVE;
+     char * filespec = alloca(strlen(dirName) + strlen(baseName) + 1);
+ 
+     sprintf(filespec, "%s%s", dirName, baseName);
+ 
+-    if (lstat(filespec, &sb)) {
++    if (lstat64(filespec, &sb)) {
+ 	/*
+ 	 * The file doesn't exist on the disk. Create it unless the new
+ 	 * package has marked it as missingok, or allfiles is requested.
+@@ -952,14 +952,14 @@
+ 	}
+ 
+ 	switch (fi->type) {
+-	struct stat sb;
++	struct stat64 sb;
+ 	case TR_ADDED:
+ 	    if (otherPkgNum < 0) {
+ 		/* XXX is this test still necessary? */
+ 		if (fi->actions[i] != FA_UNKNOWN)
+ 		    break;
+ 		if ((fi->fflags[i] & RPMFILE_CONFIG) && 
+-			!lstat(filespec, &sb)) {
++			!lstat64(filespec, &sb)) {
+ 		    /* Here is a non-overlapped pre-existing config file. */
+ 		    fi->actions[i] = (fi->fflags[i] & RPMFILE_NOREPLACE)
+ 			? FA_ALTNAME : FA_BACKUP;
+@@ -983,7 +983,7 @@
+ 	    /* Try to get the disk accounting correct even if a conflict. */
+ 	    fixupSize = recs[otherPkgNum]->fsizes[otherFileNum];
+ 
+-	    if ((fi->fflags[i] & RPMFILE_CONFIG) && !lstat(filespec, &sb)) {
++	    if ((fi->fflags[i] & RPMFILE_CONFIG) && !lstat64(filespec, &sb)) {
+ 		/* Here is an overlapped  pre-existing config file. */
+ 		fi->actions[i] = (fi->fflags[i] & RPMFILE_NOREPLACE)
+ 			? FA_ALTNAME : FA_SKIP;
+@@ -1220,7 +1220,7 @@
+     /* Get available space on mounted file systems */
+     if (!(ignoreSet & RPMPROB_FILTER_DISKSPACE) &&
+ 		!rpmGetFilesystemList(&filesystems, &filesystemCount)) {
+-	struct stat sb;
++	struct stat64 sb;
+ 
+ 	di = alloca(sizeof(*di) * (filesystemCount + 1));
+ 
+@@ -1256,7 +1256,7 @@
+ 		di[i].avail = sfb.f_blocks - sfb.f_bfree;
+ #endif
+ 
+-		stat(filesystems[i], &sb);
++		stat64(filesystems[i], &sb);
+ 		di[i].dev = sb.st_dev;
+ 	    }
+ 	}
+--- ./lib/verify.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./lib/verify.c	2008-04-15 10:50:43.000000000 -0500
+@@ -55,7 +55,7 @@
+     char * name;
+     gid_t gid;
+     int type, count, rc;
+-    struct stat sb;
++    struct stat64 sb;
+     unsigned char md5sum[40];
+     int_32 * uidList, * gidList;
+     char linkto[1024];
+@@ -114,7 +114,7 @@
+ 	    return 0;
+     }
+ 
+-    if (lstat(filespec, &sb)) {
++    if (lstat64(filespec, &sb)) {
+ 	*result |= RPMVERIFY_LSTATFAIL;
+ 	return 1;
+     }
+--- ./lib/install.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./lib/install.c	2008-04-15 10:50:43.000000000 -0500
+@@ -416,7 +416,7 @@
+     const char * currDir = NULL;
+     uid_t currUid = getuid();
+     gid_t currGid = getgid();
+-    struct stat st;
++    struct stat64 st;
+     int rc = 0;
+ 
+     rpmMessage(RPMMESS_DEBUG, _("installing a source package\n"));
+--- ./lib/rpmio.h.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./lib/rpmio.h	2008-04-15 10:50:43.000000000 -0500
+@@ -42,8 +42,8 @@
+ typedef int fdio_rename_function_t (const char * oldpath, const char * newpath);
+ typedef int fdio_unlink_function_t (const char * path);
+ 
+-typedef int fdio_stat_function_t (const char * path, struct stat * st);
+-typedef int fdio_lstat_function_t (const char * path, struct stat * st);
++typedef int fdio_stat_function_t (const char * path, struct stat64 * st);
++typedef int fdio_lstat_function_t (const char * path, struct stat64 * st);
+ typedef int fdio_access_function_t (const char * path, int amode);
+ 
+ struct FDIO_s {
+@@ -93,8 +93,8 @@
+ int	Unlink	(const char * path);
+ int	Readlink(const char * path, char * buf, size_t bufsiz);
+ 
+-int	Stat	(const char * path, struct stat * st);
+-int	Lstat	(const char * path, struct stat * st);
++int	Stat	(const char * path, struct stat64 * st);
++int	Lstat	(const char * path, struct stat64 * st);
+ int	Access	(const char * path, int amode);
+ 
+ int	Glob	(const char * pattern, int flags,
+--- ./misc/glob.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./misc/glob.c	2008-04-15 10:50:43.000000000 -0500
+@@ -25,7 +25,7 @@
+ # include <assert.h>
+ 
+ #define	__alloca	alloca
+-#define	__stat		stat
++#define	__stat		stat64
+ #define	NAMLEN(_d)	NLENGTH(_d)
+ 
+ #if (defined POSIX || defined WINDOWS32) && !defined __GNU_LIBRARY__
+@@ -540,7 +540,7 @@
+      can give the answer now.  */
+   if (filename == NULL)
+     {
+-      struct stat st;
++      struct stat64 st;
+ 
+       /* Return the directory if we don't check for error or if it exists.  */
+       if ((flags & GLOB_NOCHECK)
+@@ -677,7 +677,7 @@
+ 	    {
+ 	      size_t filename_len = strlen (filename) + 1;
+ 	      char **new_pathv;
+-	      struct stat st;
++	      struct stat64 st;
+ 
+ 	      /* This is an pessimistic guess about the size.  */
+ 	      pglob->gl_pathv
+@@ -776,7 +776,7 @@
+     {
+       /* Append slashes to directory names.  */
+       int i;
+-      struct stat st;
++      struct stat64 st;
+       for (i = oldcount; i < pglob->gl_pathc; ++i)
+ 	if (((flags & GLOB_ALTDIRFUNC)
+ 	     ? (*pglob->gl_stat) (pglob->gl_pathv[i], &st)
+@@ -991,7 +991,7 @@
+ 	{
+ 	  /* Since we use the normal file functions we can also use stat()
+ 	     to verify the file is there.  */
+-	  struct stat st;
++	  struct stat64 st;
+ 	  size_t patlen = strlen (pattern);
+ 	  size_t dirlen = strlen (directory);
+ 	  char *fullname = (char *) __alloca (dirlen + 1 + patlen + 1);
+--- ./misc/glob.h.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./misc/glob.h	2008-04-15 10:50:43.000000000 -0500
+@@ -120,8 +120,8 @@
+     void (*gl_closedir) __PMT ((void *));
+     struct dirent *(*gl_readdir) __PMT ((void *));
+     __ptr_t (*gl_opendir) __PMT ((__const char *));
+-    int (*gl_lstat) __PMT ((__const char *, struct stat *));
+-    int (*gl_stat) __PMT ((__const char *, struct stat *));
++    int (*gl_lstat) __PMT ((__const char *, struct stat64 *));
++    int (*gl_stat) __PMT ((__const char *, struct stat64 *));
+   } glob_t;
+ 
+ #ifdef _LARGEFILE64_SOURCE
+--- ./tools/rpmgettext.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./tools/rpmgettext.c	2008-04-15 10:50:43.000000000 -0500
+@@ -383,7 +383,7 @@
+ static int
+ slurp(const char *file, char **ibufp, size_t *nbp)
+ {
+-    struct stat sb;
++    struct stat64 sb;
+     char *ibuf;
+     size_t nb;
+     int fd;
+@@ -395,8 +395,8 @@
+     if (nbp)
+ 	*nbp = 0;
+ 
+-    if (stat(file, &sb) < 0) {
+-	fprintf(stderr, _("stat(%s): %s\n"), file, strerror(errno));
++    if (stat64(file, &sb) < 0) {
++	fprintf(stderr, _("stat64(%s): %s\n"), file, strerror(errno));
+ 	return 1;
+     }
+ 
+--- ./rpm.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./rpm.c	2008-04-15 10:50:43.000000000 -0500
+@@ -1131,7 +1131,7 @@
+         if (bigMode == MODE_REBUILD || bigMode == MODE_BUILD ||
+ 	    bigMode == MODE_RESIGN || bigMode == MODE_TARBUILD) {
+ 	    const char ** argv;
+-	    struct stat sb;
++	    struct stat64 sb;
+ 	    int errors = 0;
+ 
+ 	    if ((argv = poptGetArgs(optCon)) == NULL) {
+@@ -1139,7 +1139,7 @@
+ 		errors++;
+ 	    } else
+ 	    while (*argv) {
+-		if (stat(*argv, &sb)) {
++		if (stat64(*argv, &sb)) {
+ 		    fprintf(stderr, _("cannot access file %s\n"), *argv);
+ 		    errors++;
+ 		}
+--- ./build.c.stat	2008-04-15 10:50:14.000000000 -0500
++++ ./build.c	2008-04-15 10:50:43.000000000 -0500
+@@ -209,7 +209,7 @@
+     }
+ 
+     if (specut != URL_IS_DASH) {
+-	struct stat st;
++	struct stat64 st;
+ 	Stat(specURL, &st);
+ 	if (! S_ISREG(st.st_mode)) {
+ 	    fprintf(stderr, _("File is not a regular file: %s\n"), specURL);
+--- ./lib/rpmio.c.stat	2008-04-15 13:43:11.000000000 -0500
++++ ./lib/rpmio.c	2008-04-15 14:05:47.000000000 -0500
+@@ -352,7 +352,7 @@
+ 
+ /* =============================================================== */
+ off_t fdSize(FD_t fd) {
+-    struct stat sb;
++    struct stat64 sb;
+     off_t rc = -1; 
+ 
+ #ifdef	NOISY
+@@ -364,7 +364,7 @@
+     else switch (fd->urlType) {
+     case URL_IS_PATH:
+     case URL_IS_UNKNOWN:
+-	if (fstat(Fileno(fd), &sb) == 0)
++	if (fstat64(Fileno(fd), &sb) == 0)
+ 	    rc = sb.st_size;
+ 	/*@fallthrough@*/
+     case URL_IS_FTP:
+@@ -1725,9 +1725,9 @@
+ 
+     /* XXX preserve timedRead() behavior */
+     if (fdGetIo(fd) == fdio) {
+-	struct stat sb;
++	struct stat64 sb;
+ 	int fdno = fdFileno(fd);
+-	fstat(fdno, &sb);
++	fstat64(fdno, &sb);
+ 	if (S_ISREG(sb.st_mode))
+ 	    return fdRead(fd, buf, count);
+     }
+@@ -1786,8 +1786,8 @@
+ 
+ #ifdef	NOTYET
+     if (fdGetIo(fd) == fdio) {
+-	struct stat sb;
+-	fstat(fdGetFdno(fd), &sb);
++	struct stat64 sb;
++	fstat64(fdGetFdno(fd), &sb);
+ 	if (S_ISREG(sb.st_mode))
+ 	    return fdWrite(fd, buf, count);
+     }
+@@ -3435,7 +3435,7 @@
+ }
+ 
+ static int
+-vfs_parse_ls_lga (char *p, struct stat *s, char **filename, char **linkname)
++vfs_parse_ls_lga (char *p, struct stat64 *s, char **filename, char **linkname)
+ {
+     int idx, idx2, num_cols;
+     int i;
+@@ -3644,7 +3644,7 @@
+ #define alloca_strdup(_s)       strcpy(alloca(strlen(_s)+1), (_s))
+ 
+ static int ftpNLST(const char * url, ftpSysCall_t ftpSysCall,
+-	struct stat * st, char * rlbuf, size_t rlbufsiz)
++	struct stat64 * st, char * rlbuf, size_t rlbufsiz)
+ {
+     FD_t fd;
+     const char * path;
+@@ -3815,12 +3815,12 @@
+     return rc;
+ }
+ 
+-static int ftpStat(const char * path, struct stat *st)
++static int ftpStat(const char * path, struct stat64 *st)
+ {
+     return ftpNLST(path, DO_FTP_STAT, st, NULL, 0);
+ }
+ 
+-static int ftpLstat(const char * path, struct stat *st) {
++static int ftpLstat(const char * path, struct stat64 *st) {
+     int rc;
+     rc = ftpNLST(path, DO_FTP_LSTAT, st, NULL, 0);
+ if (_rpmio_debug)
+@@ -3856,7 +3856,7 @@
+ 	xfree(pglob->gl_pathv);
+ }
+ 
+-int Stat(const char * path, struct stat * st) {
++int Stat(const char * path, struct stat64 * st) {
+     const char * lpath;
+     int ut = urlPath(path, &lpath);
+ 
+@@ -3877,10 +3877,10 @@
+ 	return -2;
+ 	/*@notreached@*/ break;
+     }
+-    return stat(path, st);
++    return stat64(path, st);
+ }
+ 
+-int Lstat(const char * path, struct stat * st) {
++int Lstat(const char * path, struct stat64 * st) {
+     const char * lpath;
+     int ut = urlPath(path, &lpath);
+ 
+@@ -3901,7 +3901,7 @@
+ 	return -2;
+ 	/*@notreached@*/ break;
+     }
+-    return lstat(path, st);
++    return lstat64(path, st);
+ }
+ 
+ int Readlink(const char * path, char * buf, size_t bufsiz) {

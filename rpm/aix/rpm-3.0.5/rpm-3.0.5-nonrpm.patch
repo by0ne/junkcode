@@ -1,0 +1,11 @@
+--- lib/rpminstall.c.orig	2009-07-10 10:10:12.000000000 -0500
++++ lib/rpminstall.c	2009-07-10 10:10:20.000000000 -0500
+@@ -230,6 +230,8 @@
+ 	    rpmMessage(RPMMESS_ERROR, 
+ 			_("%s does not appear to be a RPM package\n"), 
+ 			*fileURL);
++	    numFailed++;
++	    pkgURL[i] = NULL;
+ 	    break;
+ 	default:
+ 	    rpmMessage(RPMMESS_ERROR, _("%s cannot be installed\n"), *fileURL);

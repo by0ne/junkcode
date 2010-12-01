@@ -1,0 +1,34 @@
+Index: rpm-3.0.5/aclocal.m4
+diff -c rpm-3.0.5/aclocal.m4:1.2 rpm-3.0.5/aclocal.m4:1.3
+*** rpm-3.0.5/aclocal.m4:1.2	Sat Mar 24 21:16:02 2001
+--- rpm-3.0.5/aclocal.m4	Mon Jul  2 08:51:02 2001
+***************
+*** 726,731 ****
+--- 726,735 ----
+  	   if test "$gt_cv_func_gettext_libc" = "yes" \
+  	      || test "$gt_cv_func_gettext_libintl" = "yes"; then
+  	      AC_DEFINE(HAVE_GETTEXT)
++ 	      if test "$gt_cv_func_gettext_libintl" = "yes"; then
++ 	         INTLLIBS=-lintl
++                  LIBS="$LIBS $INTLLIBS"
++ 	      fi
+  	      AM_PATH_PROG_WITH_TEST(MSGFMT, msgfmt,
+  		[test -z "`$ac_dir/$ac_word -h 2>&1 | grep 'dv '`"], no)dnl
+  	      if test "$MSGFMT" != "no"; then
+Index: rpm-3.0.5/popt/aclocal.m4
+diff -c rpm-3.0.5/popt/aclocal.m4:1.2 rpm-3.0.5/popt/aclocal.m4:1.3
+*** rpm-3.0.5/popt/aclocal.m4:1.2	Sat Mar 24 21:16:03 2001
+--- rpm-3.0.5/popt/aclocal.m4	Mon Jul  2 12:22:57 2001
+***************
+*** 712,717 ****
+--- 712,721 ----
+  	   if test "$gt_cv_func_gettext_libc" = "yes" \
+  	      || test "$gt_cv_func_gettext_libintl" = "yes"; then
+  	      AC_DEFINE(HAVE_GETTEXT)
++ 	      if test "$gt_cv_func_gettext_libintl" = "yes"; then
++ 	         INTLLIBS=-lintl
++                  LIBS="$LIBS $INTLLIBS"
++ 	      fi
+  	      AM_PATH_PROG_WITH_TEST(MSGFMT, msgfmt,
+  		[test -z "`$ac_dir/$ac_word -h 2>&1 | grep 'dv '`"], no)dnl
+  	      if test "$MSGFMT" != "no"; then

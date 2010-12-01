@@ -1,0 +1,62 @@
+--- ./popt/poptconfig.c.open64	2008-04-15 11:43:14.000000000 -0500
++++ ./popt/poptconfig.c	2008-04-15 11:43:23.000000000 -0500
+@@ -60,7 +60,7 @@
+     int fd, rc;
+     int fileLength;
+ 
+-    fd = open(fn, O_RDONLY);
++    fd = open64(fn, O_RDONLY);
+     if (fd < 0) {
+ 	if (errno == ENOENT)
+ 	    return 0;
+--- ./lib/rpmio.c.open64	2008-04-15 11:34:10.000000000 -0500
++++ ./lib/rpmio.c	2008-04-15 11:40:10.000000000 -0500
+@@ -621,7 +621,7 @@
+ if (_rpmio_debug)
+ fprintf(stderr, "*** fdOpen(%s,0x%x,0%o)\n", path, flags, (unsigned)mode);
+ #endif
+-    fdno = open(path, flags, mode);
++    fdno = open64(path, flags, mode);
+     if (fdno < 0) return NULL;
+     fd = fdNew("open (fdOpen)");
+     fdSetFdno(fd, fdno);
+--- ./lib/signature.c.open64	2008-04-15 11:44:00.000000000 -0500
++++ ./lib/signature.c	2008-04-15 11:44:28.000000000 -0500
+@@ -664,11 +664,11 @@
+ 	if (! rpmIsVerbose()) {
+ 	    close(STDERR_FILENO);
+ 	}
+-	if ((fd = open("/dev/null", O_RDONLY)) != STDIN_FILENO) {
++	if ((fd = open64("/dev/null", O_RDONLY)) != STDIN_FILENO) {
+ 	    dup2(fd, STDIN_FILENO);
+ 	    close(fd);
+ 	}
+-	if ((fd = open("/dev/null", O_WRONLY)) != STDOUT_FILENO) {
++	if ((fd = open64("/dev/null", O_WRONLY)) != STDOUT_FILENO) {
+ 	    dup2(fd, STDOUT_FILENO);
+ 	    close(fd);
+ 	}
+--- ./tools/rpmgettext.c.open64	2008-04-15 11:44:36.000000000 -0500
++++ ./tools/rpmgettext.c	2008-04-15 11:45:00.000000000 -0500
+@@ -406,8 +406,8 @@
+ 	return 2;
+     }
+ 
+-    if ((fd = open(file, O_RDONLY)) < 0) {
+-	fprintf(stderr, _("open(%s): %s\n"), file, strerror(errno));
++    if ((fd = open64(file, O_RDONLY)) < 0) {
++	fprintf(stderr, _("open64(%s): %s\n"), file, strerror(errno));
+ 	return 3;
+     }
+     if ((nb = read(fd, ibuf, nb)) != sb.st_size) {
+--- ./tools/rpmchecksig.c.open64	2008-04-15 11:45:07.000000000 -0500
++++ ./tools/rpmchecksig.c	2008-04-15 11:45:16.000000000 -0500
+@@ -19,7 +19,7 @@
+     if (argc == 1) {
+ 	fd = 0;
+     } else {
+-	fd = open(argv[1], O_RDONLY, 0644);
++	fd = open64(argv[1], O_RDONLY, 0644);
+     }
+ 
+     /* Need this for any PGP settings */

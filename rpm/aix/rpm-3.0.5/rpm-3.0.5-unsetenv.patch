@@ -1,0 +1,35 @@
+Index: rpm-3.0.5/system.h
+diff -c rpm-3.0.5/system.h:1.1 rpm-3.0.5/system.h:1.2
+*** rpm-3.0.5/system.h:1.1	Fri Aug 11 07:54:07 2000
+--- rpm-3.0.5/system.h	Sat Mar 31 21:34:44 2001
+***************
+*** 305,310 ****
+--- 305,316 ----
+  extern void *myrealloc(void *, size_t);
+  #endif
+  
++ #if !defined(HAVE_UNSETENV)
++ #if HAVE_SETENV
++ #undef HAVE_SETENV
++ #endif
++ #endif
++ 
+  #if ! HAVE_SETENV
+  extern int setenv(const char *name, const char *value, int replace);
+  extern void unsetenv(const char *name);
+Index: rpm-3.0.5/config.h.in
+diff -c rpm-3.0.5/config.h.in:1.1 rpm-3.0.5/config.h.in:1.2
+*** rpm-3.0.5/config.h.in:1.1	Fri Aug 11 07:54:06 2000
+--- rpm-3.0.5/config.h.in	Sat Mar 31 21:34:44 2001
+***************
+*** 250,255 ****
+--- 250,258 ----
+  /* Define if you have the setenv function.  */
+  #undef HAVE_SETENV
+  
++ /* Define if you have the unsetenv function.  */
++ #undef HAVE_UNSETENV
++ 
+  /* Define if you have the setlocale function.  */
+  #undef HAVE_SETLOCALE
+  

@@ -1,0 +1,11 @@
+--- macros.in.dbpath	2008-03-14 13:58:46.000000000 -0500
++++ macros.in	2008-03-14 14:00:21.000000000 -0500
+@@ -80,7 +80,7 @@
+ %_builddir		%{_topdir}/BUILD
+ %_buildshell		/bin/sh
+ %_bzip2bin		@BZIP2BIN@
+-%_dbpath		%{_var}/lib/rpm
++%_dbpath		%{_usr}/packages
+ %_dbpath_rebuild	%{_dbpath}
+ %_defaultdocdir		%{_usr}/doc
+ #

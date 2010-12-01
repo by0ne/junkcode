@@ -1,0 +1,813 @@
+--- ./autodeps/aix.prov.aix	2007-05-11 13:22:40.000000000 -0500
++++ ./autodeps/aix.prov	2007-05-11 13:22:40.000000000 -0500
+@@ -0,0 +1,29 @@
++#! /usr/bin/ksh
++
++# Original Author: Ralph Goers(rgoer@Candle.Com)
++# Borrowed heavily from Tim Mooney's HP version.
++# This file is distributed under the terms of the GNU General Public License
++#
++# find-requires is part of RPM, the RPM Package Manager.  find-requires
++# reads a list of full pathnames (in a package) on stdin, and outputs all
++# shared libraries the package requires to run correctly.
++#
++
++PATH=/usr/bin
++
++#Ensure we process 32-bit items
++export OBJECT_MODE=32
++
++# Search executables, archives, and symlinks to those types for shared  objects
++sed -e "s/['\"]/\\\&/g" -e "s/$/\//g" | LANG=C xargs file | \
++grep -e ":.*executable" -e ":.*archive" | cut -d: -f1 | sed "s/\/$//g" |
++
++# Use the verbose version of dump to find the sharable objects
++while read f
++do
++    LANG=C /usr/bin/dump -ov $f/ 2>/dev/null | egrep "^Flags.*SHROBJ|:$" |
++    awk 'match($1,":$") { member=$1 }
++         !match($1,":$") {print member} '
++done | sed -e 's/:$//' -e 's/\/\[/\(/g' -e 's/\]/)/g' | xargs -i basename {} |
++sort -u
++
+--- ./autodeps/aix.req.aix	2000-06-14 07:34:28.000000000 -0500
++++ ./autodeps/aix.req	2007-05-11 13:22:40.000000000 -0500
+@@ -4,63 +4,108 @@
+ # Borrowed heavily from Tim Mooney's HP version.
+ # This file is distributed under the terms of the GNU General Public License
+ #
+-# find-requires is part of RPM, the RedHat Package Manager.  find-requires
++# find-requires is part of RPM, the RPM Package Manager.  find-requires
+ # reads a list of full pathnames (in a package) on stdin, and outputs all
+ # shared libraries the package requires to run correctly.
+ #
+-# On AIX, use `dump -H' to find the library dependencies for an executable
+-#
+-# Example dump output:
+-#
+-#$dump -H /usr/bin/dump
+-#
+-#/usr/bin/dump:
+-#
+-#                        ***Loader Section***
+-#                      Loader Header Information
+-#VERSION#         #SYMtableENT     #RELOCent        LENidSTR
+-#0x00000001       0x00000021       0x0000006c       0x0000002f
+-#
+-##IMPfilID        OFFidSTR         LENstrTBL        OFFstrTBL
+-#0x00000002       0x00000848       0x00000049       0x00000877
+-#
+-#
+-#                        ***Import File Strings***
+-#INDEX  PATH                          BASE                MEMBER
+-#0      /usr/lib:/lib:/usr/lpp/xlC/lib
+-#1                                    libc.a              shr.o
+-
+-#
+-#
+-filelist=`sed "s/['\"]/\\\&/g" | xargs file | grep -e executable -e archive | cut -d: -f1`
+ 
+-for f in $filelist
+-do
+-        dump -H $f | awk '
+-
+-                #
+-                # For you non-awk-ers, no single quotes in comments -- the shell
+-                # sees them and things get hosed.
+-                #
+-
+-                BEGIN {
+-                        in_shlib_list = 0;
+-                        in_file_strings = 0;
+-                        FS = " ";
+-                        RS = "\n";
+-                }
+-
+-                in_shlib_list == 1 {
+-                        print $2
+-                }
+-
+-                in_file_strings == 1 && $1 == "0" {
+-                        in_shlib_list = 1
+-                }
+-
+-                /\*Import File Strings\*/ {
+-                        in_file_strings = 1
+-                }
++find_req_power ()
++{
++   # On AIX Power, use `dump -H' to find the library dependencies
++   # for an executable
++   #
++   # Example dump output:
++   #
++   #$dump -H /usr/bin/dump
++   #
++   #/usr/bin/dump:
++   #
++   #                        ***Loader Section***
++   #                      Loader Header Information
++   #VERSION#         #SYMtableENT     #RELOCent        LENidSTR
++   #0x00000001       0x00000021       0x0000006c       0x0000002f
++   #
++   ##IMPfilID        OFFidSTR         LENstrTBL        OFFstrTBL
++   #0x00000002       0x00000848       0x00000049       0x00000877
++   #
++   #
++   #                        ***Import File Strings***
++   #INDEX  PATH                          BASE                MEMBER
++   #0      /usr/lib:/lib:/usr/lpp/xlC/lib
++   #1                                    libc.a              shr.o
++
++   #
++   #
++
++   while read f
++    do
++     # Find the required symbols in executables and the required shells in
++     # scripts
++     LANG=C /usr/bin/file $f | /usr/bin/grep -q -e ":.*shell script"
++
++     if [ $? -ne 0 ]  # Use dump to examine executables
++     then
++        LANG=C /usr/bin/dump -H $f 2>/dev/null | awk '
++
++		#
++		# Since this entire awk script is enclosed in single quotes,
++		# you need to be careful to not use single quotes, even in awk
++		# comments, if you modify this script.
++		#
++
++        BEGIN {
++            in_shlib_list = 0;
++            in_file_strings = 0;
++            FS = " ";
++            RS = "\n";
++        }
++
++        in_shlib_list == 1 && /^$/ {
++            in_shlib_list = 0;
++            in_file_strings = 0;
++        }
++
++        in_shlib_list == 1 {
++            pos = index($2, "/")
++            numfields = split($0, fields, " ")
++
++            if (pos == 0)  {
++              namevar = 2
++            }
++            else {
++              namevar = 3
++            }
++            if (namevar < numfields) {
++              printf("%s(%s)\n", fields[namevar], fields[namevar+1])
++            }
++            else {
++	      if ((fields[namevar] != ".") && (fields[namevar] != "..")) {
++                  print fields[namevar]
++	      }
++            }
++        }
++
++        in_file_strings == 1 && $1 == "0" {
++            in_shlib_list = 1
++        }
++
++        /\*Import File Strings\*/ {
++            in_file_strings = 1
++        }
++      ' # end of awk
++     else # shell scripts
++        if [ -x $f ]; then
++            /usr/bin/head -1 $f | /usr/bin/sed -e 's/^\#\![   ]*//' | /usr/bin/cut -d" " -f1
++        fi
++     fi
++    done | /usr/bin/sort -u
++}
++
++#Ensure we process 32-bit items
++export OBJECT_MODE=32
++
++/usr/bin/sed "s/['\"]/\\\&/g" | LANG=C /usr/bin/xargs /usr/bin/file | \
++    /usr/bin/grep -e ":.*executable" -e ":.*archive" -e ":.*shell script" | \
++    /usr/bin/cut -d: -f1 |
++    find_req_power
+ 
+-        ' # end of awk
+-done | sort -u
+--- ./popt/config.guess.aix	2000-07-12 10:01:29.000000000 -0500
++++ ./popt/config.guess	2007-05-11 13:34:00.000000000 -0500
+@@ -402,6 +402,12 @@
+ 	fi
+ 	echo ${IBM_ARCH}-ibm-aix${IBM_REV}
+ 	exit 0 ;;
++    ia64:AIX:*:5)
++	echo ia64-intel-aix5.${UNAME_RELEASE}
++	exit 0 ;;
++    *:AIX:*:[56])
++	echo powerpc-ibm-aix${UNAME_VERSION}.${UNAME_RELEASE}
++	exit 0 ;;
+     *:AIX:*:*)
+ 	echo rs6000-ibm-aix
+ 	exit 0 ;;
+--- ./popt/config.sub.aix	2000-07-12 10:01:29.000000000 -0500
++++ ./popt/config.sub	2007-05-11 13:22:40.000000000 -0500
+@@ -428,6 +428,9 @@
+ 		basic_machine=hppa1.1-hp
+ 		os=-proelf
+ 		;;
++	ia64*)
++		basic_machine=ia64-intel
++		;;
+ 	i370-ibm* | ibm*)
+ 		basic_machine=i370-ibm
+ 		;;
+--- ./popt/ltconfig.aix	2000-07-12 10:01:29.000000000 -0500
++++ ./popt/ltconfig	2007-05-11 13:36:14.000000000 -0500
+@@ -696,9 +696,16 @@
+ else
+   # PORTME Check for PIC flags for the system compiler.
+   case "$host_os" in
+-  aix3* | aix4*)
++  aix3* | aix4* | aix5* | aix6*)
+     # All AIX code is PIC.
+-    link_static_flag='-bnso -bI:/lib/syscalls.exp'
++    case "$host_cpu" in
++      ia64) # AIX 5 now supports IA64 processor
++        link_static_flag='-Bstatic'
++        ;;
++      *) # 
++        link_static_flag='-bnso -bI:/lib/syscalls.exp'
++        ;;
++    esac
+     ;;
+ 
+   hpux9* | hpux10* | hpux11*)
+@@ -1115,7 +1122,7 @@
+ 
+   # See if GNU ld supports shared libraries.
+   case "$host_os" in
+-  aix3* | aix4*)
++  aix3* | aix4* | aix5* | aix6*)
+     # On AIX, the GNU linker is very broken
+     ld_shlibs=no
+     cat <<EOF 1>&2
+@@ -1270,39 +1277,75 @@
+     fi
+     ;;
+ 
+-  aix4*)
+-    hardcode_libdir_flag_spec='${wl}-b ${wl}nolibpath ${wl}-b ${wl}libpath:$libdir:/usr/lib:/lib'
++  aix4* | aix5* | aix6*)
+     hardcode_libdir_separator=':'
+     if test "$with_gcc" = yes; then
+       collect2name=`${CC} -print-prog-name=collect2`
+       if test -f "$collect2name" && \
+-	 strings "$collect2name" | grep resolve_lib_name >/dev/null
++        strings "$collect2name" | grep resolve_lib_name >/dev/null
+       then
+-	# We have reworked collect2
+-	hardcode_direct=yes
++        # We have reworked collect2
++        hardcode_direct=yes
+       else
+-	# We have old collect2
+-	hardcode_direct=unsupported
+-	# It fails to find uninstalled libraries when the uninstalled
+-	# path is not listed in the libpath.  Setting hardcode_minus_L
+-	# to unsupported forces relinking
+-	hardcode_minus_L=yes
+-	hardcode_libdir_flag_spec='-L$libdir'
+-	hardcode_libdir_separator=
++        # We have old collect2
++        hardcode_direct=unsupported
++        # It fails to find uninstalled libraries when the uninstalled
++        # path is not listed in the libpath.  Setting hardcode_minus_L
++        # to unsupported forces relinking
++        hardcode_minus_L=yes
++        hardcode_libdir_flag_spec='-L$libdir'
++        hardcode_libdir_separator=
+       fi
+       shared_flag='-shared'
+     else
+-      shared_flag='${wl}-bM:SRE'
++      if test "$host_cpu" = ia64; then
++        shared_flag='${wl}-G'
++      else
++        shared_flag='${wl}-bM:SRE'
++      fi
+       hardcode_direct=yes
+     fi
+-    allow_undefined_flag=' ${wl}-berok'
+-    archive_cmds="\$CC $shared_flag"' -o $objdir/$soname $libobjs $deplibs $linkopts ${wl}-bexpall ${wl}-bnoentry${allow_undefined_flag}'
+-    archive_expsym_cmds="\$CC $shared_flag"' -o $objdir/$soname $libobjs $deplibs $linkopts ${wl}-bE:$export_symbols ${wl}-bnoentry${allow_undefined_flag}'
+-    case "$host_os" in aix4.[01]|aix4.[01].*)
+-      # According to Greg Wooledge, -bexpall is only supported from AIX 4.2 on
+-      always_export_symbols=yes ;;
+-    esac
+-   ;;
++
++    if test "$host_cpu" = ia64; then
++      # On IA64, the linker does run time linking by default, so we don't
++      # have to do anything special.
++      aix_use_runtimelinking=no
++      exp_sym_flag='-Bexport'
++      no_entry_flag=""
++    else
++      # Test if we are trying to use run time linking, or normal AIX style linking.
++      # If -brtl is somewhere in LDFLAGS, we need to do run time linking.
++      aix_use_runtimelinking=no
++      for ld_flag in $LDFLAGS; do
++        if (test $ld_flag = "-brtl" || test $ld_flag = "-Wl,-brtl" ); then
++          aix_use_runtimelinking=yes
++          break
++        fi
++      done
++      exp_sym_flag='-bexport'
++      no_entry_flag='${wl}-bnoentry'
++    fi
++
++    if test "$aix_use_runtimelinking" = yes; then
++      hardcode_libdir_flag_spec='${wl}-blibpath:$libdir:/usr/lib:/lib'
++      allow_undefined_flag=' -Wl,-G'
++    else
++      if test "$host_cpu" = ia64; then
++        hardcode_libdir_flag_spec='${wl}-R $libdir:/usr/lib:/lib'
++        allow_undefined_flag=" ${wl}-z nodefs"
++      else
++        hardcode_libdir_flag_spec='${wl}-bnolibpath ${wl}-blibpath:$libdir:/usr/lib:/lib'
++        # Warning - without using the other run time loading flags, -berok will
++        #           link without error, but may produce a broken library.
++        allow_undefined_flag=" ${wl}-berok"
++      fi
++    fi
++
++    # It seems that -bexpall can do strange things, so it is better to
++    # generate a list of symbols to export.
++    always_export_symbols=yes
++    archive_expsym_cmds="\$CC $shared_flag"' -o $objdir/$soname $libobjs $deplibs $linkopts ${allow_undefined_flag}'" $no_entry_flag \${wl}$exp_sym_flag:\$export_symbols"
++    ;;
+ 
+   amigaos*)
+     archive_cmds='$rm $objdir/a2ixlibrary.data~$echo "#define NAME $libname" > $objdir/a2ixlibrary.data~$echo "#define LIBRARY_ID 1" >> $objdir/a2ixlibrary.data~$echo "#define VERSION $major" >> $objdir/a2ixlibrary.data~$echo "#define REVISION $revision" >> $objdir/a2ixlibrary.data~$AR cru $lib $libobjs~$RANLIB $lib~(cd $objdir && a2ixlibrary -32)'
+@@ -1800,16 +1843,28 @@
+   soname_spec='${libname}${release}.so$major'
+   ;;
+ 
+-aix4*)
+-  version_type=linux
++aix4* | aix5* | aix6*)
+   # AIX has no versioning support, so currently we can not hardcode correct
+   # soname into executable. Probably we can add versioning support to
+   # collect2, so additional links can be useful in future.
+-  # We preserve .a as extension for shared libraries though AIX4.2
+-  # and later linker supports .so
+-  library_names_spec='${libname}${release}.so$versuffix ${libname}${release}.so$major $libname.a'
+-  shlibpath_var=LIBPATH
+-  deplibs_check_method=pass_all
++  version_type=linux
++  if test "$host_cpu" = ia64; then
++    # AIX 5 supports IA64
++    library_names_spec='${libname}${release}.so$versuffix ${libname}${release}.so$major $libname.so'
++    shlibpath_var=LD_LIBRARY_PATH
++  else
++    if test "$aix_use_runtimelinking" = yes; then
++      # If using run time linking (on AIX 4.2 or later) use lib<name>.so instead of
++      # lib<name>.a to let people know that these are not typical AIX shared libraries.
++      library_names_spec='${libname}${release}.so$versuffix ${libname}${release}.so$major $libname.so'
++    else
++      # We preserve .a as extension for shared libraries though AIX4.2
++      # and later linker supports .so
++      library_names_spec='${libname}${release}.so$versuffix ${libname}${release}.so$major $libname.a'
++    fi
++    shlibpath_var=LIBPATH
++    deplibs_check_method=pass_all
++  fi
+   ;;
+ 
+ amigaos*)
+--- ./popt/aclocal.m4.aix	2000-07-12 10:01:30.000000000 -0500
++++ ./popt/aclocal.m4	2007-05-11 13:22:40.000000000 -0500
+@@ -712,6 +712,10 @@
+ 	   if test "$gt_cv_func_gettext_libc" = "yes" \
+ 	      || test "$gt_cv_func_gettext_libintl" = "yes"; then
+ 	      AC_DEFINE(HAVE_GETTEXT)
++	      if test "$gt_cv_func_gettext_libintl" = "yes"; then
++	         INTLLIBS=-lintl
++                 LIBS="$LIBS $INTLLIBS"
++	      fi
+ 	      AM_PATH_PROG_WITH_TEST(MSGFMT, msgfmt,
+ 		[test -z "`$ac_dir/$ac_word -h 2>&1 | grep 'dv '`"], no)dnl
+ 	      if test "$MSGFMT" != "no"; then
+@@ -863,7 +867,7 @@
+ 
+    AC_CHECK_HEADERS([argz.h limits.h locale.h nl_types.h malloc.h string.h \
+ unistd.h sys/param.h])
+-   AC_CHECK_FUNCS([getcwd munmap putenv setenv setlocale strchr strcasecmp \
++   AC_CHECK_FUNCS([getcwd munmap putenv setlocale strchr strcasecmp \
+ strdup __argz_count __argz_stringify __argz_next])
+ 
+    if test "${ac_cv_func_stpcpy+set}" != "set"; then
+--- ./lib/rpmrc.c.aix	2000-07-16 18:53:27.000000000 -0500
++++ ./lib/rpmrc.c	2007-05-11 13:22:40.000000000 -0500
+@@ -817,7 +817,9 @@
+ 	sprintf(un.sysname,"SINIX");
+ #endif
+ 	if (!strcmp(un.sysname, "AIX")) {
+-	    strcpy(un.machine, __power_pc() ? "ppc" : "rs6000");
++	    if (strcmp(un.machine,"ia64")) {
++		strcpy(un.machine, __power_pc() ? "ppc" : "rs6000");
++	    }
+ 	    sprintf(un.sysname,"aix%s.%s",un.version,un.release);
+ 	}
+ 	else if (!strcmp(un.sysname, "SunOS")) {
+--- ./Makefile.am.aix	2000-07-16 14:00:30.000000000 -0500
++++ ./Makefile.am	2007-05-11 13:22:40.000000000 -0500
+@@ -20,9 +20,9 @@
+ # XXX libtool can/should generate dependent libs.
+ # XXX solaris2.6 cannot use *.la with --all-static (downrev binutils/egcs?)
+ myldadd= \
+-	$(top_builddir)/build/.libs/librpmbuild.a \
+-	$(top_builddir)/lib/.libs/librpm.a \
+-	$(top_builddir)/popt/.libs/libpopt.a \
++	$(top_builddir)/build/librpmbuild.la \
++	$(top_builddir)/lib/librpm.la \
++	$(top_builddir)/popt/libpopt.la \
+ 	@INTLLIBS@ @LIBMISC@
+ 
+ LDFLAGS = @LDFLAGS_STATIC@ $(myldflags)
+--- ./config.guess.aix	2000-07-12 10:01:39.000000000 -0500
++++ ./config.guess	2007-05-11 13:36:45.000000000 -0500
+@@ -402,6 +402,12 @@
+ 	fi
+ 	echo ${IBM_ARCH}-ibm-aix${IBM_REV}
+ 	exit 0 ;;
++    ia64:AIX:*:5)
++	echo ia64-intel-aix5.${UNAME_RELEASE}
++	exit 0 ;;
++    *:AIX:*:[56])
++	echo powerpc-ibm-aix${UNAME_VERSION}.${UNAME_RELEASE}
++	exit 0 ;;
+     *:AIX:*:*)
+ 	echo rs6000-ibm-aix
+ 	exit 0 ;;
+--- ./config.sub.aix	2000-07-12 10:01:39.000000000 -0500
++++ ./config.sub	2007-05-11 13:22:40.000000000 -0500
+@@ -428,6 +428,9 @@
+ 		basic_machine=hppa1.1-hp
+ 		os=-proelf
+ 		;;
++	ia64*)
++		basic_machine=ia64-intel
++		;;
+ 	i370-ibm* | ibm*)
+ 		basic_machine=i370-ibm
+ 		;;
+--- ./macros.in.aix	2000-07-09 10:35:56.000000000 -0500
++++ ./macros.in	2007-05-11 13:22:40.000000000 -0500
+@@ -104,13 +104,13 @@
+ %_rpmdir		%{_topdir}/RPMS
+ #
+ # XXX Note escaped %% for use in headerSprintf
+-%_rpmfilename		%%{ARCH}/%%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm
++%_rpmfilename		%%{ARCH}/%%{NAME}-%%{VERSION}-%%{RELEASE}.%%{OS}.%%{ARCH}.rpm
+ %_signature		none
+ %_sourcedir		%{_topdir}/SOURCES
+ %_specdir		%{_topdir}/SPECS
+ %_srcrpmdir		%{_topdir}/SRPMS
+ %_tmppath		%{_var}/tmp
+-%_topdir		%{_usrsrc}/redhat
++%_topdir		%{_usrsrc}/packages
+ 
+ #==============================================================================
+ # ---- Optional rpmrc macros.
+--- ./ltconfig.aix	2000-07-12 10:01:39.000000000 -0500
++++ ./ltconfig	2007-05-11 13:38:44.000000000 -0500
+@@ -696,9 +696,16 @@
+ else
+   # PORTME Check for PIC flags for the system compiler.
+   case "$host_os" in
+-  aix3* | aix4*)
++  aix3* | aix4* | aix5* | aix6*)
+     # All AIX code is PIC.
+-    link_static_flag='-bnso -bI:/lib/syscalls.exp'
++    case "$host_cpu" in
++      ia64) # AIX 5 now supports IA64 processor
++        link_static_flag='-Bstatic'
++        ;;
++      *) # 
++        link_static_flag='-bnso -bI:/lib/syscalls.exp'
++        ;;
++    esac
+     ;;
+ 
+   hpux9* | hpux10* | hpux11*)
+@@ -1115,7 +1122,7 @@
+ 
+   # See if GNU ld supports shared libraries.
+   case "$host_os" in
+-  aix3* | aix4*)
++  aix3* | aix4* | aix5* | aix6*)
+     # On AIX, the GNU linker is very broken
+     ld_shlibs=no
+     cat <<EOF 1>&2
+@@ -1270,39 +1277,75 @@
+     fi
+     ;;
+ 
+-  aix4*)
+-    hardcode_libdir_flag_spec='${wl}-b ${wl}nolibpath ${wl}-b ${wl}libpath:$libdir:/usr/lib:/lib'
++  aix4* | aix5* | aix6*)
+     hardcode_libdir_separator=':'
+     if test "$with_gcc" = yes; then
+       collect2name=`${CC} -print-prog-name=collect2`
+       if test -f "$collect2name" && \
+-	 strings "$collect2name" | grep resolve_lib_name >/dev/null
++        strings "$collect2name" | grep resolve_lib_name >/dev/null
+       then
+-	# We have reworked collect2
+-	hardcode_direct=yes
++        # We have reworked collect2
++        hardcode_direct=yes
+       else
+-	# We have old collect2
+-	hardcode_direct=unsupported
+-	# It fails to find uninstalled libraries when the uninstalled
+-	# path is not listed in the libpath.  Setting hardcode_minus_L
+-	# to unsupported forces relinking
+-	hardcode_minus_L=yes
+-	hardcode_libdir_flag_spec='-L$libdir'
+-	hardcode_libdir_separator=
++        # We have old collect2
++        hardcode_direct=unsupported
++        # It fails to find uninstalled libraries when the uninstalled
++        # path is not listed in the libpath.  Setting hardcode_minus_L
++        # to unsupported forces relinking
++        hardcode_minus_L=yes
++        hardcode_libdir_flag_spec='-L$libdir'
++        hardcode_libdir_separator=
+       fi
+       shared_flag='-shared'
+     else
+-      shared_flag='${wl}-bM:SRE'
++      if test "$host_cpu" = ia64; then
++        shared_flag='${wl}-G'
++      else
++        shared_flag='${wl}-bM:SRE'
++      fi
+       hardcode_direct=yes
+     fi
+-    allow_undefined_flag=' ${wl}-berok'
+-    archive_cmds="\$CC $shared_flag"' -o $objdir/$soname $libobjs $deplibs $linkopts ${wl}-bexpall ${wl}-bnoentry${allow_undefined_flag}'
+-    archive_expsym_cmds="\$CC $shared_flag"' -o $objdir/$soname $libobjs $deplibs $linkopts ${wl}-bE:$export_symbols ${wl}-bnoentry${allow_undefined_flag}'
+-    case "$host_os" in aix4.[01]|aix4.[01].*)
+-      # According to Greg Wooledge, -bexpall is only supported from AIX 4.2 on
+-      always_export_symbols=yes ;;
+-    esac
+-   ;;
++
++    if test "$host_cpu" = ia64; then
++      # On IA64, the linker does run time linking by default, so we don't
++      # have to do anything special.
++      aix_use_runtimelinking=no
++      exp_sym_flag='-Bexport'
++      no_entry_flag=""
++    else
++      # Test if we are trying to use run time linking, or normal AIX style linking.
++      # If -brtl is somewhere in LDFLAGS, we need to do run time linking.
++      aix_use_runtimelinking=no
++      for ld_flag in $LDFLAGS; do
++        if (test $ld_flag = "-brtl" || test $ld_flag = "-Wl,-brtl" ); then
++          aix_use_runtimelinking=yes
++          break
++        fi
++      done
++      exp_sym_flag='-bexport'
++      no_entry_flag='${wl}-bnoentry'
++    fi
++
++    if test "$aix_use_runtimelinking" = yes; then
++      hardcode_libdir_flag_spec='${wl}-blibpath:$libdir:/usr/lib:/lib'
++      allow_undefined_flag=' -Wl,-G'
++    else
++      if test "$host_cpu" = ia64; then
++        hardcode_libdir_flag_spec='${wl}-R $libdir:/usr/lib:/lib'
++        allow_undefined_flag=" ${wl}-z nodefs"
++      else
++        hardcode_libdir_flag_spec='${wl}-bnolibpath ${wl}-blibpath:$libdir:/usr/lib:/lib'
++        # Warning - without using the other run time loading flags, -berok will
++        #           link without error, but may produce a broken library.
++        allow_undefined_flag=" ${wl}-berok"
++      fi
++    fi
++
++    # It seems that -bexpall can do strange things, so it is better to
++    # generate a list of symbols to export.
++    always_export_symbols=yes
++    archive_expsym_cmds="\$CC $shared_flag"' -o $objdir/$soname $libobjs $deplibs $linkopts ${allow_undefined_flag}'" $no_entry_flag \${wl}$exp_sym_flag:\$export_symbols"
++    ;;
+ 
+   amigaos*)
+     archive_cmds='$rm $objdir/a2ixlibrary.data~$echo "#define NAME $libname" > $objdir/a2ixlibrary.data~$echo "#define LIBRARY_ID 1" >> $objdir/a2ixlibrary.data~$echo "#define VERSION $major" >> $objdir/a2ixlibrary.data~$echo "#define REVISION $revision" >> $objdir/a2ixlibrary.data~$AR cru $lib $libobjs~$RANLIB $lib~(cd $objdir && a2ixlibrary -32)'
+@@ -1800,16 +1843,28 @@
+   soname_spec='${libname}${release}.so$major'
+   ;;
+ 
+-aix4*)
+-  version_type=linux
++aix4* | aix5* | aix6*)
+   # AIX has no versioning support, so currently we can not hardcode correct
+   # soname into executable. Probably we can add versioning support to
+   # collect2, so additional links can be useful in future.
+-  # We preserve .a as extension for shared libraries though AIX4.2
+-  # and later linker supports .so
+-  library_names_spec='${libname}${release}.so$versuffix ${libname}${release}.so$major $libname.a'
+-  shlibpath_var=LIBPATH
+-  deplibs_check_method=pass_all
++  version_type=linux
++  if test "$host_cpu" = ia64; then
++    # AIX 5 supports IA64
++    library_names_spec='${libname}${release}.so$versuffix ${libname}${release}.so$major $libname.so'
++    shlibpath_var=LD_LIBRARY_PATH
++  else
++    if test "$aix_use_runtimelinking" = yes; then
++      # If using run time linking (on AIX 4.2 or later) use lib<name>.so instead of
++      # lib<name>.a to let people know that these are not typical AIX shared libraries.
++      library_names_spec='${libname}${release}.so$versuffix ${libname}${release}.so$major $libname.so'
++    else
++      # We preserve .a as extension for shared libraries though AIX4.2
++      # and later linker supports .so
++      library_names_spec='${libname}${release}.so$versuffix ${libname}${release}.so$major $libname.a'
++    fi
++    shlibpath_var=LIBPATH
++    deplibs_check_method=pass_all
++  fi
+   ;;
+ 
+ amigaos*)
+--- ./configure.in.aix	2000-07-16 14:02:26.000000000 -0500
++++ ./configure.in	2007-05-11 13:22:40.000000000 -0500
+@@ -41,6 +41,7 @@
+ 	case "$target" in
+ 		*-*-solaris*)	LDFLAGS_STATIC="";;
+ 		*-*-hpux*)	LDFLAGS_STATIC="";;
++		*-*-aix*)	LDFLAGS_STATIC="";;
+ 		*-*-*)		LDFLAGS_STATIC="-all";;
+ 	esac
+ elif test X"$CC" = Xcc ; then
+@@ -64,11 +65,15 @@
+ ])
+ 		;;
+ 	esac
++        if test X"$LDFLAGS_STATIC" != X ; then
++		LDFLAGS_STATIC="${LDFLAGS_STATIC}-static"
++	fi
++
+ else
+ 	# just link it dynamically
+ 	LDFLAGS_STATIC=""
+ fi
+-LDFLAGS_STATIC="${LDFLAGS} ${LDFLAGS_STATIC}-static"	# libtool format
++LDFLAGS_STATIC="${LDFLAGS} ${LDFLAGS_STATIC}"	# libtool format
+ AC_MSG_RESULT($LDFLAGS_STATIC)
+ AC_SUBST(LDFLAGS_STATIC)
+ 
+@@ -369,7 +374,8 @@
+ 
+ AC_CHECK_HEADERS(netinet/in_systm.h)
+ AC_CHECK_HEADERS(machine/types.h)
+-AC_CHECK_HEADERS(mntent.h sys/mnttab.h sys/systemcfg.h)
++dnl AC_CHECK_HEADERS(mntent.h sys/mnttab.h sys/systemcfg.h)
++AC_CHECK_HEADERS(sys/mnttab.h sys/systemcfg.h)
+ AC_CHECK_HEADERS(sys/mount.h sys/mntctl.h sys/vmount.h)
+ AC_CHECK_HEADERS(bzlib.h libio.h zlib.h)
+ AC_CHECK_HEADERS(err.h mcheck.h)
+@@ -585,7 +591,8 @@
+ dnl XXX AC_FUNC_VFORK
+ dnl XXX AC_CHECK_FUNCS(gethostname mkdir mkfifo rmdir select uname)
+ 
+-AC_CHECK_FUNCS(basename getcwd getwd inet_aton mtrace putenv realpath setenv)
++dnl AC_CHECK_FUNCS(basename getcwd getwd inet_aton mtrace putenv realpath setenv unsetenv)
++AC_CHECK_FUNCS(basename getcwd getwd inet_aton mtrace putenv realpath setenv unsetenv)
+ AC_CHECK_FUNCS(stpcpy stpncpy strcasecmp strncasecmp strcspn)
+ AC_CHECK_FUNCS(strdup strerror strtol strtoul strspn strstr)
+ 
+@@ -661,12 +668,13 @@
+ dnl XXX Solaris <= 2.6 only permits 8 chars in password.
+ AC_CHECK_FUNCS(getpassphrase)
+ 
+-AC_CHECK_FUNC(getmntent, AC_DEFINE(HAVE_GETMNTENT), [
++dnl AC_CHECK_FUNC(getmntent, AC_DEFINE(HAVE_GETMNTENT), [
+   AC_CHECK_FUNC(mntctl, AC_DEFINE(HAVE_MNTCTL),[
+     AC_CHECK_FUNC(getmntinfo_r, AC_DEFINE(HAVE_GETMNTINFO_R), [
+       AC_CHECK_LIB(c_r, getmntinfo_r, [LIBS="$LIBS -lc_r"; 
+ 					AC_DEFINE(HAVE_GETMNTINFO_R)],
+-                 LIBOBJS="$LIBOBJS getmntent.o")])])])
++                 LIBOBJS="$LIBOBJS getmntent.o")])])
++dnl		 ])
+ 
+ AC_CHECK_FUNC(lchown,
+    [__CHOWN_RHF="%{__chown} -Rhf"
+@@ -745,8 +753,8 @@
+ AC_SUBST(ROOT_GROUP)
+ 
+ if test "x$varprefix" = "x"; then
+-    varprefix=`echo $prefix | sed 's/usr/var/'`
+-    test "x$prefix" = xNONE && varprefix=`echo $ac_default_prefix | sed 's/usr/var/'`
++    varprefix=`echo $prefix | sed -e 's:^/usr:/var:' -e 's:^/opt:/var/opt:'`
++    test "x$prefix" = xNONE && varprefix=`echo $ac_default_prefix | sed -e 's:^/usr:/var:' -e 's:^/opt:/var/opt:'`
+ fi
+ AC_SUBST(varprefix)
+ 
+--- ./aclocal.m4.aix	2000-07-16 14:02:32.000000000 -0500
++++ ./aclocal.m4	2007-05-11 13:22:40.000000000 -0500
+@@ -726,6 +726,10 @@
+ 	   if test "$gt_cv_func_gettext_libc" = "yes" \
+ 	      || test "$gt_cv_func_gettext_libintl" = "yes"; then
+ 	      AC_DEFINE(HAVE_GETTEXT)
++	      if test "$gt_cv_func_gettext_libintl" = "yes"; then
++	         INTLLIBS=-lintl
++                 LIBS="$LIBS $INTLLIBS"
++	      fi
+ 	      AM_PATH_PROG_WITH_TEST(MSGFMT, msgfmt,
+ 		[test -z "`$ac_dir/$ac_word -h 2>&1 | grep 'dv '`"], no)dnl
+ 	      if test "$MSGFMT" != "no"; then
+@@ -877,7 +881,7 @@
+ 
+    AC_CHECK_HEADERS([argz.h limits.h locale.h nl_types.h malloc.h string.h \
+ unistd.h sys/param.h])
+-   AC_CHECK_FUNCS([getcwd munmap putenv setenv setlocale strchr strcasecmp \
++   AC_CHECK_FUNCS([getcwd munmap putenv setlocale strchr strcasecmp \
+ strdup __argz_count __argz_stringify __argz_next])
+ 
+    if test "${ac_cv_func_stpcpy+set}" != "set"; then
+--- ./gendiff.aix	1998-03-04 10:05:15.000000000 -0600
++++ ./gendiff	2007-05-11 13:22:40.000000000 -0500
+@@ -1,4 +1,5 @@
+ #!/bin/sh
++PATH=/usr/bin
+ 
+ [ -z "$1" -o -z "$2" ] && {
+ # usage
+@@ -6,7 +7,14 @@
+   exit 1
+ }
+ 
++# Will use GNU 'diff -u' if available, or native 'diff -c' if not
++if [[ -x /usr/linux/bin/diff ]] ; then
++   DIFF="/usr/linux/bin/diff -u"
++else
++   DIFF="/usr/bin/diff -c"
++fi
++
+ find $1 \( -name "*$2" -o -name ".*$2" \) -print |
+ while read f; do
+-	diff -u $f `echo $f | sed s/$2\$//`
++	${DIFF} $f `echo $f | sed s/$2\$//`
+ done
+--- ./rpmrc.in.aix	2000-07-09 10:35:56.000000000 -0500
++++ ./rpmrc.in	2010-01-21 10:59:04.000000000 -0600
+@@ -129,6 +129,7 @@
+ buildarchtranslate: osfmach3_ppc: ppc
+ buildarchtranslate: powerpc: ppc
+ buildarchtranslate: powerppc: ppc
++buildarchtranslate: rs6000: ppc
+ 
+ buildarchtranslate: sun4c: sparc
+ buildarchtranslate: sun4d: sparc
+@@ -174,8 +175,8 @@
+ arch_compat: sparcv9: sparc
+ arch_compat: sparc: noarch
+ 
+-arch_compat: ppc: rs6000
+-arch_compat: rs6000: noarch
++arch_compat: ppc: rs6000 noarch
++arch_compat: rs6000: ppc noarch
+ arch_compat: mipseb: noarch
+ arch_compat: mipsel: noarch
+ 
+@@ -225,6 +226,15 @@
+ os_compat: mint: FreeMiNT MiNT TOS
+ os_compat: TOS: FreeMiNT MiNT mint
+ 
++#Some of these may not even exist (yet).
++os_compat: aix7.1: aix6.1 aix6.0 aix5.3 aix5.2 aix5.1 aix5.0 aix4.3
++os_compat: aix6.1: aix6.0 aix5.3 aix5.2 aix5.1 aix5.0 aix4.3
++os_compat: aix6.0: aix5.3 aix5.2 aix5.1 aix5.0 aix4.3
++os_compat: aix5.3: aix5.2 aix5.1 aix5.0 aix4.3
++os_compat: aix5.2: aix5.1 aix5.0 aix4.3
++os_compat: aix5.1: aix5.0 aix4.3
++os_compat: aix5.0: aix4.3
++
+ buildarch_compat: ia64: noarch
+ 
+ buildarch_compat: athlon: i686
+@@ -243,6 +253,7 @@
+ buildarch_compat: alpha: noarch
+ buildarch_compat: m68k: noarch
+ buildarch_compat: ppc: noarch
++buildarch_compat: rs6000: ppc noarch
+ buildarch_compat: mipsel: noarch
+ buildarch_compat: mipseb: noarch
+ buildarch_compat: armv4b: noarch

@@ -1,0 +1,13 @@
+--- lib/transaction.c.orig	2008-10-22 16:51:39.000000000 -0500
++++ lib/transaction.c	2008-10-22 16:54:44.000000000 -0500
+@@ -475,8 +475,9 @@
+ 			       sizeof(*dirNames) * (dirCount + 1));
+ 	}
+ 
+-	dirNames[dirCount] = alloca(strlen(filespec) + 1);
++	dirNames[dirCount] = alloca(strlen(filespec) + 2);
+ 	strcpy(dirNames[dirCount], filespec);
++	strcat(dirNames[dirCount], "/");
+ 	dirIndexes[i] = dirCount;
+ 	dirCount++;
+     }

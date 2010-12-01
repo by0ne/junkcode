@@ -1,0 +1,21 @@
+Index: rpm-3.0.5/lib/verify.c
+diff -c rpm-3.0.5/lib/verify.c:1.1.1.1 rpm-3.0.5/lib/verify.c:1.2
+*** rpm-3.0.5/lib/verify.c:1.1.1.1	Fri Aug 11 07:54:12 2000
+--- rpm-3.0.5/lib/verify.c	Tue Mar 27 12:22:55 2001
+***************
+*** 178,184 ****
+      } 
+  
+      if (flags & RPMVERIFY_MODE) {
+! 	if (modeList[filenum] != sb.st_mode)
+  	    *result |= RPMVERIFY_MODE;
+      }
+  
+--- 178,184 ----
+      } 
+  
+      if (flags & RPMVERIFY_MODE) {
+! 	if (modeList[filenum] != (unsigned short) sb.st_mode)
+  	    *result |= RPMVERIFY_MODE;
+      }
+  

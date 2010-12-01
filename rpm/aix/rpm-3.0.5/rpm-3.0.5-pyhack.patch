@@ -1,0 +1,112 @@
+Index: rpm-3.0.5/python/Makefile.am
+diff -c rpm-3.0.5/python/Makefile.am:1.1 rpm-3.0.5/python/Makefile.am:1.2
+*** rpm-3.0.5/python/Makefile.am:1.1	Fri Aug 11 07:54:09 2000
+--- rpm-3.0.5/python/Makefile.am	Thu Jul  5 14:15:19 2001
+***************
+*** 6,12 ****
+  	-I$(top_srcdir) \
+  	-I$(top_srcdir)/lib \
+  	-I$(top_srcdir)/popt \
+! 	-I/usr/include/python1.5 \
+          @INCPATH@
+  
+  EXTRA_DIST = hash.h upgrade.h
+--- 6,12 ----
+  	-I$(top_srcdir) \
+  	-I$(top_srcdir)/lib \
+  	-I$(top_srcdir)/popt \
+! 	-I/usr/include/python2.1 \
+          @INCPATH@
+  
+  EXTRA_DIST = hash.h upgrade.h
+***************
+*** 16,22 ****
+  
+  LDADD =
+  
+! pythondir = $(prefix)/lib/python1.5/site-packages
+  python_PROGRAMS = rpmmodule.so
+  rpmmodule_so_SOURCES =
+  rpmmodule_so_LDFLAGS = -lrpm -lpopt $(LIBS) -shared -Wl,-soname,rpmmodule.so
+--- 16,22 ----
+  
+  LDADD =
+  
+! pythondir = $(prefix)/lib/python2.1/site-packages
+  python_PROGRAMS = rpmmodule.so
+  rpmmodule_so_SOURCES =
+  rpmmodule_so_LDFLAGS = -lrpm -lpopt $(LIBS) -shared -Wl,-soname,rpmmodule.so
+Index: rpm-3.0.5/python/rpmmodule.c
+diff -c rpm-3.0.5/python/rpmmodule.c:1.1 rpm-3.0.5/python/rpmmodule.c:1.2
+*** rpm-3.0.5/python/rpmmodule.c:1.1	Fri Aug 11 07:54:09 2000
+--- rpm-3.0.5/python/rpmmodule.c	Thu Jul  5 14:15:19 2001
+***************
+*** 1,4 ****
+--- 1,6 ----
++ #ifdef HAVE_ALLOCA_H
+  #include <alloca.h>
++ #endif
+  #include <errno.h>
+  #include <fcntl.h>
+  #include <sys/stat.h>
+Index: rpm-3.0.5/python/Makefile.in
+diff -c rpm-3.0.5/python/Makefile.in:1.1 rpm-3.0.5/python/Makefile.in:1.4
+*** rpm-3.0.5/python/Makefile.in:1.1	Fri Aug 11 07:54:09 2000
+--- rpm-3.0.5/python/Makefile.in	Thu Jul  5 18:05:36 2001
+***************
+*** 160,166 ****
+  
+  AUTOMAKE_OPTIONS = 1.4 foreign
+  
+! INCLUDES =  	-I$(top_srcdir) 	-I$(top_srcdir)/lib 	-I$(top_srcdir)/popt 	-I/usr/include/python1.5         @INCPATH@
+  
+  
+  EXTRA_DIST = hash.h upgrade.h
+--- 160,166 ----
+  
+  AUTOMAKE_OPTIONS = 1.4 foreign
+  
+! INCLUDES =  	-I$(top_srcdir) 	-I$(top_srcdir)/lib 	-I$(top_srcdir)/popt 	-I/usr/include/python2.1         @INCPATH@
+  
+  
+  EXTRA_DIST = hash.h upgrade.h
+***************
+*** 169,178 ****
+  
+  LDADD = 
+  
+! pythondir = $(prefix)/lib/python1.5/site-packages
+  python_PROGRAMS = rpmmodule.so
+  rpmmodule_so_SOURCES = 
+! rpmmodule_so_LDFLAGS = -lrpm -lpopt $(LIBS) -shared -Wl,-soname,rpmmodule.so
+  
+  noinst_LTLIBRARIES = librpmmodule.la
+  librpmmodule_la_SOURCES = rpmmodule.c hash.c upgrade.c
+--- 169,178 ----
+  
+  LDADD = 
+  
+! pythondir = $(prefix)/lib/python2.1/site-packages
+  python_PROGRAMS = rpmmodule.so
+  rpmmodule_so_SOURCES = 
+! rpmmodule_so_LDFLAGS = -lrpm -lpopt $(LIBS) -shared
+  
+  noinst_LTLIBRARIES = librpmmodule.la
+  librpmmodule_la_SOURCES = rpmmodule.c hash.c upgrade.c
+***************
+*** 454,460 ****
+  
+  
+  rpmmodule.so: $(librpmmodule_la_OBJECTS)
+! 	$(CC) -o $@ $^ $(rpmmodule_so_LDFLAGS)
+  
+  # Tell versions [3.59,3.63) of GNU make to not export all variables.
+  # Otherwise a system limit (for SysV at least) may be exceeded.
+--- 454,460 ----
+  
+  
+  rpmmodule.so: $(librpmmodule_la_OBJECTS)
+! 	ENTRY=-einitrpm $(LINK) $^ $(rpmmodule_so_LDFLAGS)
+  
+  # Tell versions [3.59,3.63) of GNU make to not export all variables.
+  # Otherwise a system limit (for SysV at least) may be exceeded.

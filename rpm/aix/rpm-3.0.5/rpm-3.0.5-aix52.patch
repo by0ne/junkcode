@@ -1,0 +1,16 @@
+Index: rpm-3.0.5/rpmrc.in
+diff -c rpm-3.0.5/rpmrc.in:1.4 rpm-3.0.5/rpmrc.in:1.6
+*** rpm-3.0.5/rpmrc.in:1.4	Fri Oct  6 09:14:01 2000
+--- rpm-3.0.5/rpmrc.in	Mon Jul  2 08:11:07 2001
+***************
+*** 226,231 ****
+--- 226,234 ----
+  os_compat: mint: FreeMiNT MiNT TOS
+  os_compat: TOS: FreeMiNT MiNT mint
+  
++ # AIX 5.2 amd 5.3 do not exist yet, but might as well take care of it now
++ os_compat: aix5.3: aix5.2 aix5.1 aix5.0 aix4.3
++ os_compat: aix5.2: aix5.1 aix5.0 aix4.3
+  os_compat: aix5.1: aix5.0 aix4.3
+  os_compat: aix5.0: aix4.3
+  

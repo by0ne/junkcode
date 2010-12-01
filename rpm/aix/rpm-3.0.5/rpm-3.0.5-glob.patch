@@ -1,0 +1,22 @@
+--- misc/fnmatch.h.orig	2008-03-14 14:51:45.000000000 -0500
++++ misc/fnmatch.h	2008-03-14 14:52:50.000000000 -0500
+@@ -55,7 +55,7 @@
+ #define	FNM_NOESCAPE	(1 << 1) /* Backslashes don't quote special chars.  */
+ #define	FNM_PERIOD	(1 << 2) /* Leading `.' is matched only explicitly.  */
+ 
+-#if !defined _POSIX_C_SOURCE || _POSIX_C_SOURCE < 2 || defined _GNU_SOURCE
++#if !defined _POSIX_C_SOURCE || _POSIX_C_SOURCE < 2 || defined _GNU_SOURCE || defined USE_GNU_GLOB
+ # define FNM_FILE_NAME	 FNM_PATHNAME	/* Preferred GNU name.  */
+ # define FNM_LEADING_DIR (1 << 3)	/* Ignore `/...' after a match.  */
+ # define FNM_CASEFOLD	 (1 << 4)	/* Compare without regard to case.  */
+--- misc/glob.h.orig	2008-03-14 14:51:49.000000000 -0500
++++ misc/glob.h	2008-03-14 14:52:26.000000000 -0500
+@@ -74,7 +74,7 @@
+ #define	GLOB_PERIOD	(1 << 7)/* Leading `.' can be matched by metachars.  */
+ 
+ #if (!defined _POSIX_C_SOURCE || _POSIX_C_SOURCE < 2 || defined _BSD_SOURCE \
+-     || defined _GNU_SOURCE)
++     || defined _GNU_SOURCE || defined USE_GNU_GLOB)
+ # define GLOB_MAGCHAR	 (1 << 8)/* Set in gl_flags if any metachars seen.  */
+ # define GLOB_ALTDIRFUNC (1 << 9)/* Use gl_opendir et al functions.  */
+ # define GLOB_BRACE	 (1 << 10)/* Expand "{a,b}" to "a" "b".  */

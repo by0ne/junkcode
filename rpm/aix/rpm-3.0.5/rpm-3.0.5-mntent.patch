@@ -1,0 +1,124 @@
+Index: rpm-3.0.5/configure
+diff -c rpm-3.0.5/configure:1.5 rpm-3.0.5/configure:1.8
+*** rpm-3.0.5/configure:1.5	Sat Mar 24 21:16:02 2001
+--- rpm-3.0.5/configure	Sat Mar 31 00:56:44 2001
+***************
+*** 8386,8441 ****
+  done
+  
+  
+- echo $ac_n "checking for getmntent""... $ac_c" 1>&6
+- echo "configure:8387: checking for getmntent" >&5
+- if eval "test \"`echo '$''{'ac_cv_func_getmntent'+set}'`\" = set"; then
+-   echo $ac_n "(cached) $ac_c" 1>&6
+- else
+-   cat > conftest.$ac_ext <<EOF
+- #line 8392 "configure"
+- #include "confdefs.h"
+- /* System header to define __stub macros and hopefully few prototypes,
+-     which can conflict with char getmntent(); below.  */
+- #include <assert.h>
+- /* Override any gcc2 internal prototype to avoid an error.  */
+- /* We use char because int might match the return type of a gcc2
+-     builtin and then its argument prototype would still apply.  */
+- char getmntent();
+- 
+- int main() {
+- 
+- /* The GNU C library defines this for functions which it implements
+-     to always fail with ENOSYS.  Some functions are actually named
+-     something starting with __ and the normal name is an alias.  */
+- #if defined (__stub_getmntent) || defined (__stub___getmntent)
+- choke me
+- #else
+- getmntent();
+- #endif
+- 
+- ; return 0; }
+- EOF
+- if { (eval echo configure:8415: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+-   rm -rf conftest*
+-   eval "ac_cv_func_getmntent=yes"
+- else
+-   echo "configure: failed program was:" >&5
+-   cat conftest.$ac_ext >&5
+-   rm -rf conftest*
+-   eval "ac_cv_func_getmntent=no"
+- fi
+- rm -f conftest*
+- fi
+  
+- if eval "test \"`echo '$ac_cv_func_'getmntent`\" = yes"; then
+-   echo "$ac_t""yes" 1>&6
+-   cat >> confdefs.h <<\EOF
+- #define HAVE_GETMNTENT 1
+- EOF
+- 
+- else
+-   echo "$ac_t""no" 1>&6
+- 
+    echo $ac_n "checking for mntctl""... $ac_c" 1>&6
+  echo "configure:8437: checking for mntctl" >&5
+  if eval "test \"`echo '$''{'ac_cv_func_mntctl'+set}'`\" = set"; then
+--- 8386,8392 ----
+***************
+*** 8579,8586 ****
+  else
+    echo "$ac_t""no" 1>&6
+  LIBOBJS="$LIBOBJS getmntent.o"
+- fi
+- 
+  fi
+  
+  fi
+--- 8530,8535 ----
+Index: rpm-3.0.5/configure.in
+diff -c rpm-3.0.5/configure.in:1.4 rpm-3.0.5/configure.in:1.6
+*** rpm-3.0.5/configure.in:1.4	Sat Mar 24 17:44:54 2001
+--- rpm-3.0.5/configure.in	Sat Mar 31 00:56:44 2001
+***************
+*** 374,380 ****
+  
+  AC_CHECK_HEADERS(netinet/in_systm.h)
+  AC_CHECK_HEADERS(machine/types.h)
+! AC_CHECK_HEADERS(mntent.h sys/mnttab.h sys/systemcfg.h)
+  AC_CHECK_HEADERS(sys/mount.h sys/mntctl.h sys/vmount.h)
+  AC_CHECK_HEADERS(bzlib.h libio.h zlib.h)
+  AC_CHECK_HEADERS(err.h mcheck.h)
+--- 374,381 ----
+  
+  AC_CHECK_HEADERS(netinet/in_systm.h)
+  AC_CHECK_HEADERS(machine/types.h)
+! dnl AC_CHECK_HEADERS(mntent.h sys/mnttab.h sys/systemcfg.h)
+! AC_CHECK_HEADERS(sys/mnttab.h sys/systemcfg.h)
+  AC_CHECK_HEADERS(sys/mount.h sys/mntctl.h sys/vmount.h)
+  AC_CHECK_HEADERS(bzlib.h libio.h zlib.h)
+  AC_CHECK_HEADERS(err.h mcheck.h)
+***************
+*** 667,678 ****
+  dnl XXX Solaris <= 2.6 only permits 8 chars in password.
+  AC_CHECK_FUNCS(getpassphrase)
+  
+! AC_CHECK_FUNC(getmntent, AC_DEFINE(HAVE_GETMNTENT), [
+    AC_CHECK_FUNC(mntctl, AC_DEFINE(HAVE_MNTCTL),[
+      AC_CHECK_FUNC(getmntinfo_r, AC_DEFINE(HAVE_GETMNTINFO_R), [
+        AC_CHECK_LIB(c_r, getmntinfo_r, [LIBS="$LIBS -lc_r"; 
+  					AC_DEFINE(HAVE_GETMNTINFO_R)],
+!                  LIBOBJS="$LIBOBJS getmntent.o")])])])
+  
+  AC_CHECK_FUNC(lchown,
+     [__CHOWN_RHF="%{__chown} -Rhf"
+--- 668,680 ----
+  dnl XXX Solaris <= 2.6 only permits 8 chars in password.
+  AC_CHECK_FUNCS(getpassphrase)
+  
+! dnl AC_CHECK_FUNC(getmntent, AC_DEFINE(HAVE_GETMNTENT), [
+    AC_CHECK_FUNC(mntctl, AC_DEFINE(HAVE_MNTCTL),[
+      AC_CHECK_FUNC(getmntinfo_r, AC_DEFINE(HAVE_GETMNTINFO_R), [
+        AC_CHECK_LIB(c_r, getmntinfo_r, [LIBS="$LIBS -lc_r"; 
+  					AC_DEFINE(HAVE_GETMNTINFO_R)],
+!                  LIBOBJS="$LIBOBJS getmntent.o")])])
+! dnl		 ])
+  
+  AC_CHECK_FUNC(lchown,
+     [__CHOWN_RHF="%{__chown} -Rhf"

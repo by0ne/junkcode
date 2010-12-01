@@ -1,0 +1,280 @@
+Index: rpm-3.0.5/build/files.c
+diff -c rpm-3.0.5/build/files.c:1.1.1.1 rpm-3.0.5/build/files.c:1.2
+*** rpm-3.0.5/build/files.c:1.1.1.1	Fri Aug 11 07:54:11 2000
+--- rpm-3.0.5/build/files.c	Mon Feb 26 14:49:30 2001
+***************
+*** 853,859 ****
+  	
+  	buf[0] = '\0';
+  	if (S_ISREG(flp->fl_mode))
+! 	    mdfile(flp->diskURL, buf);
+  	s = buf;
+  	headerAddOrAppendEntry(h, RPMTAG_FILEMD5S, RPM_STRING_ARRAY_TYPE,
+  			       &s, 1);
+--- 853,859 ----
+  	
+  	buf[0] = '\0';
+  	if (S_ISREG(flp->fl_mode))
+! 	    mdfile(flp->diskURL, (unsigned char *) buf);
+  	s = buf;
+  	headerAddOrAppendEntry(h, RPMTAG_FILEMD5S, RPM_STRING_ARRAY_TYPE,
+  			       &s, 1);
+***************
+*** 1346,1353 ****
+      /* Only specific tags are added to the source package header */
+      for (hi = headerInitIterator(spec->packages->header);
+  	headerNextIterator(hi, &tag, &type, &ptr, &count);
+! 	ptr = ((type == RPM_STRING_ARRAY_TYPE || type == RPM_I18NSTRING_TYPE)
+! 	    ? xfree(ptr), NULL : NULL))
+      {
+  	switch (tag) {
+  	  case RPMTAG_NAME:
+--- 1346,1353 ----
+      /* Only specific tags are added to the source package header */
+      for (hi = headerInitIterator(spec->packages->header);
+  	headerNextIterator(hi, &tag, &type, &ptr, &count);
+! 	ptr = (void *) ((type == RPM_STRING_ARRAY_TYPE || type == RPM_I18NSTRING_TYPE)
+! 	    ? xfree((void *)ptr), NULL : NULL))
+      {
+  	switch (tag) {
+  	  case RPMTAG_NAME:
+***************
+*** 1381,1388 ****
+      /* Add the build restrictions */
+      for (hi = headerInitIterator(spec->buildRestrictions);
+  	headerNextIterator(hi, &tag, &type, &ptr, &count);
+! 	ptr = ((type == RPM_STRING_ARRAY_TYPE || type == RPM_I18NSTRING_TYPE)
+! 	    ? xfree(ptr), NULL : NULL))
+      {
+  	headerAddEntry(spec->sourceHeader, tag, type, ptr, count);
+      }
+--- 1381,1388 ----
+      /* Add the build restrictions */
+      for (hi = headerInitIterator(spec->buildRestrictions);
+  	headerNextIterator(hi, &tag, &type, &ptr, &count);
+! 	ptr = (void *) ((type == RPM_STRING_ARRAY_TYPE || type == RPM_I18NSTRING_TYPE)
+! 	    ? xfree((void *)ptr), NULL : NULL))
+      {
+  	headerAddEntry(spec->sourceHeader, tag, type, ptr, count);
+      }
+***************
+*** 1541,1547 ****
+      StringBuf readBuff;
+      int done;
+  
+!     oldhandler = signal(SIGPIPE, SIG_IGN);
+  
+      toProg[0] = toProg[1] = 0;
+      pipe(toProg);
+--- 1541,1547 ----
+      StringBuf readBuff;
+      int done;
+  
+!     oldhandler = (void *) signal(SIGPIPE, SIG_IGN);
+  
+      toProg[0] = toProg[1] = 0;
+      pipe(toProg);
+Index: rpm-3.0.5/lib/rpmchecksig.c
+diff -c rpm-3.0.5/lib/rpmchecksig.c:1.1.1.1 rpm-3.0.5/lib/rpmchecksig.c:1.2
+*** rpm-3.0.5/lib/rpmchecksig.c:1.1.1.1	Fri Aug 11 07:54:12 2000
+--- rpm-3.0.5/lib/rpmchecksig.c	Mon Feb 26 14:49:30 2001
+***************
+*** 279,285 ****
+  
+  	for (sigIter = headerInitIterator(sig);
+  	    headerNextIterator(sigIter, &tag, &type, &ptr, &count);
+! 	    ptr = ((type == RPM_STRING_ARRAY_TYPE || type == RPM_I18NSTRING_TYPE)
+  		? xfree(ptr), NULL : NULL))
+  	{
+  	    switch (tag) {
+--- 279,285 ----
+  
+  	for (sigIter = headerInitIterator(sig);
+  	    headerNextIterator(sigIter, &tag, &type, &ptr, &count);
+! 	    ptr = (void *) ((type == RPM_STRING_ARRAY_TYPE || type == RPM_I18NSTRING_TYPE)
+  		? xfree(ptr), NULL : NULL))
+  	{
+  	    switch (tag) {
+Index: rpm-3.0.5/lib/rpmio.c
+diff -c rpm-3.0.5/lib/rpmio.c:1.1.1.1 rpm-3.0.5/lib/rpmio.c:1.2
+*** rpm-3.0.5/lib/rpmio.c:1.1.1.1	Fri Aug 11 07:54:12 2000
+--- rpm-3.0.5/lib/rpmio.c	Mon Feb 26 14:50:00 2001
+***************
+*** 153,159 ****
+  #define DBGREFS(_f, _x)	DBG((_f), RPMIO_DEBUG_REFS, _x)
+  
+  /* =============================================================== */
+! const FDIO_t fdGetIo(FD_t fd) {
+  #ifdef	NOISY
+  DBGIO(0, (stderr, "==>\tfdGetIo(%p)\n", fd));
+  #endif
+--- 153,159 ----
+  #define DBGREFS(_f, _x)	DBG((_f), RPMIO_DEBUG_REFS, _x)
+  
+  /* =============================================================== */
+! /* const */ FDIO_t fdGetIo(FD_t fd) {
+  #ifdef	NOISY
+  DBGIO(0, (stderr, "==>\tfdGetIo(%p)\n", fd));
+  #endif
+***************
+*** 484,489 ****
+--- 484,490 ----
+      return NULL;
+  }
+  
++ 
+  static inline /*@null@*/ FD_t XfdNew(const char *msg, const char *file, unsigned line) {
+      FD_t fd = (FD_t) xmalloc(sizeof(struct _FD_s));
+      if (fd == NULL)
+***************
+*** 775,781 ****
+  /* =============================================================== */
+  /* Support for FTP/HTTP I/O.
+   */
+! const char *const ftpStrerror(int errorNumber) {
+    switch (errorNumber) {
+      case 0:
+  	return _("Success");
+--- 776,782 ----
+  /* =============================================================== */
+  /* Support for FTP/HTTP I/O.
+   */
+! /* const */ char * ftpStrerror(int errorNumber) {
+    switch (errorNumber) {
+      case 0:
+  	return _("Success");
+***************
+*** 819,825 ****
+    }
+  }
+  
+! const char *urlStrerror(const char *url)
+  {
+      const char *retstr;
+      switch (urlIsURL(url)) {
+--- 820,826 ----
+    }
+  }
+  
+! /* const */ char *urlStrerror(const char *url)
+  {
+      const char *retstr;
+      switch (urlIsURL(url)) {
+***************
+*** 2507,2513 ****
+  
+  /* =============================================================== */
+  
+! const char *Fstrerror(FD_t fd) {
+      if (fd == NULL)
+  	return strerror(errno);
+      FDSANE(fd);
+--- 2508,2514 ----
+  
+  /* =============================================================== */
+  
+! /* const */ char *Fstrerror(FD_t fd) {
+      if (fd == NULL)
+  	return strerror(errno);
+      FDSANE(fd);
+Index: rpm-3.0.5/lib/rpmio.h
+diff -c rpm-3.0.5/lib/rpmio.h:1.1.1.1 rpm-3.0.5/lib/rpmio.h:1.2
+*** rpm-3.0.5/lib/rpmio.h:1.1.1.1	Fri Aug 11 07:54:13 2000
+--- rpm-3.0.5/lib/rpmio.h	Mon Feb 26 14:49:30 2001
+***************
+*** 69,75 ****
+    fdio_unlink_function_t *	_unlink;
+  };
+  
+! /*@observer@*/ const char * Fstrerror(FD_t fd);
+  
+  size_t	Fread	(/*@out@*/ void * buf, size_t size, size_t nmemb, FD_t fd);
+  size_t	Fwrite	(const void *buf, size_t size, size_t nmemb, FD_t fd);
+--- 69,75 ----
+    fdio_unlink_function_t *	_unlink;
+  };
+  
+! /*@observer@*/ /* const */ char * Fstrerror(FD_t fd);
+  
+  size_t	Fread	(/*@out@*/ void * buf, size_t size, size_t nmemb, FD_t fd);
+  size_t	Fwrite	(const void *buf, size_t size, size_t nmemb, FD_t fd);
+***************
+*** 116,122 ****
+  off_t	fdSize	(FD_t fd);
+  void	fdSetSyserrno(FD_t fd, int syserrno, const void * errcookie);
+  
+! /*@null@*/ const FDIO_t fdGetIo(FD_t fd);
+  void	fdSetIo	(FD_t fd, FDIO_t io);
+  
+  int	fdGetRdTimeoutSecs(FD_t fd);
+--- 116,122 ----
+  off_t	fdSize	(FD_t fd);
+  void	fdSetSyserrno(FD_t fd, int syserrno, const void * errcookie);
+  
+! /*@null@*/ /* const */ FDIO_t fdGetIo(FD_t fd);
+  void	fdSetIo	(FD_t fd, FDIO_t io);
+  
+  int	fdGetRdTimeoutSecs(FD_t fd);
+***************
+*** 164,174 ****
+  #define FTPERR_UNKNOWN               -100
+  
+  /*@dependent@*/ /*@null@*/ void * ufdGetUrlinfo(FD_t fd);
+! /*@observer@*/ const char * urlStrerror(const char * url);
+  
+  int	ufdCopy(FD_t sfd, FD_t tfd);
+  int	ufdGetFile( /*@killref@*/ FD_t sfd, FD_t tfd);
+! /*@observer@*/ const char *const ftpStrerror(int errorNumber);
+  
+  int	timedRead(FD_t fd, /*@out@*/ void * bufptr, int length);
+  #define	timedRead	ufdio->read
+--- 164,174 ----
+  #define FTPERR_UNKNOWN               -100
+  
+  /*@dependent@*/ /*@null@*/ void * ufdGetUrlinfo(FD_t fd);
+! /*@observer@*/ /* const */ char * urlStrerror(const char * url);
+  
+  int	ufdCopy(FD_t sfd, FD_t tfd);
+  int	ufdGetFile( /*@killref@*/ FD_t sfd, FD_t tfd);
+! /*@observer@*/ /* const */ char * ftpStrerror(int errorNumber);
+  
+  int	timedRead(FD_t fd, /*@out@*/ void * bufptr, int length);
+  #define	timedRead	ufdio->read
+Index: rpm-3.0.5/tools/rpmgettext.c
+diff -c rpm-3.0.5/tools/rpmgettext.c:1.1.1.1 rpm-3.0.5/tools/rpmgettext.c:1.2
+*** rpm-3.0.5/tools/rpmgettext.c:1.1.1.1	Fri Aug 11 07:54:13 2000
+--- rpm-3.0.5/tools/rpmgettext.c	Mon Feb 26 14:49:30 2001
+***************
+*** 329,335 ****
+  	if (metamsgid) {
+  	    char name[1024], *np;
+  	    char lctag[128], *lctp;
+! 	    strcpy(name, basename(file));
+  	    if ((np = strrchr(name, '-')) != NULL) {
+  		*np = '\0';
+  		if ((np = strrchr(name, '-')) != NULL) {
+--- 329,335 ----
+  	if (metamsgid) {
+  	    char name[1024], *np;
+  	    char lctag[128], *lctp;
+! 	    strcpy(name, (const char *) basename(file));
+  	    if ((np = strrchr(name, '-')) != NULL) {
+  		*np = '\0';
+  		if ((np = strrchr(name, '-')) != NULL) {
+***************
+*** 822,828 ****
+  	    if (outputdir) {
+  		strcpy(fno, outputdir);
+  		strcat(fno, "/");
+! 		fn = basename(file);
+  	    }
+  	    strcat(fno, fn);
+  
+--- 822,828 ----
+  	    if (outputdir) {
+  		strcpy(fno, outputdir);
+  		strcat(fno, "/");
+! 		fn = (const char *) basename(file);
+  	    }
+  	    strcat(fno, fn);
+  

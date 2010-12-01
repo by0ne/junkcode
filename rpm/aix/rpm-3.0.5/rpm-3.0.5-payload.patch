@@ -1,0 +1,21 @@
+Index: rpm-3.0.5/rpm2cpio.c
+diff -c rpm-3.0.5/rpm2cpio.c:1.1.1.1 rpm-3.0.5/rpm2cpio.c:1.2
+*** rpm-3.0.5/rpm2cpio.c:1.1.1.1	Fri Aug 11 07:54:06 2000
+--- rpm-3.0.5/rpm2cpio.c	Wed Oct  4 13:36:09 2000
+***************
+*** 55,61 ****
+      }
+  
+      gzdi = Fdopen(fdi, rpmio_flags);	/* XXX gzdi == fdi */
+!     if (gzdi == NULL || Ferror(gzdi)) {
+  	fprintf(stderr, _("cannot re-open payload: %s\n"), Fstrerror(gzdi));
+  	exit(EXIT_FAILURE);
+      }
+--- 55,61 ----
+      }
+  
+      gzdi = Fdopen(fdi, rpmio_flags);	/* XXX gzdi == fdi */
+!     if (gzdi == NULL) {
+  	fprintf(stderr, _("cannot re-open payload: %s\n"), Fstrerror(gzdi));
+  	exit(EXIT_FAILURE);
+      }
