@@ -1,0 +1,15 @@
+https://bugzilla.redhat.com/show_bug.cgi?id=598775
+
+1. Rebuild the attached SRPM twice, once with -D 'rel 1' and once with -D 'rel
+2'.
+2. mkdir /tmp/rpm-setuid-test
+3. rpm -i rpm-setuid-test-0-1.fc13.$(rpm -E '%{_build_arch}').rpm
+4. ln /usr/bin/rpm-setuid-test /tmp/rpm-setuid-test/
+5. rpm -U rpm-setuid-test-0-2.fc13.$(rpm -E '%{_build_arch}').rpm
+6. ls -l /tmp/rpm-setuid-test/rpm-setuid-test
+
+Actual results:
+The old executable is setuid.
+
+Expected results:
+The old executable is not setuid.
