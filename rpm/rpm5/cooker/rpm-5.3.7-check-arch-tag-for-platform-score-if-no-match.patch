@@ -1,0 +1,21 @@
+--- rpm-5.3.7/lib/depends.c.platform_arch~	2011-01-06 18:05:36.758775561 +0100
++++ rpm-5.3.7/lib/depends.c	2011-01-06 18:03:35.650026852 +0100
+@@ -593,6 +593,18 @@ int rpmtsAddInstallElement(rpmts ts, Hea
+ 	    platform = rpmExpand(arch, "-unknown-", os, NULL);
+ 
+ 	rc = rpmPlatformScore(platform, platpat, nplatpat);
++#if defined(RPM_VENDOR_MANDRIVA)
++	/* quick and dirty workaround for  mdvbz#61746:
++	 * if no match on platform tag, we'll try again with arch tag
++	 * in case platform tag is inconsistent with it which is the case
++	 * with sub-packages of different arch
++	 */
++	if(xx && rc <= 0) {
++	    platform = _free(platform);
++	    platform = rpmExpand(arch, "-unknown-", os, NULL);
++	    rc = rpmPlatformScore(platform, platpat, nplatpat);
++	}
++#endif
+ 	if (rc <= 0) {
+ 	    rpmps ps = rpmtsProblems(ts);
+ 	    he->tag = RPMTAG_NVRA;

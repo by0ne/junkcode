@@ -1,0 +1,14 @@
+--- rpm-5.3.6/rpmio/rpmio_internal.h.openmp~	2010-12-01 19:01:48.097364829 +0100
++++ rpm-5.3.6/rpmio/rpmio_internal.h	2010-12-01 19:01:52.404350721 +0100
+@@ -561,9 +561,11 @@ void fdUpdateDigests(FD_t fd, const unsi
+ 
+   if (fd->ndigests > 0 && buf != NULL && buflen > 0) {
+     fdstat_enter(fd, FDSTAT_DIGEST);
++/* FIXME:
+ #if defined(_OPENMP)
+ #pragma omp parallel for
+ #endif
++*/
+     for (i = fd->ndigests - 1; i >= 0; i--) {
+ 	DIGEST_CTX ctx = fd->digests[i];
+ 	if (ctx == NULL)
