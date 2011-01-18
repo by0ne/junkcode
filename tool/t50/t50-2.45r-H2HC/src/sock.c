@@ -36,6 +36,7 @@
 #ifndef SOCK_C__
 #define SOCK_C__ 1
 
+#include "config.h"
 #include <common.h>
 
 

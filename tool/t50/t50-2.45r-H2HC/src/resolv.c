@@ -36,6 +36,7 @@
 #ifndef RESOLV_C__
 #define RESOLV_C__ 1
 
+#include "config.h"
 #include <common.h>
 
 

@@ -36,6 +36,7 @@
 #ifndef CONFIG_C__
 #define CONFIG_C__ 1
 
+#include "config.h"
 #include <common.h>
 
 

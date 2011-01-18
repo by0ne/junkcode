@@ -36,6 +36,7 @@
 #ifndef USAGE_C__
 #define USAGE_C__ 1
 
+#include "config.h"
 #include <common.h>
 
 /* Function Name: Help and usage message.

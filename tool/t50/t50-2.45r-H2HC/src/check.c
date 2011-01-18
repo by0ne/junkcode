@@ -35,7 +35,7 @@
    ------------------x------------------x------------------x------------------ */
 #ifndef CHECK_C__
 #define CHECK_C__ 1
-
+#include "config.h"
 #include <common.h>
 
 

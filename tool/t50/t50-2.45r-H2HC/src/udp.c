@@ -36,6 +36,7 @@
 #ifndef UDP_C__
 #define UDP_C__ 1
 
+#include "config.h"
 #include <common.h>
 
 

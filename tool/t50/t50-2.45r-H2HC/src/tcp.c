@@ -36,6 +36,7 @@
 #ifndef TCP_C__
 #define TCP_C__ 1
 
+#include "config.h"
 #include <common.h>
 
 

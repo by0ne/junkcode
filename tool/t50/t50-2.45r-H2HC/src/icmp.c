@@ -36,6 +36,7 @@
 #ifndef ICMP_C__
 #define ICMP_C__ 1
 
+#include "config.h"
 #include <common.h>
 
 

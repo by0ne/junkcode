@@ -35,7 +35,7 @@
    ------------------x------------------x------------------x------------------ */
 #ifndef CKSUM_C__
 #define CKSUM_C__ 1
-
+#include "config.h"
 #include <common.h> 
 
 /* Function Name: Checksum calculation.

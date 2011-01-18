@@ -36,6 +36,7 @@
 #ifndef IGMP_C__
 #define IGMP_C__ 1
 
+#include "config.h"
 #include <common.h>
 
 
