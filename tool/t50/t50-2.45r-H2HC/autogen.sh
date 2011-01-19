@@ -1,10 +1,10 @@
 #!/bin/sh
-# $Id: autogen.sh,v 1.21 2010/08/12 16:56:37 devzero2000 Exp $
-# autogen.sh: autogen.sh script for popt projects
+# $Id: autogen.sh,v 1.21 2010/08/12 16:56:37 yersinia.spiros Exp $
+# autogen.sh: autogen.sh script for t50 projects
 #
-# Copyright (c) 2010-2011 Elia Pinto <devzero2000@rpm5.org>
+# Copyright (c) 2010-2011 Elia Pinto <yersinia.spiros@gmail.com>
 #
-# This program have the same copyright notice as popt
+# This program have the same copyright notice as t50
 # itself
 #
 
