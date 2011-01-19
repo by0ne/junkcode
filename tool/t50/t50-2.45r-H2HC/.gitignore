@@ -14,7 +14,6 @@ TAGS
 ,*
 _$*
 *$
-*.old
 *.bak
 *.BAK
 *.orig
@@ -84,7 +83,6 @@ mkinstalldirs
 *.mode1v3
 *.pbxuser
 t50.spec
-t50-*.tar.gz
 POTFILES
 Rules-quot
 *.sed
