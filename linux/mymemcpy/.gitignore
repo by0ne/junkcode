@@ -35,7 +35,6 @@ autom4te*
 build
 build-aux
 .ccache
-ChangeLog
 clang
 config.cache
 config.guess
