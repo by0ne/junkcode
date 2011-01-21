@@ -1,5 +1,13 @@
 2011-01-21  Elia Pinto <yersinia.spiros@gmail.com>
 
+	* linux/mymemcpy/ChangeLog: added Changelog
+
+2011-01-21  Elia Pinto <yersinia.spiros@gmail.com>
+
+	* linux/mymemcpy/.gitignore: drop Changelog from .gitignore
+
+2011-01-21  Elia Pinto <yersinia.spiros@gmail.com>
+
 	* linux/mymemcpy/.gitignore, linux/mymemcpy/AUTHORS,
 	linux/mymemcpy/COPYING, linux/mymemcpy/INSTALL,
 	linux/mymemcpy/Makefile.am, linux/mymemcpy/NEWS,
