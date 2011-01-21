@@ -1,0 +1,10 @@
+mymemcpy is a LD_PRELOAD shared library written for fixing
+a glibc possible regression documented here
+https://bugzilla.redhat.com/show_bug.cgi?id=638477.
+
+Use:
+
+LD_PRELOAD=/usr/lib/mymemcpy.so /opt/google/chrome/google-chrome
+
+if you have run configure with ./configure --prefix=/usr. Else
+change the path.
