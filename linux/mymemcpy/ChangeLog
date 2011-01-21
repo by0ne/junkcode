@@ -1,0 +1,8 @@
+2011-01-21  Elia Pinto <yersinia.spiros@gmail.com>
+
+	* linux/mymemcpy/.gitignore, linux/mymemcpy/AUTHORS,
+	linux/mymemcpy/COPYING, linux/mymemcpy/INSTALL,
+	linux/mymemcpy/Makefile.am, linux/mymemcpy/NEWS,
+	linux/mymemcpy/README, linux/mymemcpy/autoscan.log,
+	linux/mymemcpy/configure.ac, linux/mymemcpy/make-mymemcpy.sh,
+	linux/mymemcpy/mymemcpy.c: mymemcpy first add
