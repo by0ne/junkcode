@@ -1,0 +1,65 @@
+--- fms.init	2010-01-08 16:44:04.000000000 +0100
++++ fms.init.status	2010-03-22 10:47:31.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ #
+ # Copyright(C) 1993-2007 Adobe Systems Incorporated.  All rights reserved.
+ #
+@@ -9,6 +9,9 @@
+ # description: Flash Media Server
+ #
+ 
++# source function library
++. /etc/rc.d/init.d/functions
++
+ # Environment variables
+ PATH=.:/bin:/usr/bin:/usr/local/bin:/sbin:$PATH
+ export PATH
+@@ -37,6 +40,10 @@
+     cd "$DIR"
+     ./adminserver start > /dev/null 2>&1
+   fi
++  # check
++  pidfmsmaster="$(/sbin/pidof fmsmaster)"
++  pidfmsadmin="$(/sbin/pidof fmsadmin)"
++  [ -z "${pidfmsmaster}" -a -z "${pidfmsadmin}" ] && RETVAL=1
+ }
+ 
+ stop() {
+@@ -59,6 +66,15 @@
+   fi
+ }
+ 
++condrestart()
++{
++  pidfmsmaster="$(/sbin/pidof fmsmaster)"
++  if [ -n "${pidfmsmaster}" ]
++  then
++   stop
++   start
++  fi
++}
+ restart() {
+   stop
+   start
+@@ -81,8 +97,18 @@
+   restart)
+     restart
+     ;;
++  condrestart)
++    condrestart
++    ;;
++  status)
++    status fmsadmin
++    R1=$?
++    status fmsmaster
++    R2=$?
++    RETVAL=$(( $R1 + $R2 ))
++    ;;
+   *)
+-    echo $"Usage: $0 {start|stop|restart}"
++    echo $"Usage: $0 {start|stop|restart|condrestart|status}"
+     RETVAL=1
+ esac
+ 
