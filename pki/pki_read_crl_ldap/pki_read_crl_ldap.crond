@@ -1,0 +1,12 @@
+###################################
+# Function:
+#    pki_read_crl_ldap
+#    cron entry
+###################################
+# Purpose:
+#     This utility retrieve in DER format the Certification Revocation List(s)
+#     of the Bank of Italy PKI "CA Titolari" from a local DSA LDAP and
+#     store this on a local Web Server public folder.
+###################################
+prog="/usr/sbin/pki_read_crl_ldap.sh"
+* * * * * root [ -x "${prog}" ] && $prog >/dev/null 2>&1

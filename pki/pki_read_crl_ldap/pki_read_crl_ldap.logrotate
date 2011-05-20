@@ -1,0 +1,7 @@
+/var/log/pki_read_crl_ldap/*log {
+    rotate 5
+    weekly
+    missingok
+    size=1000k
+    notifempty
+}
