@@ -1,0 +1,62 @@
+How to use CCA
+--------------
+
+CCA is a module of the C Intermediate Language (CIL).
+
+The 'cilly' CIL driver program in bin/ is used to execute CCA. 
+
+In bin/tests/ you'll find a bunch of test source codes to test the functionality
+and to get used to CCA.
+
+=============
+
+The argument which you have to give to cilly is '--docodechecker'. This activates
+the CCA components. 
+
+The usage looks as follows:
+
+bin/> $ ./cilly <GCC options> <CCA options> --docodechecker <C file>
+
+where the <GCC options> are the include directories, compilation flags etc. which are
+needed to compile the given <C file>.
+
+where the <CCA options> are, '--myinput', '--mymalloc' or '--mydangerous'
+With '--myinput=X' you can define your own user input functions (see 0USERINPUT).
+X would be a file with the following format:
+<functionname>, <argument>
+
+Where <functionname> defines your function where user input is introduced into the program,
+and <argument> would be the argument where the userinput is stored in.
+
+With '--mymalloc=X' you can define your own malloc wrapper functions.
+X would be a file with the following format:
+<functionname>
+
+With '--mydangerous=X' you can define your own set of bufferoverflow-endangered functions.
+Syntax is the same as in '--myinput'.
+
+
+These wrappers allow a better analysis if the analyzed source code is split in 
+different C files (and you aren't using the CIL merger program).
+
+============
+
+For example if you want to define "getenv()" as a new user input function then you have
+to save in X:
+getenv, -1
+
+where the '-1' means 'user input is stored in the return value'. 
+          '0' would mean 'user input is stored in the first argument of function'.
+
+See the example bin/tests/tainted/tainted_getenv.c.
+
+----------------------------------------
+Example usage for bin/tests test files
+
+
+$ cd bin
+$ ./cilly --docodechecker tests/tainted/tainted_return.c 2>/dev/null
+
+----------------------------------------
+
+

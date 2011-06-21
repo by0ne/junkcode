@@ -1,0 +1,18 @@
+The theory is quite simple: from a security perspective user input is dangerous. 
+A buffer overflow where no function argument, array index or similar can be manipulated 
+from outside the program is not interesting though because no real exploitation can happen.
+The CCA has a predefined (and extensible) set of functions where user input originates from. 
+This is read, recv and recvfrom by default.
+Whenever one of these functions occur their predefined user input argument gets the 
+label "tainted".
+
+Another mechanism in the CCA tries to spread the taintedness of variables through the 
+whole source code. E.g.
+  y = x
+
+if x is tainted then y is set tainted aswell.
+
+With this method you know at every point in the program which variables are tainted and 
+which are not. This information is used by other components of the CCA, for example the 
+buffer overflow component.
+
