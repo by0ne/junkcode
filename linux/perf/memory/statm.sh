@@ -1,12 +1,12 @@
 cat /proc/"$1"/statm | awk '
 BEGIN { PGSZ=4 ; }
 {
-TOTAL = $1*$PGSZ;
-RSS = $2*$PGSZ;
+TOTAL = $1*PGSZ;
+RSS = $2*PGSZ;
 SHARED = $3*PGSZ;
 ANON = RSS-SHARED;
-TEXT = $4*$PGSZ;
-LIBS = $5$PGSZ;
+TEXT = $4*PGSZ;
+LIBS = $5*PGSZ;
 DATA = $6*PGSZ;
 }
 END {
