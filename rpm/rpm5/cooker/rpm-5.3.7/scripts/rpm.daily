@@ -1,0 +1,4 @@
+#!/bin/sh
+
+/usr/bin/rpmquery -qa --qf '%{name}-%{version}-%{release}.%{arch}.rpm\n' 2>&1 \
+	| sort > /var/log/rpmpkgs

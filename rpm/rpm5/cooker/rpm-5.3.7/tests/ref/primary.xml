@@ -1,0 +1,1778 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://linux.duke.edu/metadata/common" xmlns:rpm="http://linux.duke.edu/metadata/rpm" packages="50">
+<package type="rpm">
+  <name>cudf-test</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">e209149ebeb644f877c90a2ee5d91021bbdf5c5d</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225814677" build="1225814624"/>
+  <size package="3798" installed="3798" archive="3308"/>
+  <location xml:base="(none)" href="cudf-test-1-0.src.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>wellfleet.jbj.org</rpm:buildhost>
+    <rpm:header-range start="368" end="2812"/>
+    <rpm:provides>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>battery</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="3" rel="0"/>
+  <checksum type="sha" pkgid="YES">ecb92c1050496fd6d2e0c4ca84f88d54a3a14daa</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1684" installed="1684" archive="124"/>
+  <location xml:base="(none)" href="battery-3-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1636"/>
+    <rpm:provides>
+      <rpm:entry name="huge-battery"/>
+      <rpm:entry name="battery" flags="EQ" epoch="0" ver="3" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>bicycle</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="7" rel="0"/>
+  <checksum type="sha" pkgid="YES">bcb526b7bfd4829fc764bea436d1ad3de3bb49cc</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1668" installed="1668" archive="124"/>
+  <location xml:base="(none)" href="bicycle-7-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1620"/>
+    <rpm:provides>
+      <rpm:entry name="bicycle" flags="EQ" epoch="0" ver="7" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>car</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">cc217a0fd489f04565b1b402dd84203b70631eb0</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1756" installed="1756" archive="124"/>
+  <location xml:base="(none)" href="car-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1708"/>
+    <rpm:provides>
+      <rpm:entry name="car" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="engine"/>
+      <rpm:entry name="wheel"/>
+      <rpm:entry name="door"/>
+      <rpm:entry name="battery"/>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>door</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">ddde0c56f12810751039e6312166f4839e57690f</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1724" installed="1724" archive="124"/>
+  <location xml:base="(none)" href="door-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1676"/>
+    <rpm:provides>
+      <rpm:entry name="door" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="window"/>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>door</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="2" rel="0"/>
+  <checksum type="sha" pkgid="YES">53cd4376af0dbc9adf292d6156ef2299b6b2ebcb</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1724" installed="1724" archive="124"/>
+  <location xml:base="(none)" href="door-2-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1676"/>
+    <rpm:provides>
+      <rpm:entry name="door" flags="EQ" epoch="0" ver="2" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="window"/>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>electric-engine</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">bf73a6a58dd822e4756e49a9e6adb7b215d42ec1</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1848" installed="1848" archive="124"/>
+  <location xml:base="(none)" href="electric-engine-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1800"/>
+    <rpm:provides>
+      <rpm:entry name="engine"/>
+      <rpm:entry name="electric-engine" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="solar-collector"/>
+    </rpm:requires>
+    <rpm:conflicts>
+      <rpm:entry name="engine"/>
+      <rpm:entry name="electric-engine"/>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>electric-engine</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="2" rel="0"/>
+  <checksum type="sha" pkgid="YES">20f97d147678c4329e7e0152c29121b19ed22f20</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1848" installed="1848" archive="124"/>
+  <location xml:base="(none)" href="electric-engine-2-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1800"/>
+    <rpm:provides>
+      <rpm:entry name="engine"/>
+      <rpm:entry name="electric-engine" flags="EQ" epoch="0" ver="2" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="solar-collector"/>
+    </rpm:requires>
+    <rpm:conflicts>
+      <rpm:entry name="engine"/>
+      <rpm:entry name="electric-engine"/>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>gasoline-engine</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">42d64fd6d50f8126e8cefc537b1b727fc6e9ab3a</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1836" installed="1836" archive="124"/>
+  <location xml:base="(none)" href="gasoline-engine-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1788"/>
+    <rpm:provides>
+      <rpm:entry name="engine"/>
+      <rpm:entry name="gasoline-engine" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="turbo"/>
+    </rpm:requires>
+    <rpm:conflicts>
+      <rpm:entry name="engine"/>
+      <rpm:entry name="gasoline-engine"/>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>gasoline-engine</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="2" rel="0"/>
+  <checksum type="sha" pkgid="YES">b6a58d4eaad1ac3c0bc6b2fccac28a883d07fcff</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1776" installed="1776" archive="124"/>
+  <location xml:base="(none)" href="gasoline-engine-2-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1728"/>
+    <rpm:provides>
+      <rpm:entry name="engine"/>
+      <rpm:entry name="gasoline-engine" flags="EQ" epoch="0" ver="2" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+      <rpm:entry name="engine"/>
+      <rpm:entry name="gasoline-engine"/>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>glass</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">f44f046aeb322a5790e8128909a955e36aec97df</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1728" installed="1728" archive="124"/>
+  <location xml:base="(none)" href="glass-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1680"/>
+    <rpm:provides>
+      <rpm:entry name="glass" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+      <rpm:entry name="glass"/>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>glass</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="2" rel="0"/>
+  <checksum type="sha" pkgid="YES">51e68adafc4e5811981c5b12b8072526cc6ae389</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1736" installed="1736" archive="124"/>
+  <location xml:base="(none)" href="glass-2-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1688"/>
+    <rpm:provides>
+      <rpm:entry name="glass" flags="EQ" epoch="0" ver="2" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+      <rpm:entry name="glass"/>
+      <rpm:entry name="tire" flags="EQ" epoch="0" ver="2"/>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>solar-collector</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">cc6c410599b09015b50da5e67dba210f66076c9e</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1684" installed="1684" archive="124"/>
+  <location xml:base="(none)" href="solar-collector-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1636"/>
+    <rpm:provides>
+      <rpm:entry name="solar-collector" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>tire</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">31703c42bfa8a0580bf586a9bc3993865b47c26e</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1720" installed="1720" archive="124"/>
+  <location xml:base="(none)" href="tire-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1672"/>
+    <rpm:provides>
+      <rpm:entry name="tire" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+      <rpm:entry name="tire"/>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>tire</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="2" rel="0"/>
+  <checksum type="sha" pkgid="YES">5731a5187091d1c22cbf32e2874babcdd880a48b</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1720" installed="1720" archive="124"/>
+  <location xml:base="(none)" href="tire-2-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1672"/>
+    <rpm:provides>
+      <rpm:entry name="tire" flags="EQ" epoch="0" ver="2" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+      <rpm:entry name="tire"/>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>turbo</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">80ad38524956e565a427f525523f31df0dd4e89a</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1668" installed="1668" archive="124"/>
+  <location xml:base="(none)" href="turbo-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1620"/>
+    <rpm:provides>
+      <rpm:entry name="turbo" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>wheel</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="2" rel="0"/>
+  <checksum type="sha" pkgid="YES">07519197d9fbe0cfa7e3b1e2b2fc105a3a7e5134</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1728" installed="1728" archive="124"/>
+  <location xml:base="(none)" href="wheel-2-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1680"/>
+    <rpm:provides>
+      <rpm:entry name="wheel" flags="EQ" epoch="0" ver="2" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+      <rpm:entry name="wheel"/>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>wheel</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="3" rel="0"/>
+  <checksum type="sha" pkgid="YES">5ac9747a0b50baa3925e0280129837c5f1d90a9c</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1728" installed="1728" archive="124"/>
+  <location xml:base="(none)" href="wheel-3-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1680"/>
+    <rpm:provides>
+      <rpm:entry name="wheel" flags="EQ" epoch="0" ver="3" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+      <rpm:entry name="wheel"/>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>window</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">5413c1adbec480bbc5873ecba0d32356b5865111</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1728" installed="1728" archive="124"/>
+  <location xml:base="(none)" href="window-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1680"/>
+    <rpm:provides>
+      <rpm:entry name="window" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+      <rpm:entry name="window"/>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>window</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="2" rel="0"/>
+  <checksum type="sha" pkgid="YES">55566397439c3032be92102a882e58981b931bf7</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1788" installed="1788" archive="124"/>
+  <location xml:base="(none)" href="window-2-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1740"/>
+    <rpm:provides>
+      <rpm:entry name="window" flags="EQ" epoch="0" ver="2" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="glass" flags="EQ" epoch="0" ver="1"/>
+    </rpm:requires>
+    <rpm:conflicts>
+      <rpm:entry name="window"/>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>window</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="3" rel="0"/>
+  <checksum type="sha" pkgid="YES">ffa75392f8904ac4c5345f11adc42288f6c6076b</checksum>
+  <summary>CUDF test case packages.</summary>
+  <description>Some remarks about the example follow.
+
+* The example does not rely on any extended properties.
+* Intuitively, the example comes from a packaging world where different
+  versions of the same package are implicitly conflicting with each other.
+  To grasp this, all packages for which multiple versions are available
+  declare a non-versioned conflicts with themselves.
+* The engine feature is mutually exclusive, only one (installed) package
+  can provide it. This is encoded using conflicts with the feature from
+  each package providing it.</description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225919947" build="1225919947"/>
+  <size package="1788" installed="1788" archive="124"/>
+  <location xml:base="(none)" href="window-3-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>cudf-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1740"/>
+    <rpm:provides>
+      <rpm:entry name="window" flags="EQ" epoch="0" ver="3" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="glass" flags="EQ" epoch="0" ver="2"/>
+    </rpm:requires>
+    <rpm:conflicts>
+      <rpm:entry name="window"/>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>devtool-sanity</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1.0" rel="1"/>
+  <checksum type="sha" pkgid="YES">b041a71594a3bf628883ea514861ce0bdec828f1</checksum>
+  <summary>devtool sanity test</summary>
+  <description>Trivial standalone test package</description>
+  <packager></packager>
+  <url>http://rpm5.org/</url>
+  <time file="1223910684" build="1223910429"/>
+  <size package="6783" installed="6783" archive="2460"/>
+  <location xml:base="(none)" href="devtool-sanity-1.0-1.src.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Development/Tools</rpm:group>
+    <rpm:buildhost>wellfleet.jbj.org</rpm:buildhost>
+    <rpm:header-range start="368" end="5155"/>
+    <rpm:provides>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>edos-test</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">567d8380ab37ff1a109df15b9a93e3d08cdbd3be</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1212949522" build="1212949492"/>
+  <size package="2664" installed="2664" archive="2520"/>
+  <location xml:base="(none)" href="edos-test-1-0.src.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>wellfleet.jbj.org</rpm:buildhost>
+    <rpm:header-range start="368" end="2004"/>
+    <rpm:provides>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>car</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">3edb4f1f8aaa2b376704bfc47d160029cf506cfb</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225920081" build="1225920081"/>
+  <size package="1204" installed="1204" archive="124"/>
+  <location xml:base="(none)" href="car-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>edos-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1156"/>
+    <rpm:provides>
+      <rpm:entry name="car" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="engine"/>
+      <rpm:entry name="wheel"/>
+      <rpm:entry name="door"/>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>door</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">506dd746417d8e9082e8d083f6389d0e36a200a7</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225920081" build="1225920081"/>
+  <size package="1120" installed="1120" archive="124"/>
+  <location xml:base="(none)" href="door-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>edos-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1072"/>
+    <rpm:provides>
+      <rpm:entry name="door" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>door</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="2" rel="0"/>
+  <checksum type="sha" pkgid="YES">2bbca140363abdb93dd9e6c2be8f34c1cc89ab64</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225920081" build="1225920081"/>
+  <size package="1184" installed="1184" archive="124"/>
+  <location xml:base="(none)" href="door-2-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>edos-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1136"/>
+    <rpm:provides>
+      <rpm:entry name="door" flags="EQ" epoch="0" ver="2" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="window"/>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>engine</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">739a0b95a0eab835aed7eb5d3a4bf778774742a2</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225920081" build="1225920081"/>
+  <size package="1188" installed="1188" archive="124"/>
+  <location xml:base="(none)" href="engine-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>edos-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1140"/>
+    <rpm:provides>
+      <rpm:entry name="engine" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="turbo"/>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>engine</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="2" rel="0"/>
+  <checksum type="sha" pkgid="YES">5b1f892b9480e4e72ee8a4066c8d2446780b6a95</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225920081" build="1225920081"/>
+  <size package="1128" installed="1128" archive="124"/>
+  <location xml:base="(none)" href="engine-2-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>edos-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1080"/>
+    <rpm:provides>
+      <rpm:entry name="engine" flags="EQ" epoch="0" ver="2" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>glass</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">f6df63eadf97c3cef3533e4647c198973d8353ba</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225920081" build="1225920081"/>
+  <size package="1124" installed="1124" archive="124"/>
+  <location xml:base="(none)" href="glass-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>edos-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1076"/>
+    <rpm:provides>
+      <rpm:entry name="glass" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>glass</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="2" rel="0"/>
+  <checksum type="sha" pkgid="YES">9b669e1a9d92ea409cbd535e4cefab71fe9e263b</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225920081" build="1225920081"/>
+  <size package="1184" installed="1184" archive="124"/>
+  <location xml:base="(none)" href="glass-2-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>edos-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1136"/>
+    <rpm:provides>
+      <rpm:entry name="glass" flags="EQ" epoch="0" ver="2" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+      <rpm:entry name="tyre" flags="EQ" epoch="0" ver="2"/>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>turbo</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">63ca4d07405d7f6ead31a3a241a2eaa525946dee</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225920081" build="1225920081"/>
+  <size package="1124" installed="1124" archive="124"/>
+  <location xml:base="(none)" href="turbo-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>edos-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1076"/>
+    <rpm:provides>
+      <rpm:entry name="turbo" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>tyre</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">2f5545ca6b3971fc7148f52ac87d386d4825f603</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225920081" build="1225920081"/>
+  <size package="1120" installed="1120" archive="124"/>
+  <location xml:base="(none)" href="tyre-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>edos-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1072"/>
+    <rpm:provides>
+      <rpm:entry name="tyre" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>tyre</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="2" rel="0"/>
+  <checksum type="sha" pkgid="YES">39f4c4f8720e07ad82a5fec9f31cef4e641b9075</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225920081" build="1225920081"/>
+  <size package="1120" installed="1120" archive="124"/>
+  <location xml:base="(none)" href="tyre-2-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>edos-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1072"/>
+    <rpm:provides>
+      <rpm:entry name="tyre" flags="EQ" epoch="0" ver="2" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>wheel</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="2" rel="0"/>
+  <checksum type="sha" pkgid="YES">2df77b08b87840ddc95ddfbf77b466cdd26ccf32</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225920081" build="1225920081"/>
+  <size package="1124" installed="1124" archive="124"/>
+  <location xml:base="(none)" href="wheel-2-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>edos-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1076"/>
+    <rpm:provides>
+      <rpm:entry name="wheel" flags="EQ" epoch="0" ver="2" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>wheel</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="3" rel="0"/>
+  <checksum type="sha" pkgid="YES">04945b86bc5dbdeadb1ff5e0dde031e39262180f</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225920081" build="1225920081"/>
+  <size package="1180" installed="1180" archive="124"/>
+  <location xml:base="(none)" href="wheel-3-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>edos-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1132"/>
+    <rpm:provides>
+      <rpm:entry name="wheel" flags="EQ" epoch="0" ver="3" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="tyre"/>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>window</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="0" rel="0"/>
+  <checksum type="sha" pkgid="YES">6321123c43fb30dafdcdf26dca3412715e6e47ae</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225920081" build="1225920081"/>
+  <size package="1128" installed="1128" archive="124"/>
+  <location xml:base="(none)" href="window-0-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>edos-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1080"/>
+    <rpm:provides>
+      <rpm:entry name="window" flags="EQ" epoch="0" ver="0" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>window</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">3ae70efb3360810f32ac1c308daf38cd8f924439</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225920081" build="1225920081"/>
+  <size package="1188" installed="1188" archive="124"/>
+  <location xml:base="(none)" href="window-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>edos-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1140"/>
+    <rpm:provides>
+      <rpm:entry name="window" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="glass"/>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>window</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="2" rel="0"/>
+  <checksum type="sha" pkgid="YES">4bd2818b3971fcca24e57c21be6f457c24352c11</checksum>
+  <summary>EDOS test case packages.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://www.mancoosi.org/edos/manager.html</url>
+  <time file="1225920081" build="1225920081"/>
+  <size package="1188" installed="1188" archive="124"/>
+  <location xml:base="(none)" href="window-2-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Public Domain</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>edos-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1140"/>
+    <rpm:provides>
+      <rpm:entry name="window" flags="EQ" epoch="0" ver="2" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="glass"/>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>popt</name>
+  <arch>i386</arch>
+  <version epoch="0" ver="1.14" rel="1"/>
+  <checksum type="sha" pkgid="YES">26c75af3071d9cd2a8efe9a1d2af9c3518791001</checksum>
+  <summary>A C library for parsing command line parameters.</summary>
+  <description>Popt is a C library for parsing command line parameters. Popt was
+heavily influenced by the getopt() and getopt_long() functions, but it
+improves on them by allowing more powerful argument expansion. Popt
+can parse arbitrary argv[] style arrays and automatically set
+variables based on command line arguments. Popt allows command line
+arguments to be aliased via configuration files and includes utility
+functions for parsing arbitrary strings into argv[] arrays using
+shell-like rules.</description>
+  <packager></packager>
+  <url></url>
+  <time file="1207484927" build="1207158035"/>
+  <size package="102588" installed="102588" archive="226620"/>
+  <location xml:base="(none)" href="popt-1.14-1.i386.rpm"/>
+  <format>
+    <rpm:license>X Consortium</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>System Environment/Libraries</rpm:group>
+    <rpm:buildhost>wellfleet.jbj.org</rpm:buildhost>
+    <rpm:sourcerpm>popt-1.14-1.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="368" end="7712"/>
+    <rpm:provides>
+      <rpm:entry name="libpopt.so.0"/>
+      <rpm:entry name="libpopt.so.0(LIBPOPT_0)"/>
+      <rpm:entry name="libtool(/lib/libpopt.la)"/>
+      <rpm:entry name="popt" flags="EQ" epoch="0" ver="1.14" rel="1"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="libc.so.6"/>
+      <rpm:entry name="libc.so.6(GLIBC_2.0)"/>
+      <rpm:entry name="libc.so.6(GLIBC_2.1)"/>
+      <rpm:entry name="libc.so.6(GLIBC_2.1.3)"/>
+      <rpm:entry name="libc.so.6(GLIBC_2.2)"/>
+      <rpm:entry name="libc.so.6(GLIBC_2.3)"/>
+      <rpm:entry name="rtld(GNU_HASH)"/>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>popt</name>
+  <arch>i386</arch>
+  <version epoch="0" ver="1.14" rel="1"/>
+  <checksum type="sha" pkgid="YES">34d94d448f5cbd4e6caa13f95e6af8f541f2bade</checksum>
+  <summary>A C library for parsing command line parameters.</summary>
+  <description>Popt is a C library for parsing command line parameters. Popt was
+heavily influenced by the getopt() and getopt_long() functions, but it
+improves on them by allowing more powerful argument expansion. Popt
+can parse arbitrary argv[] style arrays and automatically set
+variables based on command line arguments. Popt allows command line
+arguments to be aliased via configuration files and includes utility
+functions for parsing arbitrary strings into argv[] arrays using
+shell-like rules.</description>
+  <packager></packager>
+  <url></url>
+  <time file="1207484942" build="1207158035"/>
+  <size package="705199" installed="705199" archive="697748"/>
+  <location xml:base="(none)" href="popt-1.14-1.src.rpm"/>
+  <format>
+    <rpm:license>X Consortium</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>System Environment/Libraries</rpm:group>
+    <rpm:buildhost>wellfleet.jbj.org</rpm:buildhost>
+    <rpm:header-range start="368" end="7680"/>
+    <rpm:provides>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="gettext"/>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>probes-test</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">b2e1fd2756b27bcf888c990c02be7912074cd096</checksum>
+  <summary>RPM dependency probes test</summary>
+  <description>This is the parent package.</description>
+  <packager></packager>
+  <url></url>
+  <time file="1213640390" build="1213640344"/>
+  <size package="11746" installed="11746" archive="9084"/>
+  <location xml:base="(none)" href="probes-test-1-0.src.rpm"/>
+  <format>
+    <rpm:license>Any</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Any</rpm:group>
+    <rpm:buildhost>wellfleet.jbj.org</rpm:buildhost>
+    <rpm:header-range start="368" end="7776"/>
+    <rpm:provides>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="gnupg(/X/probes-test/test1.asc)" flags="EQ" epoch="0" ver="4E23E878D41A0A88EDFCFA5A6E744ACBA9C09E30"/>
+      <rpm:entry name="signature(/X/probes-test/test1.asc)" flags="EQ" epoch="0" ver="/X/probes" rel="test/key1.pgp:4E23E878D41A0A88EDFCFA5A6E744ACBA9C09E30"/>
+      <rpm:entry name="signature(/X/probes-test/test1.txt:/X/probes-test/test1.sig)" flags="EQ" epoch="0" ver="/X/probes" rel="test/key1.pgp:4E23E878D41A0A88EDFCFA5A6E744ACBA9C09E30"/>
+      <rpm:entry name="gnupg(/X/probes-test/test2.asc)" flags="EQ" epoch="0" ver="7D121A8FC05DC18A4329E9EF67042EC961B7AE34"/>
+      <rpm:entry name="signature(/X/probes-test/test2.asc)" flags="EQ" epoch="0" ver="/X/probes" rel="test/key2.pgp:7D121A8FC05DC18A4329E9EF67042EC961B7AE34"/>
+      <rpm:entry name="signature(/X/probes-test/test2.txt:/X/probes-test/test2.sig)" flags="EQ" epoch="0" ver="/X/probes" rel="test/key2.pgp:7D121A8FC05DC18A4329E9EF67042EC961B7AE34"/>
+      <rpm:entry name="gnupg(/X/probes-test/test3.asc)" flags="EQ" epoch="0" ver="7D121A8FC05DC18A4329E9EF67042EC961B7AE34"/>
+      <rpm:entry name="signature(/X/probes-test/test3.asc)" flags="EQ" epoch="0" ver="/X/probes" rel="test/key2.pgp:7D121A8FC05DC18A4329E9EF67042EC961B7AE34"/>
+      <rpm:entry name="signature(/X/probes-test/test3.txt:/X/probes-test/test3.sig)" flags="EQ" epoch="0" ver="/X/probes" rel="test/key2.pgp:7D121A8FC05DC18A4329E9EF67042EC961B7AE34"/>
+      <rpm:entry name="user(root)"/>
+      <rpm:entry name="!user(ToOr)"/>
+      <rpm:entry name="group(root)"/>
+      <rpm:entry name="!group(ToOr)"/>
+      <rpm:entry name="mounted(/)"/>
+      <rpm:entry name="!mounted(/PaCkAgEs)"/>
+      <rpm:entry name="diskspace(/tmp)" flags="GT" epoch="0" ver="1"/>
+      <rpm:entry name="diskspace(/tmp)" flags="GE" epoch="0" ver="1Kb"/>
+      <rpm:entry name="!diskspace(/tmp)" flags="LT" epoch="0" ver="1Mb"/>
+      <rpm:entry name="executable(/bin/sh)"/>
+      <rpm:entry name="executable(cat)"/>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>probes</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="1" rel="0"/>
+  <checksum type="sha" pkgid="YES">35bbbe780474ccf86d1d24b5291d30223780bfa9</checksum>
+  <summary>RPM dependency probes test</summary>
+  <description>This is the arch-specific package.</description>
+  <packager></packager>
+  <url></url>
+  <time file="1225920177" build="1225920177"/>
+  <size package="1324" installed="1324" archive="124"/>
+  <location xml:base="(none)" href="probes-1-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Any</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Any</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>probes-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1276"/>
+    <rpm:provides>
+      <rpm:entry name="probes" flags="EQ" epoch="0" ver="1" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="user(root)"/>
+      <rpm:entry name="!user(ToOr)"/>
+      <rpm:entry name="group(root)"/>
+      <rpm:entry name="!group(ToOr)"/>
+      <rpm:entry name="mounted(/)"/>
+      <rpm:entry name="!mounted(/PaCkAgEs)"/>
+      <rpm:entry name="diskspace(/tmp)" flags="GT" epoch="0" ver="1"/>
+      <rpm:entry name="diskspace(/tmp)" flags="GE" epoch="0" ver="1Kb"/>
+      <rpm:entry name="!diskspace(/tmp)" flags="LT" epoch="0" ver="1Mb"/>
+      <rpm:entry name="executable(/bin/sh)"/>
+      <rpm:entry name="executable(cat)"/>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>probes</name>
+  <arch>noarch</arch>
+  <version epoch="0" ver="2" rel="0"/>
+  <checksum type="sha" pkgid="YES">6b1d710bf943fd235173e7a8f94bc48948af9bc0</checksum>
+  <summary>RPM dependency probes test</summary>
+  <description>This is the noarch package.</description>
+  <packager></packager>
+  <url></url>
+  <time file="1225920177" build="1225920177"/>
+  <size package="1316" installed="1316" archive="124"/>
+  <location xml:base="(none)" href="probes-2-0.noarch.rpm"/>
+  <format>
+    <rpm:license>Any</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Any</rpm:group>
+    <rpm:buildhost>ala-lpggp1</rpm:buildhost>
+    <rpm:sourcerpm>probes-test-1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="280" end="1268"/>
+    <rpm:provides>
+      <rpm:entry name="probes" flags="EQ" epoch="0" ver="2" rel="0"/>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="user(root)"/>
+      <rpm:entry name="!user(ToOr)"/>
+      <rpm:entry name="group(root)"/>
+      <rpm:entry name="!group(ToOr)"/>
+      <rpm:entry name="mounted(/)"/>
+      <rpm:entry name="!mounted(/PaCkAgEs)"/>
+      <rpm:entry name="diskspace(/tmp)" flags="GT" epoch="0" ver="1"/>
+      <rpm:entry name="diskspace(/tmp)" flags="GE" epoch="0" ver="1Kb"/>
+      <rpm:entry name="!diskspace(/tmp)" flags="LT" epoch="0" ver="1Mb"/>
+      <rpm:entry name="executable(/bin/sh)"/>
+      <rpm:entry name="executable(cat)"/>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>triggers-D</name>
+  <arch>i386</arch>
+  <version epoch="0" ver="1.0" rel="1"/>
+  <checksum type="sha" pkgid="YES">c2fc0cea2a2f453f20cb80419b2fd33addd2f52a</checksum>
+  <summary>Triggers on D functional tests.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://rpm5.org/</url>
+  <time file="1223913304" build="1223913285"/>
+  <size package="4604" installed="4604" archive="1584"/>
+  <location xml:base="(none)" href="triggers-D-1.0-1.src.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Development/Tools</rpm:group>
+    <rpm:buildhost>wellfleet.jbj.org</rpm:buildhost>
+    <rpm:header-range start="368" end="4080"/>
+    <rpm:provides>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>triggers-DP</name>
+  <arch>i386</arch>
+  <version epoch="0" ver="1.0" rel="1"/>
+  <checksum type="sha" pkgid="YES">5a41e48e2ccfc5c5536d14ff404b46b2b228b6cc</checksum>
+  <summary>Triggers on D pattern functional tests.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://rpm5.org/</url>
+  <time file="1223957387" build="1223957353"/>
+  <size package="4634" installed="4634" archive="1600"/>
+  <location xml:base="(none)" href="triggers-DP-1.0-1.src.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Development/Tools</rpm:group>
+    <rpm:buildhost>wellfleet.jbj.org</rpm:buildhost>
+    <rpm:header-range start="368" end="4104"/>
+    <rpm:provides>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>triggers-F</name>
+  <arch>i386</arch>
+  <version epoch="0" ver="1.0" rel="1"/>
+  <checksum type="sha" pkgid="YES">3295b197089d5e0c4ef7c80ce0833757f1527ad4</checksum>
+  <summary>Triggers on F functional tests.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://rpm5.org/</url>
+  <time file="1223913545" build="1223913521"/>
+  <size package="4606" installed="4606" archive="1600"/>
+  <location xml:base="(none)" href="triggers-F-1.0-1.src.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Development/Tools</rpm:group>
+    <rpm:buildhost>wellfleet.jbj.org</rpm:buildhost>
+    <rpm:header-range start="368" end="4080"/>
+    <rpm:provides>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>triggers-FP</name>
+  <arch>i386</arch>
+  <version epoch="0" ver="1.0" rel="1"/>
+  <checksum type="sha" pkgid="YES">fe4b16a2559f3bb282b40a0a951f20b9faefe303</checksum>
+  <summary>Triggers on F pattern functional tests.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://rpm5.org/</url>
+  <time file="1223957660" build="1223957630"/>
+  <size package="4638" installed="4638" archive="1616"/>
+  <location xml:base="(none)" href="triggers-FP-1.0-1.src.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Development/Tools</rpm:group>
+    <rpm:buildhost>wellfleet.jbj.org</rpm:buildhost>
+    <rpm:header-range start="368" end="4104"/>
+    <rpm:provides>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>triggers-N</name>
+  <arch>i386</arch>
+  <version epoch="0" ver="1.0" rel="1"/>
+  <checksum type="sha" pkgid="YES">6e6849792e60bb2d685cd7051d7e25c9385f2875</checksum>
+  <summary>Triggers on N functional tests.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://rpm5.org/</url>
+  <time file="1223911947" build="1223911215"/>
+  <size package="4603" installed="4603" archive="1560"/>
+  <location xml:base="(none)" href="triggers-N-1.0-1.src.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Development/Tools</rpm:group>
+    <rpm:buildhost>wellfleet.jbj.org</rpm:buildhost>
+    <rpm:header-range start="368" end="4080"/>
+    <rpm:provides>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>triggers-NA</name>
+  <arch>i386</arch>
+  <version epoch="0" ver="1.0" rel="1"/>
+  <checksum type="sha" pkgid="YES">32c017be3c279f1c62e89495b1a98b3a6fb60ebd</checksum>
+  <summary>Triggers on N.A compound functional tests.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://rpm5.org/</url>
+  <time file="1224093895" build="1224093853"/>
+  <size package="4650" installed="4650" archive="1680"/>
+  <location xml:base="(none)" href="triggers-NA-1.0-1.src.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Development/Tools</rpm:group>
+    <rpm:buildhost>wellfleet.jbj.org</rpm:buildhost>
+    <rpm:header-range start="368" end="4108"/>
+    <rpm:provides>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+<package type="rpm">
+  <name>triggers-P</name>
+  <arch>i386</arch>
+  <version epoch="0" ver="1.0" rel="1"/>
+  <checksum type="sha" pkgid="YES">b02c0c40ed7e14949b4e73b54b08476797c7fffb</checksum>
+  <summary>Triggers on P functional tests.</summary>
+  <description></description>
+  <packager></packager>
+  <url>http://rpm5.org/</url>
+  <time file="1223911947" build="1223911669"/>
+  <size package="4599" installed="4599" archive="1432"/>
+  <location xml:base="(none)" href="triggers-P-1.0-1.src.rpm"/>
+  <format>
+    <rpm:license>Public Domain</rpm:license>
+    <rpm:vendor/>
+    <rpm:group>Development/Tools</rpm:group>
+    <rpm:buildhost>wellfleet.jbj.org</rpm:buildhost>
+    <rpm:header-range start="368" end="4080"/>
+    <rpm:provides>
+    </rpm:provides>
+    <rpm:requires>
+    </rpm:requires>
+    <rpm:conflicts>
+    </rpm:conflicts>
+    <rpm:obsoletes>
+    </rpm:obsoletes>
+  </format>
+</package>
+</metadata>

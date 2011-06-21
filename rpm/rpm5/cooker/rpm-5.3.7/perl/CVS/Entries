@@ -1,0 +1,25 @@
+D/RPM////
+D/t////
+/.cvsignore/1.7/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/META.yml/1.2/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/Makefile.PL.in/1.27/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/README/1.2/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/RPM_Constant.xs/1.2/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/RPM_Dependencies.xs/1.12/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/RPM_Header.xs/1.25/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/RPM_PackageIterator.xs/1.12/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/RPM_Problems.xs/1.2/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/RPM_Spec.xs/1.18/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/foo.i386.rpm/1.1/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/hdlist-test.hdr/1.2/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/rpmxs.c/1.13/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/rpmxs.h/1.5/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/test-rpm-1.0-1.noarch.rpm/1.3/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/test-rpm-1.0-1.src.rpm/1.3/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/test-rpm.spec/1.2/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/typemap/1.11/Sun Nov 21 05:09:34 2010//Trpm-5_3
+/Makefile.am/1.20.2.4/Thu Dec  2 16:58:34 2010//Trpm-5_3
+/RPM.pm/1.9.4.3/Thu Dec  2 16:58:34 2010//Trpm-5_3
+/RPM.xs/1.32.2.3/Thu Dec  2 16:58:34 2010//Trpm-5_3
+/RPM_Transaction.xs/1.17.4.4/Thu Dec  2 16:58:34 2010//Trpm-5_3
+/RPM_Files.xs/1.9.4.1/Fri Dec 10 22:08:03 2010//Trpm-5_3

@@ -1,0 +1,13 @@
+static const char * plaintextfn = "/home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/tests/tmp/plaintext";
+static const char * DSAsig = "/home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/tests/tmp/DSA.sig";
+static const char * DSAsigpem = "/home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/tests/tmp/DSA.sigpem";
+static const char * DSApem = "/home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/tests/tmp/DSA.pem";
+static const char * DSApub = "/home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/tests/tmp/DSA.pub";
+static const char * DSApubpem = "/home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/tests/tmp/DSA.pubpem";
+static const char * DSApubid = "";
+static const char * RSAsig = "/home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/tests/tmp/RSA.sig";
+static const char * RSAsigpem = "/home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/tests/tmp/RSA.sigpem";
+static const char * RSApem = "/home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/tests/tmp/RSA.pem";
+static const char * RSApub = "/home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/tests/tmp/RSA.pub";
+static const char * RSApubpem = "/home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/tests/tmp/RSA.pubpem";
+static const char * RSApubid = "";
