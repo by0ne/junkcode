@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 ###########
-# Retrived from
+# Retrieved from
 #    https://fedoraproject.org/wiki/UnderstandingDSOLinkChange
 #Prepare position-independent code:
 
