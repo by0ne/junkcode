@@ -1,0 +1,62 @@
+<version>
+  5.3.7
+</version>
+ 
+<headers>
+  fs.h
+<!-- fsm.h -->
+  manifest.h
+  misc.h
+<!-- psm.h -->
+  rpmal.h
+  rpmcli.h
+  rpmds.h
+  rpmfc.h
+  rpmfi.h
+  rpmgi.h
+  rpmlib.h
+  rpmlock.h
+<!-- rpmluaext.h -->
+  rpmps.h
+  rpmrc.h
+<!-- rpmrollback.h -->
+  rpmte.h
+  rpmts.h
+  rpmversion.h
+</headers>
+ 
+<libs>
+  /home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/lib/.libs/librpm.so
+  /home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/rpmdb/.libs/librpmdb.so
+  /home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/rpmio/.libs/librpmio.so
+  /home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/misc/.libs/librpmmisc.so
+</libs>
+
+<include_paths>
+  /home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/lib
+  /home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/rpmdb
+  /home/peroyvind/Dokumenter/mandriva/rpm/cvs/rpm-5_3/rpmio
+</include_paths>
+
+<gcc_options>
+  -g -O2 -fno-delete-null-pointer-checks -D_FORTIFY_SOURCE=2 -fstack-protector -fexceptions -fexceptions -Wno-missing-field-initializers -D_GNU_SOURCE -D_REENTRANT        
+</gcc_options>
+
+<opaque_types>
+</opaque_types>
+<skip_interfaces>
+</skip_interfaces>
+<include_preamble>
+  stdint.h
+  stdio.h
+  stdlib.h
+  string.h
+  assert.h
+  rpmiotypes.h
+  rpmio.h
+  rpmtypes.h
+  rpmevr.h
+  rpmtag.h
+</include_preamble>
+<libs_depend>
+</libs_depend>
