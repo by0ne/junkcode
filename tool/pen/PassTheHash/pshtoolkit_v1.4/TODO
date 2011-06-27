@@ -1,0 +1,22 @@
+Pass-The-Hash Toolkit 1.4 by Hernan Ochoa (hochoa@coresecurity.com, hernan@gmail.com)
+=====================================================================================
+
+
+TODO:
+
+-Add support for windows 2000 for all tools (iam,whosthere,iam-alt,whosthere-alt)
+-Improve Vista support for all tools (iam,whosthere,iam-alt,whosther-alt)
+-Create a table detailing all supported platforms
+-Make whosthere and whosthere-alt run in the background when the -i switch is used
+-Change iam.exe to avoid executing code inside lsass.exe to change the credentials.
+Use the whosthere.exe approach, where no code is executed inside lsass.exe to
+get the credentials.
+-Add support for other auth methods (kerberos, etc).. in the works..
+-Fix bug when sometimes the credentials stored in memory by IAM get corrupted
+-Add support for a switch similar to -i that will detect login attempts and
+obtain credentials at that moment instead than every X amount of seconds
+
+
+
+
+

