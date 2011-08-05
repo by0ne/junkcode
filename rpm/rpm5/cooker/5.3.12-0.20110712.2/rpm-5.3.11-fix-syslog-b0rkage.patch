@@ -1,0 +1,38 @@
+--- rpm-5.3.11/lib/psm.c.syslog~	2011-05-25 16:21:51.465345513 +0200
++++ rpm-5.3.11/lib/psm.c	2011-05-25 16:21:54.565306757 +0200
+@@ -65,6 +65,11 @@
+ 
+ #include "debug.h"
+ 
++#if HAVE_SYSLOG
++#include <syslog.h>
++#include <rpmlog.h>
++#endif
++
+ #define	_PSM_DEBUG	0
+ /*@unchecked@*/
+ int _psm_debug = _PSM_DEBUG;
+@@ -3070,9 +3075,9 @@ assert(psm->mi == NULL);
+ 	    else
+ 		rc = rpmdbAdd(rpmtsGetRdb(ts), tid, fi->h, NULL);
+ 	    (void) rpmswExit(rpmtsOp(ts, RPMTS_OP_DBADD), 0);
+-#if defined(HAVE_SYSLOG_H) && defined(RPM_VENDOR_MANDRIVA) /* log-install-remove-to-syslog */
++#if defined(HAVE_SYSLOG) && defined(RPM_VENDOR_MANDRIVA) /* log-install-remove-to-syslog */
+     	    {
+-		char *s, fmt;
++		char *s, *fmt;
+ 		fmt = rpmExpand("%{___NVRA}", NULL);
+ 		s = headerSprintf(fi->h, fmt,
+ 			rpmTagTable, rpmHeaderFormats, NULL);
+@@ -3110,9 +3115,9 @@ assert(psm->te != NULL);
+ 	(void) rpmswEnter(rpmtsOp(ts, RPMTS_OP_DBREMOVE), 0);
+ 	rc = rpmdbRemove(rpmtsGetRdb(ts), rpmtsGetTid(ts), fi->record, NULL);
+ 	(void) rpmswExit(rpmtsOp(ts, RPMTS_OP_DBREMOVE), 0);
+-#if defined(HAVE_SYSLOG_H) && defined(RPM_VENDOR_MANDRIVA) /* log-install-remove-to-syslog */
++#if defined(HAVE_SYSLOG) && defined(RPM_VENDOR_MANDRIVA) /* log-install-remove-to-syslog */
+         {
+-	    char *s, fmt;
++	    char *s, *fmt;
+ 	    fmt = rpmExpand("%{___NVRA}", NULL);
+ 	    s = headerSprintf(fi->h, fmt,
+ 		    rpmTagTable, rpmHeaderFormats, NULL);
