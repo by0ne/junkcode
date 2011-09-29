@@ -1,0 +1,12 @@
+--- rpm-5.3.10/tools/rpmdigest.c.doxygen~	2009-10-10 15:57:00.000000000 +0200
++++ rpm-5.3.10/tools/rpmdigest.c	2011-05-16 09:28:13.242200969 +0200
+@@ -898,8 +898,7 @@ The following two options are useful onl
+         N_("\
+ When checking, the input should be a former output of this program.  The\n\
+ default mode is to print a line with digest, a character indicating type\n\
+-(`*' for binary, ` ' for text), and name for each FILE.\n\
+-"), NULL },
++(`*' for binary, ` ' for text), and name for each FILE.\n"), NULL },
+ 
+   POPT_TABLEEND
+ };

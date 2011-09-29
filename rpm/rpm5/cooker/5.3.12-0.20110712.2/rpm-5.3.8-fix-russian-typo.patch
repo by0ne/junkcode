@@ -1,0 +1,11 @@
+--- rpm-5.3.8/po/ru.po.ru_typo~	2011-02-10 22:25:44.205491002 +0100
++++ rpm-5.3.8/po/ru.po	2011-02-10 22:25:49.050491001 +0100
+@@ -3015,7 +3015,7 @@ msgstr "(установлен)"
+ #: lib/rpmps.c:299
+ #, c-format
+ msgid "%s conflicts with %s%s"
+-msgstr "%s конфликтует с%s%s"
++msgstr "%s конфликтует с %s%s"
+ 
+ #: lib/rpmps.c:305
+ #, fuzzy, c-format
