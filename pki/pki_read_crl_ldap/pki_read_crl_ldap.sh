@@ -2,7 +2,7 @@
 #
 ####################################################################
 # pki_read_crl_ldap.sh
-# $Id: pki_read_crl_ldap.sh,v 2.2  Mon Dec 6 12:43 CET 2010 EP Exp $
+# $Id: pki_read_crl_ldap.sh,v 2.3  Thu Sep 29 15:06:19 CEST 2011 EP Exp $
 ####################################################################
 # Function: 
 #   - Extract crl from an LDAP repository and publish in
@@ -25,6 +25,8 @@
 #     and use the xxx_APPLICATIVA env. Change TITOLARI definition
 #     in ACCREDITATA : was wrong semantically
 #     delete anyway ldapsearch-certificateRevocation from tmp
+#   - Thu Sep 29 15:05:32 CEST 2011 v2.3
+#     add CA_COLLAUDO 
 # Credit   : style inspired from rhel-eal3.bash 
 ####################################################################
 # Note on style (quoted from rhel-eal3.bash):
@@ -64,6 +66,26 @@ Die () {
    exit $_EXIT_FAILURE
 }
 
+: --Warn
+#####################
+# Purpose:
+#  write an error message to syslog and to a logfile.
+#  Then return with error
+# Parameters:
+# $@ contain the error message
+#####################
+Warn () {
+   local MESSAGE="$@"
+   local HOSTNAME="$(/bin/hostname)"
+   local DATE="$(/bin/date '+%a %b %d %X')"
+
+   echo "$DATE $HOSTNAME $_PROGNAME: ERROR: $MESSAGE" >> "${_LOGFILE}"
+   /bin/chmod 444 ${_LOGFILE} >/dev/null 2>&1
+   
+   /usr/bin/logger -p ${_LOGFACILITY}.${_LOGPRI} -t "${_PROGNAME}" "ERROR: ${MESSAGE}"
+
+   return $_EXIT_FAILURE
+}
 : --Backup_And_Copy_Crl
 #####################
 # Purpose:
@@ -90,6 +112,8 @@ Backup_And_Copy_Crl () {
 
 : --Retrieve_CRL_From_DSA
 #
+# Note: if the ldap search go wrong don't die
+# but if the Backup go wrong die instead
 Retrieve_CRL_From_DSA () {
         
 
@@ -106,7 +130,13 @@ Retrieve_CRL_From_DSA () {
         		local SEARCH_BASE="${_SEARCH_BASE_APPLICATIVA}"
         		local WEB_CRL_FILE="${_WEB_CRL_FILE_APPLICATIVA}"
 		else
-              		Die "error Retrieve_CRL_From DSA: bad parameter" 
+       			if [[ ${CA_TYPE} = "CA_COLLAUDO" ]]
+       	        	then
+        			local SEARCH_BASE="${_SEARCH_BASE_COLLAUDO}"
+        			local WEB_CRL_FILE="${_WEB_CRL_FILE_COLLAUDO}"
+                        else
+              			Die "error Retrieve_CRL_From DSA: bad parameter" 
+                        fi
 		fi
         fi 
 	local LDAPSEARCH_TEMP=
@@ -119,8 +149,8 @@ Retrieve_CRL_From_DSA () {
 	  Backup_And_Copy_Crl "${WEB_CRL_FILE}" "${LDAPSEARCH_TEMP}"
 	  _LDAPSEARCH_TEMP_ALL="${LDAPSEARCH_TEMP} ${_LDAPSEARCH_TEMP_ALL}"
 	else 
-	  Die "error in ldap search for PKI CRL"
-	  exit $_EXIT_FAILURE
+	  Warn "error in ldap search for PKI CRL"
+	  return $_EXIT_FAILURE
 	fi
 }
 : --TimeOut
@@ -223,7 +253,7 @@ fi
 ###########################
 ##
 source "${_PKG_CONF_FILE}" 2>/dev/null || Die "error on executing ${_PKG_CONF_FILE}"
-for _VAR_CONF in _LDAPHOST _LDAPSUFFIX_ACCREDITATA _LDAPSUFFIX_APPLICATIVA _WEB_DOCUMENT_ROOT _WEB_CRL_DIR_ACCREDITATA _WEB_CRL_DIR_APPLICATIVA _WEB_CRL_FILE_ACCREDITATA _WEB_CRL_FILE_APPLICATIVA  _OU_ACCREDITATA _OU_APPLICATIVA _CN _OBJECTCLASS_CDP
+for _VAR_CONF in _LDAPHOST _LDAPSUFFIX_ACCREDITATA _LDAPSUFFIX_APPLICATIVA _WEB_DOCUMENT_ROOT_APPLICATIVA_ACCREDITATA _WEB_DOCUMENT_ROOT_COLLAUDO _WEB_CRL_DIR_ACCREDITATA _WEB_CRL_DIR_APPLICATIVA _WEB_CRL_DIR_COLLAUDO _WEB_CRL_FILE_ACCREDITATA _WEB_CRL_FILE_APPLICATIVA _WEB_CRL_FILE_COLLAUDO _OU_ACCREDITATA _OU_APPLICATIVA _OU_COLLAUDO _CN _OBJECTCLASS_CDP
 do
    eval _var_indirect=\$${_VAR_CONF}
    [ -z "${_var_indirect}" ] && Die "error the configuration var $_VAR_CONF is not set"
@@ -241,14 +271,17 @@ readonly _PID_TIMEOUT_FUNCTION="$!"
 #
 readonly _SEARCH_BASE_ACCREDITATA="${_OU_ACCREDITATA},${_LDAPSUFFIX_ACCREDITATA}"
 readonly _SEARCH_BASE_APPLICATIVA="${_OU_APPLICATIVA},${_LDAPSUFFIX_APPLICATIVA}"
+readonly _SEARCH_BASE_COLLAUDO="${_OU_COLLAUDO},${_LDAPSUFFIX_COLLAUDO}"
 readonly _LDAP_SEARCHFILTER="(objectClass=${_OBJECTCLASS_CDP})"
 #
 # Use below if you Want use SmartCard Logon (AD) in face of a CA Key Change
 #readonly _LDAP_SEARCHFILTER="(&(${_CN})(objectClass=${_OBJECTCLASS_CDP}))"
 #
 #
-##
-if [  -d "${_WEB_DOCUMENT_ROOT}" ]
+# Create subdirectories of web document root
+# First Accreditata/Applicativa next collaudo
+#
+if [  -d "${_WEB_DOCUMENT_ROOT_APPLICATIVA_ACCREDITATA}" ]
 then
    ################################
    # First pass: try to create it
@@ -265,7 +298,14 @@ then
          /bin/chmod +rx "${_WEB_CRL_DIR_APPLICATIVA}"    || Die "error in setting perms ${_WEB_CRL_DIR_APPLICATIVA}"
 	fi
 else
- Die "error the directory ${_WEB_DOCUMENT_ROOT} doesn't exist"
+ Die "error the directory ${_WEB_DOCUMENT_ROOT_APPLICATIVA_ACCREDITATA} doesn't exist"
+fi
+#
+[  ! -d "${_WEB_DOCUMENT_ROOT_COLLAUDO}" ] && /bin/rm -f "${_WEB_DOCUMENT_ROOT_COLLAUDO}" && /bin/mkdir -p "${_WEB_DOCUMENT_ROOT_COLLAUDO}"
+if [ ! -d "${_WEB_CRL_DIR_COLLAUDO}" ]
+then
+    /bin/mkdir -p "${_WEB_CRL_DIR_COLLAUDO}"     || Die "error in creating dir ${_WEB_CRL_DIR_COLLAUDO}"
+    /bin/chmod +rx "${_WEB_CRL_DIR_COLLAUDO}"    || Die "error in setting perms ${_WEB_CRL_DIR_COLLAUDO}"
 fi
 
 #############################
@@ -273,12 +313,16 @@ fi
 #############################
 Retrieve_CRL_From_DSA CA_ACCREDITATA
 #############################
-# First crl : CA_APPLICATIVA 
+# Seconf : CA_APPLICATIVA 
 #############################
 Retrieve_CRL_From_DSA CA_APPLICATIVA
-######################
+#############################
+# Third : CA_COLLAUDO 
+#############################
+Retrieve_CRL_From_DSA CA_COLLAUDO
+##############################
 # Not necessary but anyway ...
-######################
+##############################
 # 
 /bin/rm -f  "${_LDAPSEARCH_TEMP_ALL}" /tmp/ldapsearch-certificateRevocationList*
 #

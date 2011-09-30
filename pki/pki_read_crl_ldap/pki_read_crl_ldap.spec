@@ -1,11 +1,13 @@
 %define PackageName    pki_read_crl_ldap
-%define PackageVersion 2.2
+%define PackageVersion 2.3
 %define PackageRelease 1
 
 ###################################
-%define web_document_root  /var/www/html
-%define web_crl_dir_accreditata        %{web_document_root}/crl
-%define web_crl_dir_applicativa        %{web_document_root}/crl
+%define web_document_root_applicativa_accreditata  /var/www/html
+%define web_document_root_collaudo  /var/www/pkicrlcollaudo
+%define web_crl_dir_accreditata        %{web_document_root_applicativa_accreditata}/crl
+%define web_crl_dir_applicativa        %{web_document_root_applicativa_accreditata}/crl
+%define web_crl_dir_collaudo           %{web_document_root_collaudo}/crl
 ###################################
 
 Summary: Shell Utility for downloading a CRL in DER format from a DSA LDAP
@@ -66,6 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__mkdir_p} $RPM_BUILD_ROOT/%{_sbindir}
 %{__mkdir_p} -p $RPM_BUILD_ROOT/%{web_crl_dir_accreditata}
 %{__mkdir_p} -p $RPM_BUILD_ROOT/%{web_crl_dir_applicativa}
+%{__mkdir_p} -p $RPM_BUILD_ROOT/%{web_crl_dir_collaudo}
 %{__mkdir_p} $RPM_BUILD_ROOT/%{_localstatedir}/log/%{name}
 
 
@@ -89,6 +92,7 @@ exit 0
 if [ $1 = 0 ]; then
         [ -d "%{web_crl_dir_accreditata}" ] && %{__rm} -f %{web_crl_dir_accreditata}/*.*
         [ -d "%{web_crl_dir_applicativa}" ] && %{__rm} -f %{web_crl_dir_applicativa}/*.*
+        [ -d "%{web_crl_dir_collaudo}" ] && %{__rm} -f %{web_crl_dir_collaudo}/*.*
 fi
 exit 0
 
@@ -107,6 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_sbindir}/%{name}.sh
 %attr(755,root,root) %dir %{web_crl_dir_accreditata}
 %attr(755,root,root) %dir %{web_crl_dir_applicativa}
+%attr(755,root,root) %dir %{web_crl_dir_collaudo}
 %attr(755,root,root) %dir %{_localstatedir}/log/%{name}
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %config(noreplace) %{_sysconfdir}/cron.d/%{name}
@@ -116,6 +121,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Sep 30 2011 Pinto Elia <elia.pinto@bancaditalia.it> 2.3-1
+- update to version 2.3 : add crl to CA "collaudo" also
 * Mon Dec  6 2010 Pinto Elia <elia.pinto@bancaditalia.it> 2.2-1
 - update to version 2.2 : add crl to CA "applicativa" also
 - added Requires for parent dir
