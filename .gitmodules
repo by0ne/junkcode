@@ -1,0 +1,3 @@
+[submodule "programming/autoharden"]
+	path = programming/autoharden
+	url = https://github.com/kmcallister/autoharden.git
